@@ -1,0 +1,64 @@
+<div class="product">
+    <div fxLayout fxLayoutAlign="center">
+        <h2 class="mat-h2">Production</h2>
+    </div>
+    <selection dashboardtype="production_dashboard" (select)="onSelect($event)"></selection>
+    <div fxLayout fxLayoutAlign="center" *ngIf="loadedSpinner">
+        <app-spinner></app-spinner>
+    </div>
+
+    <error *ngIf="errMessage" [message]="errMessage" [hidden]="Errormsg"></error>
+    <section [hidden]="loaded">
+        <div *ngIf="!empty" [ngStyle]="{'margin-bottom': '20px'}">
+            <summary-highlight *ngIf="machineID" color="#3e6ceb" [machineID]="machineID" type="strip"
+                entity="production"></summary-highlight>
+            <!-- <mat-card class="chart">
+                <mat-card-content>
+                    <div class="chart-content">
+                        <canvas baseChart *ngIf="barChartData" [datasets]="barChartData" [labels]="barChartLabels"
+                            [options]="barChartOptions" [legend]="barChartLegend" [colors]="chartColors"
+                            chartType="bar"></canvas>
+                    </div>
+                </mat-card-content>
+            </mat-card> -->
+        </div>
+ 
+        <div class="example-container mat-elevation-z8">
+
+            <div *ngIf="isPaginatorLoading">
+                <mat-progress-bar color="primary" mode="indeterminate"></mat-progress-bar>
+            </div>
+
+            <mat-table #productionTable [dataSource]="dataSource">
+                <ng-container matColumnDef="start_time">
+                    <mat-header-cell *matHeaderCellDef>Date-Time</mat-header-cell>
+                    <mat-cell *matCellDef="let element"><span class="mobile-label">Start
+                            Date-Time</span>{{element.start_time}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="production_count">
+                    <mat-header-cell *matHeaderCellDef>Production(pkts)</mat-header-cell>
+                    <mat-cell *matCellDef="let element"><span
+                            class="mobile-label">Production(pkts)</span>{{element.production_count}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="production_22">
+                    <mat-header-cell *matHeaderCellDef> Production (22 gm pkts) </mat-header-cell>
+                    <mat-cell *matCellDef="let element"><span class="mobile-label">Production (22 gm
+                            pkts)</span>{{element.production_22}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="production_50">
+                    <mat-header-cell *matHeaderCellDef> Production (50 gm pkts) </mat-header-cell>
+                    <mat-cell *matCellDef="let element"><span class="mobile-label">Production (50 gm
+                            pkts)</span>{{element.production_50}} </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns;sticky: true"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+            <mat-paginator showFirstLastButtons [ngStyle]="{'color': '#3e6ceb','font-size':'15px','font-weigth':'bold'}"
+                [pageSize]="10" [pageSizeOptions]="[5,10,15, 25,30]"></mat-paginator>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,3606 @@
+<div fxLayout fxLayoutAlign="center">
+    <h2 class="mat-h2">Download Recipe</h2>
+</div>
+<div class="production main-column">
+    <app-filters pageType="alsafeClosingReport"  (select)="onSelect($event)"></app-filters>
+</div>
+
+<div *ngIf="showForm">
+  
+    <form [formGroup]="masterForm">
+  
+      <div fxLayout="row" fxLayoutAlign="space-around center">
+        <mat-form-field>
+          <mat-label>Recipe Name</mat-label>
+          <input matInput formControlName="recipe_name">
+          <mat-error *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+            <mat-error *ngIf="name.errors.required">
+              Recipe Name is
+              required
+            </mat-error>
+            <mat-error *ngIf="name.errors.invalidName">
+              Recipe Name length must
+              not be
+              greater than 20
+            </mat-error>
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-checkbox formControlName="liquid_addition">Liquid addtion
+        </mat-checkbox>
+  
+        <mat-checkbox formControlName="recipe_enable">Recipe Enable
+        </mat-checkbox>
+  
+      </div>
+  
+      <div *ngIf="activeStepIndex == 1">
+        <h2>Comp-1</h2>
+        <div formGroupName="userDetails">
+          <div fxLayout="row" fxLayoutAlign="space-around center">
+            <!-- SILO-11  -->
+            <div>
+  
+              <fieldset>
+                <legend>SILO-11</legend>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+  
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Set weight</mat-label>
+                      <input matInput formControlName="silo_11_set_weight">
+                      <mat-error *ngIf="userDtls.silo_11_set_weight.hasError('required') && submitted">Number is
+                        required.</mat-error>
+                      <mat-error *ngIf="userDtls.silo_11_set_weight.hasError('pattern') && submitted">Enter only
+                        number.</mat-error>
+                      <mat-error *ngIf="userDtls.silo_11_set_weight.hasError('silo_11_set_weight') && submitted">
+                        Weight calculations for silo 11 does not match</mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Course weight</mat-label>
+                      <input matInput formControlName="silo_11_course_weight">
+                      <mat-error *ngIf="userDtls.silo_11_course_weight.hasError('required') && submitted">Number
+                        is required.</mat-error>
+                      <mat-error *ngIf="userDtls.silo_11_course_weight.hasError('pattern') && submitted">Enter
+                        only number.</mat-error>
+                    </mat-form-field>
+                  </div>
+  
+                </div>
+  
+  
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+  
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Fine weight</mat-label>
+                      <input matInput formControlName="silo_11_fine_weight">
+                      <mat-error *ngIf="userDtls.silo_11_fine_weight.hasError('required') && submitted">Number
+                        is required.</mat-error>
+                      <mat-error *ngIf="userDtls.silo_11_fine_weight.hasError('pattern') && submitted">Enter
+                        only number.</mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Extra fine weight</mat-label>
+                      <input matInput formControlName="silo_11_extra_fine_weight">
+                      <mat-error *ngIf="userDtls.silo_11_extra_fine_weight.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.silo_11_extra_fine_weight.hasError('pattern') && submitted">
+                        Enter only number.</mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+  
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+  
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Inflight weight</mat-label>
+                      <input matInput formControlName="silo_11_inflight_weight">
+                      <mat-error *ngIf="userDtls.silo_11_inflight_weight.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.silo_11_inflight_weight.hasError('pattern') && submitted">Enter
+                        only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Course speed</mat-label>
+                      <input matInput formControlName="silo_11_course_speed">
+                      <mat-error *ngIf="userDtls.silo_11_course_speed.hasError('required') && submitted">Number
+                        is required.</mat-error>
+                      <mat-error *ngIf="userDtls.silo_11_course_speed.hasError('pattern') && submitted">Enter
+                        only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+  
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+  
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Fine speed</mat-label>
+                      <input matInput formControlName="silo_11_fine_speed">
+                      <mat-error *ngIf="userDtls.silo_11_fine_speed.hasError('required') && submitted">Number is
+                        required.</mat-error>
+                      <mat-error *ngIf="userDtls.silo_11_fine_speed.hasError('pattern') && submitted">Enter only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Extra fine speed</mat-label>
+                      <input matInput formControlName="silo_11_extra_fine_speed">
+                      <mat-error *ngIf="userDtls.silo_11_extra_fine_speed.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.silo_11_extra_fine_speed.hasError('pattern') && submitted">
+                        Enter only number.</mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+  
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+  
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Inflight time</mat-label>
+                      <input matInput formControlName="silo_11_inflight_time">
+                      <mat-error *ngIf="userDtls.silo_11_inflight_time.hasError('required') && submitted">Number
+                        is required.</mat-error>
+                      <mat-error *ngIf="userDtls.silo_11_inflight_time.hasError('pattern') && submitted">Enter
+                        only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Tollerence</mat-label>
+                      <input matInput formControlName="silo_11_tollerence">
+                      <mat-error *ngIf="userDtls.silo_11_tollerence.hasError('required') && submitted">Number is
+                        required.</mat-error>
+                      <mat-error *ngIf="userDtls.silo_11_tollerence.hasError('pattern') && submitted">Enter only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+              </fieldset>
+            </div>
+            <!-- SILO-12 -->
+            <div>
+  
+              <fieldset>
+                <legend>SILO-12</legend>
+  
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Set weight</mat-label>
+                      <input matInput formControlName="silo_12_set_weight">
+                      <mat-error *ngIf="userDtls.silo_12_set_weight.hasError('required') && submitted">Number is
+                        required.</mat-error>
+                      <mat-error *ngIf="userDtls.silo_12_set_weight.hasError('pattern') && submitted">Enter only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Course weight</mat-label>
+                      <input matInput formControlName="silo_12_course_weight">
+                      <mat-error *ngIf="userDtls.silo_12_course_weight.hasError('required') && submitted">Number
+                        is required.</mat-error>
+                      <mat-error *ngIf="userDtls.silo_12_course_weight.hasError('pattern') && submitted">Enter
+                        only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Fine weight</mat-label>
+                      <input matInput formControlName="silo_12_fine_weight">
+                      <mat-error *ngIf="userDtls.silo_12_fine_weight.hasError('required') && submitted">Number
+                        is required.</mat-error>
+                      <mat-error *ngIf="userDtls.silo_12_fine_weight.hasError('pattern') && submitted">Enter
+                        only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Extra fine weight</mat-label>
+                      <input matInput formControlName="silo_12_extra_fine_weight">
+                      <mat-error *ngIf="userDtls.silo_12_extra_fine_weight.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.silo_12_extra_fine_weight.hasError('pattern') && submitted">
+                        Enter only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+  
+                    <mat-form-field>
+                      <mat-label>Inflight weight</mat-label>
+                      <input matInput formControlName="silo_12_inflight_weight">
+                      <mat-error *ngIf="userDtls.silo_12_inflight_weight.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.silo_12_inflight_weight.hasError('pattern') && submitted">
+                        Enter only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Course speed</mat-label>
+                      <input matInput formControlName="silo_12_course_speed">
+                      <mat-error *ngIf="userDtls.silo_12_course_speed.hasError('required') && submitted">Number
+                        is required.</mat-error>
+                      <mat-error *ngIf="userDtls.silo_12_course_speed.hasError('pattern') && submitted">Enter
+                        only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Fine speed</mat-label>
+                      <input matInput formControlName="silo_12_fine_speed">
+                      <mat-error *ngIf="userDtls.silo_12_fine_speed.hasError('required') && submitted">Number
+                        is required.</mat-error>
+                      <mat-error *ngIf="userDtls.silo_12_fine_speed.hasError('pattern') && submitted">Enter
+                        only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Extra fine speed</mat-label>
+                      <input matInput formControlName="silo_12_extra_fine_speed">
+                      <mat-error *ngIf="userDtls.silo_12_extra_fine_speed.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.silo_12_extra_fine_speed.hasError('pattern') && submitted">
+                        Enter only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Inflight time</mat-label>
+                      <input matInput formControlName="silo_12_inflight_time">
+                      <mat-error *ngIf="userDtls.silo_12_inflight_time.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.silo_12_inflight_time.hasError('pattern') && submitted">
+                        Enter only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Tollerence</mat-label>
+                      <input matInput formControlName="silo_12_tollerence">
+                      <mat-error *ngIf="userDtls.silo_12_tollerence.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.silo_12_tollerence.hasError('pattern') && submitted">
+                        Enter only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+              </fieldset>
+            </div>
+            <!-- CS-11 -->
+            <div>
+  
+              <fieldset>
+                <legend>CS-11</legend>
+  
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Set weight</mat-label>
+                      <input matInput formControlName="cs_11_set_weight">
+                      <mat-error *ngIf="userDtls.cs_11_set_weight.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_11_set_weight.hasError('pattern') && submitted">
+                        Enter only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Course weight</mat-label>
+                      <input matInput formControlName="cs_11_course_weight">
+                      <mat-error *ngIf="userDtls.cs_11_course_weight.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_11_course_weight.hasError('pattern') && submitted">
+                        Enter only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Fine weight</mat-label>
+                      <input matInput formControlName="cs_11_fine_weight">
+                      <mat-error *ngIf="userDtls.cs_11_fine_weight.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_11_fine_weight.hasError('pattern') && submitted">
+                        Enter only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Extra fine weight</mat-label>
+                      <input matInput formControlName="cs_11_extra_fine_weight">
+                      <mat-error *ngIf="userDtls.cs_11_extra_fine_weight.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_11_extra_fine_weight.hasError('pattern') && submitted">Enter
+                        only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Inflight weight</mat-label>
+                      <input matInput formControlName="cs_11_inflight_weight">
+                      <mat-error *ngIf="userDtls.cs_11_inflight_weight.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_11_inflight_weight.hasError('pattern') && submitted">
+                        Enter only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Course speed</mat-label>
+                      <input matInput formControlName="cs_11_course_speed">
+                      <mat-error *ngIf="userDtls.cs_11_course_speed.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_11_course_speed.hasError('pattern') && submitted">
+                        Enter only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Fine speed</mat-label>
+                      <input matInput formControlName="cs_11_fine_speed">
+                      <mat-error *ngIf="userDtls.cs_11_fine_speed.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_11_fine_speed.hasError('pattern') && submitted">
+                        Enter only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Extra fine speed</mat-label>
+                      <input matInput formControlName="cs_11_extra_fine_speed">
+                      <mat-error *ngIf="userDtls.cs_11_extra_fine_speed.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_11_extra_fine_speed.hasError('pattern') && submitted">
+                        Enter only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Inflight time</mat-label>
+                      <input matInput formControlName="cs_11_inflight_time">
+                      <mat-error *ngIf="userDtls.cs_11_inflight_time.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_11_inflight_time.hasError('pattern') && submitted">
+                        Enter only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Tollerence</mat-label>
+                      <input matInput formControlName="cs_11_tollerence">
+                      <mat-error *ngIf="userDtls.cs_11_tollerence.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_11_tollerence.hasError('pattern') && submitted">
+                        Enter only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+              </fieldset>
+            </div>
+          </div>
+          <!-- CS-12 -->
+          <div fxLayout="row" fxLayoutAlign="space-around center">
+            <div>
+  
+              <fieldset>
+                <legend>CS-12</legend>
+  
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Set weight</mat-label>
+                      <input matInput formControlName="cs_12_set_weight">
+                      <mat-error *ngIf="userDtls.cs_12_set_weight.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_12_set_weight.hasError('pattern') && submitted">
+                        Enter only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Course weight</mat-label>
+                      <input matInput formControlName="cs_12_course_weight">
+                      <mat-error *ngIf="userDtls.cs_12_course_weight.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_12_course_weight.hasError('pattern') && submitted">
+                        Enter only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Fine weight</mat-label>
+                      <input matInput formControlName="cs_12_fine_weight">
+                      <mat-error *ngIf="userDtls.cs_12_fine_weight.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_12_fine_weight.hasError('pattern') && submitted">
+                        Enter only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Extra fine weight</mat-label>
+                      <input matInput formControlName="cs_12_extra_fine_weight">
+                      <mat-error *ngIf="userDtls.cs_12_extra_fine_weight.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_12_extra_fine_weight.hasError('pattern') && submitted">
+                        Enter only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Inflight weight</mat-label>
+                      <input matInput formControlName="cs_12_inflight_weight">
+                      <mat-error *ngIf="userDtls.cs_12_inflight_weight.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_12_inflight_weight.hasError('pattern') && submitted">
+                        Enter only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Course speed</mat-label>
+                      <input matInput formControlName="cs_12_course_speed">
+                      <mat-error *ngIf="userDtls.cs_12_course_speed.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_12_course_speed.hasError('pattern') && submitted">
+                        Enter only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Fine speed</mat-label>
+                      <input matInput formControlName="cs_12_fine_speed">
+                      <mat-error *ngIf="userDtls.cs_12_fine_speed.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_12_fine_speed.hasError('pattern') && submitted">
+                        Enter only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Extra fine speed
+                      </mat-label>
+                      <input matInput formControlName="cs_12_extra_fine_speed">
+                      <mat-error *ngIf="userDtls.cs_12_extra_fine_speed.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_12_extra_fine_speed.hasError('pattern') && submitted">
+                        Enter only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Inflight time</mat-label>
+                      <input matInput formControlName="cs_12_inflight_time">
+                      <mat-error *ngIf="userDtls.cs_12_inflight_time.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_12_inflight_time.hasError('pattern') && submitted">
+                        Enter only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Tollerence</mat-label>
+                      <input matInput formControlName="cs_12_tollerence">
+                      <mat-error *ngIf="userDtls.cs_12_tollerence.hasError('required') && submitted">
+                        Number is required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_12_tollerence.hasError('pattern') && submitted">
+                        Enter only number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+              </fieldset>
+            </div>
+            <!-- CS-13 -->
+            <div>
+  
+              <fieldset>
+                <legend>CS-13</legend>
+  
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Set weight
+                      </mat-label>
+                      <input matInput formControlName="cs_13_set_weight">
+                      <mat-error *ngIf="userDtls.cs_13_set_weight.hasError('required') && submitted">
+                        Number is
+                        required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_13_set_weight.hasError('pattern') && submitted">
+                        Enter only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Course weight
+                      </mat-label>
+                      <input matInput formControlName="cs_13_course_weight">
+                      <mat-error *ngIf="userDtls.cs_13_course_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_13_course_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Fine weight
+                      </mat-label>
+                      <input matInput formControlName="cs_13_fine_weight">
+                      <mat-error *ngIf="userDtls.cs_13_fine_weight.hasError('required') && submitted">
+                        Number is
+                        required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_13_fine_weight.hasError('pattern') && submitted">
+                        Enter only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Extra fine
+                        weight</mat-label>
+                      <input matInput formControlName="cs_13_extra_fine_weight">
+                      <mat-error *ngIf="userDtls.cs_13_extra_fine_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_13_extra_fine_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Inflight
+                        weight</mat-label>
+                      <input matInput formControlName="cs_13_inflight_weight">
+                      <mat-error *ngIf="userDtls.cs_13_inflight_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_13_inflight_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Course speed
+                      </mat-label>
+                      <input matInput formControlName="cs_13_course_speed">
+                      <mat-error *ngIf="userDtls.cs_13_course_speed.hasError('required') && submitted">
+                        Number is
+                        required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_13_course_speed.hasError('pattern') && submitted">
+                        Enter only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Fine speed
+                      </mat-label>
+                      <input matInput formControlName="cs_13_fine_speed">
+                      <mat-error *ngIf="userDtls.cs_13_fine_speed.hasError('required') && submitted">
+                        Number is
+                        required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_13_fine_speed.hasError('pattern') && submitted">
+                        Enter only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Extra
+                        fine speed</mat-label>
+                      <input matInput formControlName="cs_13_extra_fine_speed">
+                      <mat-error *ngIf="userDtls.cs_13_extra_fine_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_13_extra_fine_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Inflight
+                        time</mat-label>
+                      <input matInput formControlName="cs_13_inflight_time">
+                      <mat-error *ngIf="userDtls.cs_13_inflight_time.hasError('required') && submitted">
+                        Number
+                        is
+                        required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_13_inflight_time.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Tollerence</mat-label>
+                      <input matInput formControlName="cs_13_tollerence">
+                      <mat-error *ngIf="userDtls.cs_13_tollerence.hasError('required') && submitted">
+                        Number is
+                        required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_13_tollerence.hasError('pattern') && submitted">
+                        Enter only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+              </fieldset>
+            </div>
+            <!-- CS-14 -->
+            <div>
+              <fieldset>
+                <legend>CS-14</legend>
+  
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Set
+                        weight</mat-label>
+                      <input matInput formControlName="cs_14_set_weight">
+                      <mat-error *ngIf="userDtls.cs_14_set_weight.hasError('required') && submitted">
+                        Number is
+                        required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_14_set_weight.hasError('pattern') && submitted">
+                        Enter only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Course weight</mat-label>
+                      <input matInput formControlName="cs_14_course_weight">
+                      <mat-error *ngIf="userDtls.cs_14_course_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_14_course_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+  
+                    <mat-form-field>
+                      <mat-label>Fine
+                        weight</mat-label>
+                      <input matInput formControlName="cs_14_fine_weight">
+                      <mat-error *ngIf="userDtls.cs_14_fine_weight.hasError('required') && submitted">
+                        Number is
+                        required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_14_fine_weight.hasError('pattern') && submitted">
+                        Enter only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Extra
+                        fine weight</mat-label>
+                      <input matInput formControlName="cs_14_extra_fine_weight">
+                      <mat-error *ngIf="userDtls.cs_14_extra_fine_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_14_extra_fine_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Inflight weight</mat-label>
+                      <input matInput formControlName="cs_14_inflight_weight">
+                      <mat-error *ngIf="userDtls.cs_14_inflight_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_14_inflight_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Course
+                        speed</mat-label>
+                      <input matInput formControlName="cs_14_course_speed">
+                      <mat-error *ngIf="userDtls.cs_14_course_speed.hasError('required') && submitted">
+                        Number is
+                        required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_14_course_speed.hasError('pattern') && submitted">
+                        Enter only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>Fine
+                        speed</mat-label>
+                      <input matInput formControlName="cs_14_fine_speed">
+                      <mat-error *ngIf="userDtls.cs_14_fine_speed.hasError('required') && submitted">
+                        Number is
+                        required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_14_fine_speed.hasError('pattern') && submitted">
+                        Enter only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Extra fine speed
+                      </mat-label>
+                      <input matInput formControlName="cs_14_extra_fine_speed">
+                      <mat-error *ngIf="userDtls.cs_14_extra_fine_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_14_extra_fine_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Inflight time</mat-label>
+                      <input matInput formControlName="cs_14_inflight_time">
+                      <mat-error *ngIf="userDtls.cs_14_inflight_time.hasError('required') && submitted">
+                        Number
+                        is
+                        required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_14_inflight_time.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Tollerence</mat-label>
+                      <input matInput formControlName="cs_14_tollerence">
+                      <mat-error *ngIf="userDtls.cs_14_tollerence.hasError('required') && submitted">
+                        Number is
+                        required.</mat-error>
+                      <mat-error *ngIf="userDtls.cs_14_tollerence.hasError('pattern') && submitted">
+                        Enter only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+              </fieldset>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div *ngIf="activeStepIndex == 2">
+        <h2>Comp-2</h2>
+        <div formGroupName="contactDetails">
+          <div fxLayout="row" fxLayoutAlign="space-around center">
+            <!-- SILO-21  -->
+            <div>
+  
+              <fieldset>
+                <legend>SILO-21 </legend>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Set weight
+                      </mat-label>
+                      <input matInput formControlName="silo_21_set_weight">
+                      <mat-error *ngIf="contactDtls.silo_21_set_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.silo_21_set_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Course weight
+                      </mat-label>
+                      <input matInput formControlName="silo_21_course_weight">
+                      <mat-error *ngIf="contactDtls.silo_21_course_weight.hasError('required') && submitted">
+                        Number is
+                        required.</mat-error>
+                      <mat-error *ngIf="contactDtls.silo_21_course_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Fine weight
+                      </mat-label>
+                      <input matInput formControlName="silo_21_fine_weight">
+                      <mat-error *ngIf="contactDtls.silo_21_fine_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.</mat-error>
+                      <mat-error *ngIf="contactDtls.silo_21_fine_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Extra fine weight
+                      </mat-label>
+                      <input matInput formControlName="silo_21_extra_fine_weight">
+                      <mat-error *ngIf="contactDtls.silo_21_extra_fine_weight.hasError('required') && submitted">
+                        Number is
+                        required.</mat-error>
+                      <mat-error *ngIf="contactDtls.silo_21_extra_fine_weight.hasError('pattern') && submitted">
+                        Enter only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Inflight weight
+                      </mat-label>
+                      <input matInput formControlName="silo_21_inflight_weight">
+                      <mat-error *ngIf="contactDtls.silo_21_inflight_weight.hasError('required') && submitted">
+                        Number is
+                        required.</mat-error>
+                      <mat-error *ngIf="contactDtls.silo_21_inflight_weight.hasError('pattern') && submitted">
+                        Enter only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Course speed
+                      </mat-label>
+                      <input matInput formControlName="silo_21_course_speed">
+                      <mat-error *ngIf="contactDtls.silo_21_course_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.</mat-error>
+                      <mat-error *ngIf="contactDtls.silo_21_course_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Fine speed
+                      </mat-label>
+                      <input matInput formControlName="silo_21_fine_speed">
+                      <mat-error *ngIf="contactDtls.silo_21_fine_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.</mat-error>
+                      <mat-error *ngIf="contactDtls.silo_21_fine_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Extra fine
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="silo_21_extra_fine_speed">
+                      <mat-error *ngIf="contactDtls.silo_21_extra_fine_speed.hasError('required') && submitted">
+                        Number is
+                        required.</mat-error>
+                      <mat-error *ngIf="contactDtls.silo_21_extra_fine_speed.hasError('pattern') && submitted">
+                        Enter only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Inflight time
+                      </mat-label>
+                      <input matInput formControlName="silo_21_inflight_time">
+                      <mat-error *ngIf="contactDtls.silo_21_inflight_time.hasError('required') && submitted">
+                        Number is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.silo_21_inflight_time.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.</mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Tollerence
+                      </mat-label>
+                      <input matInput formControlName="silo_21_tollerence">
+  
+                      <mat-error *ngIf="contactDtls.silo_21_tollerence.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.silo_21_tollerence.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+              </fieldset>
+            </div>
+            <!-- SILO-22 -->
+            <div>
+  
+              <fieldset>
+                <legend> SILO-22</legend>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Set
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="silo_22_set_weight">
+                      <mat-error *ngIf="contactDtls.silo_22_set_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.silo_22_set_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Course
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="silo_22_course_weight">
+                      <mat-error *ngIf="contactDtls.silo_22_course_weight.hasError('required') && submitted">
+                        Number is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.silo_22_course_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Fine
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="silo_22_fine_weight">
+                      <mat-error *ngIf="contactDtls.silo_22_fine_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.silo_22_fine_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Extra
+                        fine
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="silo_22_extra_fine_weight">
+                      <mat-error *ngIf="contactDtls.silo_22_extra_fine_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.silo_22_extra_fine_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Inflight
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="silo_22_inflight_weight">
+                      <mat-error *ngIf="contactDtls.silo_22_inflight_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.silo_22_inflight_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Course
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="silo_22_course_speed">
+                      <mat-error *ngIf="contactDtls.silo_22_course_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.silo_22_course_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Fine
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="silo_22_fine_speed">
+                      <mat-error *ngIf="contactDtls.silo_22_fine_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.silo_22_fine_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Extra
+                        fine
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="silo_22_extra_fine_speed">
+                      <mat-error *ngIf="contactDtls.silo_22_extra_fine_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.silo_22_extra_fine_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Inflight
+                        time
+                      </mat-label>
+                      <input matInput formControlName="silo_22_inflight_time">
+                      <mat-error *ngIf="contactDtls.silo_22_inflight_time.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.silo_22_inflight_time.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Tollerence
+                      </mat-label>
+                      <input matInput formControlName="silo_22_tollerence">
+                      <mat-error *ngIf="contactDtls.silo_22_tollerence.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.silo_22_tollerence.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+              </fieldset>
+            </div>
+            <!-- SILO-23 -->
+            <div>
+  
+              <fieldset>
+                <legend>SILO-23</legend>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Set
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="silo_23_set_weight">
+                      <mat-error *ngIf="contactDtls.silo_23_set_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.silo_23_set_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Course
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="silo_23_course_weight">
+                      <mat-error *ngIf="contactDtls.silo_23_course_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.silo_23_course_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Fine
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="silo_23_fine_weight">
+                      <mat-error *ngIf="contactDtls.silo_23_fine_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.silo_23_fine_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Extra
+                        fine
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="silo_23_extra_fine_weight">
+                      <mat-error *ngIf="contactDtls.silo_23_extra_fine_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.silo_23_extra_fine_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Inflight
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="silo_23_inflight_weight">
+                      <mat-error *ngIf="contactDtls.silo_23_inflight_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.silo_23_inflight_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Course
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="silo_23_course_speed">
+                      <mat-error *ngIf="contactDtls.silo_23_course_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.silo_23_course_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Fine
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="silo_23_fine_speed">
+                      <mat-error *ngIf="contactDtls.silo_23_fine_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.silo_23_fine_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Extra
+                        fine
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="silo_23_extra_fine_speed">
+                      <mat-error *ngIf="contactDtls.silo_23_extra_fine_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.silo_23_extra_fine_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Inflight
+                        time
+                      </mat-label>
+                      <input matInput formControlName="silo_23_inflight_time">
+                      <mat-error *ngIf="contactDtls.silo_23_inflight_time.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.silo_23_inflight_time.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Tollerence
+                      </mat-label>
+                      <input matInput formControlName="silo_23_tollerence">
+                      <mat-error *ngIf="contactDtls.silo_23_tollerence.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.silo_23_tollerence.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+              </fieldset>
+            </div>
+          </div>
+          <!-- CS-21 -->
+          <div fxLayout="row" fxLayoutAlign="space-around center">
+            <div>
+  
+              <fieldset>
+                <legend> CS-21</legend>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Set
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_21_set_weight">
+                      <mat-error *ngIf="contactDtls.cs_21_set_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_21_set_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Course
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_21_course_weight">
+                      <mat-error *ngIf="contactDtls.cs_21_course_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_21_course_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Fine
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_21_fine_weight">
+                      <mat-error *ngIf="contactDtls.cs_21_fine_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_21_fine_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Extra
+                        fine
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_21_extra_fine_weight">
+                      <mat-error *ngIf="contactDtls.cs_21_extra_fine_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_21_extra_fine_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Inflight
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_21_inflight_weight">
+                      <mat-error *ngIf="contactDtls.cs_21_inflight_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_21_inflight_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Course
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="cs_21_course_speed">
+                      <mat-error *ngIf="contactDtls.cs_21_course_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_21_course_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Fine
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="cs_21_fine_speed">
+                      <mat-error *ngIf="contactDtls.cs_21_fine_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_21_fine_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Extra
+                        fine
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="cs_21_extra_fine_speed">
+                      <mat-error *ngIf="contactDtls.cs_21_extra_fine_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_21_extra_fine_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Inflight
+                        time
+                      </mat-label>
+                      <input matInput formControlName="cs_21_inflight_time">
+                      <mat-error *ngIf="contactDtls.cs_21_inflight_time.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_21_inflight_time.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Tollerence
+                      </mat-label>
+                      <input matInput formControlName="cs_21_tollerence">
+                      <mat-error *ngIf="contactDtls.cs_21_tollerence.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_21_tollerence.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+              </fieldset>
+            </div>
+            <!-- CS-22 -->
+            <div>
+  
+              <fieldset>
+                <legend>CS-22</legend>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Set
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_22_set_weight">
+                      <mat-error *ngIf="contactDtls.cs_22_set_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_22_set_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Course
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_22_course_weight">
+                      <mat-error *ngIf="contactDtls.cs_22_course_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_22_course_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Fine
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_22_fine_weight">
+                      <mat-error *ngIf="contactDtls.cs_22_fine_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_22_fine_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Extra
+                        fine
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_22_extra_fine_weight">
+                      <mat-error *ngIf="contactDtls.cs_22_extra_fine_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_22_extra_fine_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Inflight
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_22_inflight_weight">
+                      <mat-error *ngIf="contactDtls.cs_22_inflight_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_22_inflight_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Course
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="cs_22_course_speed">
+                      <mat-error *ngIf="contactDtls.cs_22_course_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_22_course_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Fine
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="cs_22_fine_speed">
+                      <mat-error *ngIf="contactDtls.cs_22_fine_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_22_fine_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Extra
+                        fine
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="cs_22_extra_fine_speed">
+                      <mat-error *ngIf="contactDtls.cs_22_extra_fine_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_22_extra_fine_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Inflight
+                        time
+                      </mat-label>
+                      <input matInput formControlName="cs_22_inflight_time">
+                      <mat-error *ngIf="contactDtls.cs_22_inflight_time.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_22_inflight_time.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Tollerence
+                      </mat-label>
+                      <input matInput formControlName="cs_22_tollerence">
+                      <mat-error *ngIf="contactDtls.cs_22_tollerence.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_22_tollerence.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+              </fieldset>
+            </div>
+            <!-- CS-23 -->
+            <div>
+  
+              <fieldset>
+                <legend>CS-23</legend>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Set
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_23_set_weight">
+                      <mat-error *ngIf="contactDtls.cs_23_set_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_23_set_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Course
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_23_course_weight">
+                      <mat-error *ngIf="contactDtls.cs_23_course_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_23_course_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Fine
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_23_fine_weight">
+                      <mat-error *ngIf="contactDtls.cs_23_fine_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_23_fine_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Extra
+                        fine
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_23_extra_fine_weight">
+                      <mat-error *ngIf="contactDtls.cs_23_extra_fine_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_23_extra_fine_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Inflight
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_23_inflight_weight">
+                      <mat-error *ngIf="contactDtls.cs_23_inflight_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_23_inflight_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+  
+  
+  
+  
+                    <mat-form-field>
+                      <mat-label>
+                        Course
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="cs_23_course_speed">
+                      <mat-error *ngIf="contactDtls.cs_23_course_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_23_course_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+  
+  
+                    <mat-form-field>
+                      <mat-label>
+                        Fine
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="cs_23_fine_speed">
+                      <mat-error *ngIf="contactDtls.cs_23_fine_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_23_fine_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Extra
+                        fine
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="cs_23_extra_fine_speed">
+                      <mat-error *ngIf="contactDtls.cs_23_extra_fine_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_23_extra_fine_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+  
+                    <mat-form-field>
+                      <mat-label>
+                        Inflight
+                        time
+                      </mat-label>
+                      <input matInput formControlName="cs_23_inflight_time">
+                      <mat-error *ngIf="contactDtls.cs_23_inflight_time.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_23_inflight_time.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+  
+                    <mat-form-field>
+                      <mat-label>
+                        Tollerence
+                      </mat-label>
+                      <input matInput formControlName="cs_23_tollerence">
+                      <mat-error *ngIf="contactDtls.cs_23_tollerence.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="contactDtls.cs_23_tollerence.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+  
+              </fieldset>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div *ngIf="activeStepIndex == 3">
+        <h2>
+          Comp-3
+        </h2>
+        <div formGroupName="personalDetails">
+          <!-- SILO-31  -->
+          <div fxLayout="row" fxLayoutAlign="space-around center">
+            <div>
+  
+              <fieldset>
+                <legend>
+                  SILO-31
+                </legend>
+  
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Set
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="silo_31_set_weight">
+                      <mat-error *ngIf="personalDtls.silo_31_set_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_31_set_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Course
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="silo_31_course_weight">
+                      <mat-error *ngIf="personalDtls.silo_31_course_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_31_course_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+  
+                    <mat-form-field>
+                      <mat-label>
+                        Fine
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="silo_31_fine_weight">
+                      <mat-error *ngIf="personalDtls.silo_31_fine_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_31_fine_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Extra
+                        fine
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="silo_31_extra_fine_weight">
+                      <mat-error *ngIf="personalDtls.silo_31_extra_fine_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_31_extra_fine_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Inflight
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="silo_31_inflight_weight">
+                      <mat-error *ngIf="personalDtls.silo_31_inflight_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_31_inflight_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Course
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="silo_31_course_speed">
+                      <mat-error *ngIf="personalDtls.silo_31_course_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_31_course_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+  
+  
+                    <mat-form-field>
+                      <mat-label>
+                        Fine
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="silo_31_fine_speed">
+                      <mat-error *ngIf="personalDtls.silo_31_fine_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_31_fine_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Extra
+                        fine
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="silo_31_extra_fine_speed">
+                      <mat-error *ngIf="personalDtls.silo_31_extra_fine_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_31_extra_fine_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+  
+                    <mat-form-field>
+                      <mat-label>
+                        Inflight
+                        time
+                      </mat-label>
+                      <input matInput formControlName="silo_31_inflight_time">
+                      <mat-error *ngIf="personalDtls.silo_31_inflight_time.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_31_inflight_time.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Tollerence
+                      </mat-label>
+                      <input matInput formControlName="silo_31_tollerence">
+                      <mat-error *ngIf="personalDtls.silo_31_tollerence.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_31_tollerence.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+  
+  
+              </fieldset>
+            </div>
+            <!-- SILO-32 -->
+            <div>
+  
+              <fieldset>
+                <legend>
+                  SILO-32
+                </legend>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Set
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="silo_32_set_weight">
+                      <mat-error *ngIf="personalDtls.silo_32_set_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_32_set_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Course
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="silo_32_course_weight">
+                      <mat-error *ngIf="personalDtls.silo_32_course_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_32_course_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Fine
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="silo_32_fine_weight">
+                      <mat-error *ngIf="personalDtls.silo_32_fine_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_32_fine_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Extra
+                        fine
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="silo_32_extra_fine_weight">
+                      <mat-error *ngIf="personalDtls.silo_32_extra_fine_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_32_extra_fine_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Inflight
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="silo_32_inflight_weight">
+                      <mat-error *ngIf="personalDtls.silo_32_inflight_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_32_inflight_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Course
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="silo_32_course_speed">
+                      <mat-error *ngIf="personalDtls.silo_32_course_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_32_course_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Fine
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="silo_32_fine_speed">
+                      <mat-error *ngIf="personalDtls.silo_32_fine_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_32_fine_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+  
+                    <mat-form-field>
+                      <mat-label>
+                        Extra
+                        fine
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="silo_32_extra_fine_speed">
+                      <mat-error *ngIf="personalDtls.silo_32_extra_fine_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_32_extra_fine_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+  
+                    <mat-form-field>
+                      <mat-label>
+                        Inflight
+                        time
+                      </mat-label>
+                      <input matInput formControlName="silo_32_inflight_time">
+                      <mat-error *ngIf="personalDtls.silo_32_inflight_time.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_32_inflight_time.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Tollerence
+                      </mat-label>
+                      <input matInput formControlName="silo_32_tollerence">
+                      <mat-error *ngIf="personalDtls.silo_32_tollerence.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_32_tollerence.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+  
+              </fieldset>
+            </div>
+            <!-- SILO-33 -->
+            <div>
+  
+              <fieldset>
+                <legend>
+                  SILO-33
+                </legend>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Set
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="silo_33_set_weight">
+                      <mat-error *ngIf="personalDtls.silo_33_set_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_33_set_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Course
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="silo_33_course_weight">
+                      <mat-error *ngIf="personalDtls.silo_33_course_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_33_course_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Fine
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="silo_33_fine_weight">
+                      <mat-error *ngIf="personalDtls.silo_33_fine_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_33_fine_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Extra
+                        fine
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="silo_33_extra_fine_weight">
+                      <mat-error *ngIf="personalDtls.silo_33_extra_fine_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_33_extra_fine_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Inflight
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="silo_33_inflight_weight">
+                      <mat-error *ngIf="personalDtls.silo_33_inflight_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_33_inflight_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Course
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="silo_33_course_speed">
+                      <mat-error *ngIf="personalDtls.silo_33_course_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_33_course_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Fine
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="silo_33_fine_speed">
+                      <mat-error *ngIf="personalDtls.silo_33_fine_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_33_fine_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Extra
+                        fine
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="silo_33_extra_fine_speed">
+                      <mat-error *ngIf="personalDtls.silo_33_extra_fine_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_33_extra_fine_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Inflight
+                        time
+                      </mat-label>
+                      <input matInput formControlName="silo_33_inflight_time">
+                      <mat-error *ngIf="personalDtls.silo_33_inflight_time.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_33_inflight_time.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Tollerence
+                      </mat-label>
+                      <input matInput formControlName="silo_33_tollerence">
+                      <mat-error *ngIf="personalDtls.silo_33_tollerence.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.silo_33_tollerence.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+              </fieldset>
+            </div>
+          </div>
+  
+          <div fxLayout="row" fxLayoutAlign="space-around center">
+            <!-- CS-31 -->
+            <div>
+  
+              <fieldset>
+                <legend>
+                  CS-31
+                </legend>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Set
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_31_set_weight">
+                      <mat-error *ngIf="personalDtls.cs_31_set_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_31_set_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Course
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_31_course_weight">
+                      <mat-error *ngIf="personalDtls.cs_31_course_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_31_course_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Fine
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_31_fine_weight">
+                      <mat-error *ngIf="personalDtls.cs_31_fine_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_31_fine_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Extra
+                        fine
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_31_extra_fine_weight">
+                      <mat-error *ngIf="personalDtls.cs_31_extra_fine_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_31_extra_fine_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Inflight
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_31_inflight_weight">
+                      <mat-error *ngIf="personalDtls.cs_31_inflight_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_31_inflight_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Course
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="cs_31_course_speed">
+                      <mat-error *ngIf="personalDtls.cs_31_course_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_31_course_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+  
+                    <mat-form-field>
+                      <mat-label>
+                        Fine
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="cs_31_fine_speed">
+                      <mat-error *ngIf="personalDtls.cs_31_fine_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_31_fine_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Extra
+                        fine
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="cs_31_extra_fine_speed">
+                      <mat-error *ngIf="personalDtls.cs_31_extra_fine_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_31_extra_fine_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Inflight
+                        time
+                      </mat-label>
+                      <input matInput formControlName="cs_31_inflight_time">
+                      <mat-error *ngIf="personalDtls.cs_31_inflight_time.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_31_inflight_time.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Tollerence
+                      </mat-label>
+                      <input matInput formControlName="cs_31_tollerence">
+                      <mat-error *ngIf="personalDtls.cs_31_tollerence.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_31_tollerence.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+  
+  
+  
+              </fieldset>
+            </div>
+            <!-- CS-32 -->
+            <div>
+  
+              <fieldset>
+                <legend>
+                  CS-32
+                </legend>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Set
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_32_set_weight">
+  
+                      <mat-error *ngIf="personalDtls.cs_32_set_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_32_set_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Course
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_32_course_weight">
+  
+                      <mat-error *ngIf="personalDtls.cs_32_course_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_32_course_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Fine
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_32_fine_weight">
+  
+                      <mat-error *ngIf="personalDtls.cs_32_fine_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_32_fine_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Extra
+                        fine
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_32_extra_fine_weight">
+  
+                      <mat-error *ngIf="personalDtls.cs_32_extra_fine_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_32_extra_fine_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Inflight
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_32_inflight_weight">
+  
+                      <mat-error *ngIf="personalDtls.cs_32_inflight_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_32_inflight_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Course
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="cs_32_course_speed">
+  
+                      <mat-error *ngIf="personalDtls.cs_32_course_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_32_course_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Fine
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="cs_32_fine_speed">
+  
+                      <mat-error *ngIf="personalDtls.cs_32_fine_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_32_fine_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Extra
+                        fine
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="cs_32_extra_fine_speed">
+  
+                      <mat-error *ngIf="personalDtls.cs_32_extra_fine_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_32_extra_fine_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Inflight
+                        time
+                      </mat-label>
+                      <input matInput formControlName="cs_32_inflight_time">
+  
+                      <mat-error *ngIf="personalDtls.cs_32_inflight_time.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_32_inflight_time.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Tollerence
+                      </mat-label>
+                      <input matInput formControlName="cs_32_tollerence">
+  
+                      <mat-error *ngIf="personalDtls.cs_32_tollerence.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_32_tollerence.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+              </fieldset>
+            </div>
+            <!-- CS-33 -->
+            <div>
+              <fieldset>
+                <legend>
+                  CS-33
+                </legend>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Set
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_33_set_weight">
+  
+                      <mat-error *ngIf="personalDtls.cs_33_set_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_33_set_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Course
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_33_course_weight">
+  
+                      <mat-error *ngIf="personalDtls.cs_33_course_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_33_course_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Fine
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_33_fine_weight">
+  
+                      <mat-error *ngIf="personalDtls.cs_33_fine_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_33_fine_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Extra
+                        fine
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_33_extra_fine_weight">
+  
+                      <mat-error *ngIf="personalDtls.cs_33_extra_fine_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_33_extra_fine_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Inflight
+                        weight
+                      </mat-label>
+                      <input matInput formControlName="cs_33_inflight_weight">
+  
+                      <mat-error *ngIf="personalDtls.cs_33_inflight_weight.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_33_inflight_weight.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Course
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="cs_33_course_speed">
+  
+                      <mat-error *ngIf="personalDtls.cs_33_course_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_33_course_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Fine
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="cs_33_fine_speed">
+  
+                      <mat-error *ngIf="personalDtls.cs_33_fine_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_33_fine_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Extra
+                        fine
+                        speed
+                      </mat-label>
+                      <input matInput formControlName="cs_33_extra_fine_speed">
+  
+                      <mat-error *ngIf="personalDtls.cs_33_extra_fine_speed.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_33_extra_fine_speed.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Inflight
+                        time
+                      </mat-label>
+                      <input matInput formControlName="cs_33_inflight_time">
+  
+                      <mat-error *ngIf="personalDtls.cs_33_inflight_time.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_33_inflight_time.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%">
+                    <mat-form-field>
+                      <mat-label>
+                        Tollerence
+                      </mat-label>
+                      <input matInput formControlName="cs_33_tollerence">
+  
+                      <mat-error *ngIf="personalDtls.cs_33_tollerence.hasError('required') && submitted">
+                        Number
+                        is
+                        required.
+                      </mat-error>
+                      <mat-error *ngIf="personalDtls.cs_33_tollerence.hasError('pattern') && submitted">
+                        Enter
+                        only
+                        number.
+                      </mat-error>
+  
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+              </fieldset>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="controls">
+        <button *ngIf="activeStepIndex != 1" (click)="goToPrevious()">Previous</button>
+        <button *ngIf="activeStepIndex != 3" (click)="goToNext()">Next</button>
+        <button type="submit" [disabled]="masterForm.invalid" *ngIf="activeStepIndex == 3" (click)="submit()">Save
+          Recipe</button>
+      </div>
+  
+    </form>
+   
+  </div>
