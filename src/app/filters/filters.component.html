@@ -41,10 +41,25 @@
                                 </mat-error>
                             </mat-error>
 
-                            <!-- <mat-error *ngIf="report.get('batchWeight').hasError('required')">Batch Weight.</mat-error>
-                            <mat-error *ngIf="report.get('batchWeight').hasError('pattern')">Enter only
-                                number.</mat-error> -->
+
                         </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>Number Of Batches</mat-label>
+                            <input matInput formControlName="numberOfBatches">
+
+                            <mat-error *ngIf="noOfBtch.invalid && (noOfBtch.dirty || noOfBtch.touched)" class="alert">
+                                <mat-error *ngIf="noOfBtch.errors.required">
+                                    Number Of Batches require.
+                                </mat-error>
+                                <mat-error *ngIf="noOfBtch.errors.pattern">
+                                    Enter only number.
+                                </mat-error>
+                            </mat-error>
+
+                        </mat-form-field>
+
+
 
                         <mat-checkbox formControlName="autoBatch">Auto Weight</mat-checkbox>
 
@@ -52,7 +67,7 @@
                 </div>
             </mat-card-content>
 
-            <button (click)="onGenerate()" [disabled]="!status" mat-raised-button color="accent">GENERATE</button>
+            <button (click)="onGenerate()" [disabled]="!status" mat-raised-button color="accent">Generate Recipe</button>
             <!-- <button #downloadPdfBtn [disabled]="true" mat-raised-button color="accent">DownloadPDF</button> -->
         </mat-card>
 

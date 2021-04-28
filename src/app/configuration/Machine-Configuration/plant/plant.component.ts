@@ -43,7 +43,9 @@ export class PlantComponent {
   @ViewChild(MatPaginator)
   paginator: MatPaginator;
 
-  constructor(private _intl:MatPaginatorIntl,public dialog: MatDialog, private config: ConfigurationService) {
+  constructor(private _intl:MatPaginatorIntl,
+    public dialog: MatDialog,
+     private config: ConfigurationService) {
   this.getDefaultSet(0,0);
   }
 

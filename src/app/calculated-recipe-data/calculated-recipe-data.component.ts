@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfigurationService } from '../configuration/configuration.service';
 import { DATA } from '../core/data.enum';
@@ -7,11 +7,14 @@ import { StorageServiceService } from '../core/services/auth/storage-service.ser
 import { GlobalErrorHandler } from '../core/services/error-handler';
 
 @Component({
-  selector: 'app-recipe',
-  templateUrl: './recipe.component.html',
-  styleUrls: ['./recipe.component.scss']
+  selector: 'app-calculated-recipe-data',
+  templateUrl: './calculated-recipe-data.component.html',
+  styleUrls: ['./calculated-recipe-data.component.scss']
 })
-export class RecipeComponent implements OnInit {
+export class CalculatedRecipeDataComponent implements OnInit {
+  @Input() inputData: any;
+  @Input() inputType: boolean;
+
   errMessage: string;
   activeStepIndex: any = 1;
   submitted: boolean = false;
@@ -19,15 +22,12 @@ export class RecipeComponent implements OnInit {
   masterForm: FormGroup;
   username: string;
   id!: string;
-  isAddMode!: boolean;
-  data: any
 
   match: string
   constructor(
     private route: ActivatedRoute, private router: Router,
     private configurationService: ConfigurationService, private error: GlobalErrorHandler,
     private storageServiceService: StorageServiceService) {
-
     this.username = this.storageServiceService.getStorageItem(DATA.USERNAME);
     this.createMasterForm();
   }
@@ -250,37 +250,33 @@ export class RecipeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.isAddMode = !this.id;
-    if (!this.isAddMode) {
-      this.getRecipeById(this.id);
-    }
+    this.doMapping(this.inputData, true)
 
 
     const userDetails = this.masterForm.controls['userDetails'];
     const contactDetails = this.masterForm.controls['contactDetails'];
     const personalDetails = this.masterForm.controls['personalDetails'];
-    userDetails.get("silo_11_set_weight").disable()
-    userDetails.get("silo_12_set_weight").disable()
-    userDetails.get("cs_11_set_weight").disable()
-    userDetails.get("cs_12_set_weight").disable()
-    userDetails.get("cs_13_set_weight").disable()
-    userDetails.get("cs_14_set_weight").disable()
 
-    contactDetails.get("silo_21_set_weight").disable()
-    contactDetails.get("silo_22_set_weight").disable()
-    contactDetails.get("silo_23_set_weight").disable()
-    contactDetails.get("cs_21_set_weight").disable()
-    contactDetails.get("cs_22_set_weight").disable()
-    contactDetails.get("cs_23_set_weight").disable()
+    // userDetails.get("silo_11_set_weight").disable()
+    // userDetails.get("silo_12_set_weight").disable()
+    // userDetails.get("cs_11_set_weight").disable()
+    // userDetails.get("cs_12_set_weight").disable()
+    // userDetails.get("cs_13_set_weight").disable()
+    // userDetails.get("cs_14_set_weight").disable()
 
-    personalDetails.get("silo_31_set_weight").disable()
-    personalDetails.get("silo_32_set_weight").disable()
-    personalDetails.get("silo_33_set_weight").disable()
-    personalDetails.get("cs_31_set_weight").disable()
-    personalDetails.get("cs_32_set_weight").disable()
-    personalDetails.get("cs_33_set_weight").disable()
+    // contactDetails.get("silo_21_set_weight").disable()
+    // contactDetails.get("silo_22_set_weight").disable()
+    // contactDetails.get("silo_23_set_weight").disable()
+    // contactDetails.get("cs_21_set_weight").disable()
+    // contactDetails.get("cs_22_set_weight").disable()
+    // contactDetails.get("cs_23_set_weight").disable()
+
+    // personalDetails.get("silo_31_set_weight").disable()
+    // personalDetails.get("silo_32_set_weight").disable()
+    // personalDetails.get("silo_33_set_weight").disable()
+    // personalDetails.get("cs_31_set_weight").disable()
+    // personalDetails.get("cs_32_set_weight").disable()
+    // personalDetails.get("cs_33_set_weight").disable()
 
     userDetails.get("silo_11_course_weight").valueChanges.subscribe(selectedValue => {
       let totalValue = 0;
@@ -1528,21 +1524,14 @@ export class RecipeComponent implements OnInit {
 
   }
 
-
-  getRecipeById(recipeById) {
-    this.configurationService.getRecipeById(recipeById).subscribe((resp) => {
-      this.data = resp;
-      this.doMapping(this.data);
-    })
-  }
-
-  doMapping(inputData) {
-
-    const masterFormMapping = {
+  doMapping(inputData, status) {
+    const userDetails = this.masterForm.controls['userDetails'];
+    const contactDetails = this.masterForm.controls['contactDetails'];
+    const personalDetails = this.masterForm.controls['personalDetails'];
+    const mapping = {
       recipe_name: inputData.recipe_name,
       liquid_addition: inputData.liquid_addition,
       recipe_enable: inputData.recipe_enable,
-      // relative_recipe: inputData.relative_recipe,
       userDetails: {
         silo_11_set_weight: inputData['recipeData'].silo_11_set_weight,
         silo_11_course_weight: inputData['recipeData'].silo_11_course_weight,
@@ -1745,41 +1734,46 @@ export class RecipeComponent implements OnInit {
         cs_33_tollerence: inputData['recipeData'].cs_33_tollerence,
       },
     };
-    console.log("====patchValue========>", masterFormMapping);
-    this.masterForm.patchValue(masterFormMapping);
+
+
+    if (status) {
+      this.masterForm.patchValue(mapping);
+      if (this.inputType) {
+        this.masterForm.disable();
+      } else {
+        this.masterForm.get("recipe_name").disable()
+        this.masterForm.get("liquid_addition").disable()
+        this.masterForm.get("recipe_enable").disable()
+
+        userDetails.get("silo_11_set_weight").disable()
+        userDetails.get("silo_12_set_weight").disable()
+        userDetails.get("cs_11_set_weight").disable()
+        userDetails.get("cs_12_set_weight").disable()
+        userDetails.get("cs_13_set_weight").disable()
+        userDetails.get("cs_14_set_weight").disable()
+
+        contactDetails.get("silo_21_set_weight").disable()
+        contactDetails.get("silo_22_set_weight").disable()
+        contactDetails.get("silo_23_set_weight").disable()
+        contactDetails.get("cs_21_set_weight").disable()
+        contactDetails.get("cs_22_set_weight").disable()
+        contactDetails.get("cs_23_set_weight").disable()
+
+        personalDetails.get("silo_31_set_weight").disable()
+        personalDetails.get("silo_32_set_weight").disable()
+        personalDetails.get("silo_33_set_weight").disable()
+        personalDetails.get("cs_31_set_weight").disable()
+        personalDetails.get("cs_32_set_weight").disable()
+        personalDetails.get("cs_33_set_weight").disable()
+      }
+    }
+
+    return mapping;
   }
 
   formControl() {
-    // const numRegex = /^\d*\.?\d?\d?$/g;
     return new FormControl("", [Validators.required, Validators.pattern(/^[.\d]+$/)])
   }
-
-
-
-  //   <div>
-  //   <label for="email">email</label>
-  //   <input type="text" name="email" id="email" formControlName="email">
-
-  //    <span class="text-danger" *ngIf="contactDetails.get('email').hasError('required') && submitted">Email is
-  //     Required</span>
-  //   <span class="text-danger" *ngIf="contactDetails.get('email').hasError('email') && submitted">Email is not in
-  //     valid format</span> 
-  // </div>
-  // removeFormControl(index) {
-  //   let usersArray = this.masterForm.controls.users as FormArray;
-  //   usersArray.removeAt(index);
-  // }
-  // addFormControl() {
-  //   let usersArray = this.masterForm.controls.users as FormArray;
-  //   let arraylength = usersArray.length;
-
-  //   let newUserGroup: FormGroup = this.fb.group({
-  //     firstName: ['', Validators.required],
-  //     lastName: ['', Validators.required],
-  //     email: ['', Validators.pattern(emailRegex)]
-  //   })
-  //   usersArray.insert(arraylength, newUserGroup);
-  // }
 
   get userDtls() {
     return this.masterForm.controls['userDetails']['controls'];
@@ -1793,136 +1787,43 @@ export class RecipeComponent implements OnInit {
     return this.masterForm.controls['personalDetails']['controls'];
   }
 
-
-
   submit() {
     this.submitted = true;
-
-    // stop here if form is invalid
     if (this.masterForm.invalid) {
       return;
     }
-
     this.loading = true;
-    console.log('call rest api and redirect to another page');
-    if (this.isAddMode) {
-      this.createRecipe();
-    } else {
-      this.updateRecipe();
-    }
+    this.downloadRecipe();
   }
 
 
   goToPrevious() {
-    console.log("Before Previous**********", this.activeStepIndex);
     this.activeStepIndex = this.activeStepIndex - 1;
-    console.log("After Previous**********", this.activeStepIndex);
   }
 
   goToNext() {
-    console.log("Before Next**********", this.activeStepIndex);
     this.submitted = true;
 
-    // console.log("===========>",this.masterForm.controls['userDetails'].value)
     if (this.masterForm.controls.userDetails.invalid
       && this.activeStepIndex == 1) {
-      // this.submitted = false;
       return;
     }
     if (this.masterForm.controls.contactDetails.invalid
       && this.activeStepIndex == 2) {
-      // this.submitted = false;
       return;
     }
-    // if (this.masterForm.controls.personalDetails.invalid
-    //   && this.activeStepIndex == 3) {
-    //   // this.submitted = false;
-    //   return;
-    // }
+
     this.submitted = false;
     this.activeStepIndex = this.activeStepIndex + 1;
-    console.log("After Next**********", this.activeStepIndex);
-  }
-
-  private createRecipe() {
-
-    const userDetails = this.masterForm.controls['userDetails'];
-
-    let comp_11_size =
-      parseFloat(userDetails.get("silo_11_set_weight").value) +
-      parseFloat(userDetails.get("silo_12_set_weight").value) +
-      parseFloat(userDetails.get("cs_11_set_weight").value) +
-      parseFloat(userDetails.get("cs_12_set_weight").value) +
-      parseFloat(userDetails.get("cs_13_set_weight").value) +
-      parseFloat(userDetails.get("cs_14_set_weight").value);
-console.log("comp_11_size",comp_11_size)
-    const contactDetails = this.masterForm.controls['contactDetails'];
-    let comp_12_size =
-      parseFloat(contactDetails.get("silo_21_set_weight").value) +
-      parseFloat(contactDetails.get("silo_22_set_weight").value) +
-      parseFloat(contactDetails.get("silo_23_set_weight").value) +
-      parseFloat(contactDetails.get("cs_21_set_weight").value) +
-      parseFloat(contactDetails.get("cs_22_set_weight").value) +
-      parseFloat(contactDetails.get("cs_23_set_weight").value);
-      console.log("comp_12_size",comp_12_size)
-
-    const personalDetails = this.masterForm.controls['personalDetails'];
-    let comp_13_size =
-      parseFloat(personalDetails.get("silo_31_set_weight").value) +
-      parseFloat(personalDetails.get("silo_32_set_weight").value) +
-      parseFloat(personalDetails.get("silo_33_set_weight").value) +
-      parseFloat(personalDetails.get("cs_31_set_weight").value) +
-      parseFloat(personalDetails.get("cs_32_set_weight").value) +
-      parseFloat(personalDetails.get("cs_33_set_weight").value);
-      console.log("comp_13_size",comp_13_size)
-    let batchSize = comp_11_size + comp_12_size + comp_13_size;
-    console.log("batchSize",batchSize)
-    const customCreate = { user_name: this.username, comp_1_size: comp_11_size, comp_2_size: comp_12_size, comp_3_size: comp_13_size, batch_size: batchSize };
-
-    customCreate['recipe_name'] = this.masterForm.get("recipe_name").value;
-    customCreate['liquid_addition'] = this.masterForm.get("liquid_addition").value;
-    customCreate['recipe_enable'] = this.masterForm.get("recipe_enable").value;
-    customCreate['relative_recipe'] = true;
-
-    customCreate['recipeData'] = { ...this.masterForm.controls['userDetails'].value, ...this.masterForm.controls['contactDetails'].value, ...this.masterForm.controls['personalDetails'].value }
-
-    customCreate['recipeData']['silo_11_set_weight'] = userDetails.get("silo_11_set_weight").value
-    customCreate['recipeData']['silo_12_set_weight'] = userDetails.get("silo_12_set_weight").value
-    customCreate['recipeData']['cs_11_set_weight'] = userDetails.get("cs_11_set_weight").value
-    customCreate['recipeData']['cs_12_set_weight'] = userDetails.get("cs_12_set_weight").value
-    customCreate['recipeData']['cs_13_set_weight'] = userDetails.get("cs_13_set_weight").value
-    customCreate['recipeData']['cs_14_set_weight'] = userDetails.get("cs_14_set_weight").value
-
-    customCreate['recipeData']['silo_21_set_weight'] = contactDetails.get("silo_21_set_weight").value
-    customCreate['recipeData']['silo_22_set_weight'] = contactDetails.get("silo_22_set_weight").value
-    customCreate['recipeData']['silo_23_set_weight'] = contactDetails.get("silo_23_set_weight").value
-    customCreate['recipeData']['cs_21_set_weight'] = contactDetails.get("cs_21_set_weight").value
-    customCreate['recipeData']['cs_22_set_weight'] = contactDetails.get("cs_22_set_weight").value
-    customCreate['recipeData']['cs_23_set_weight'] = contactDetails.get("cs_23_set_weight").value
-
-    customCreate['recipeData']['silo_31_set_weight'] = personalDetails.get("silo_31_set_weight").value
-    customCreate['recipeData']['silo_32_set_weight'] = personalDetails.get("silo_32_set_weight").value
-    customCreate['recipeData']['silo_33_set_weight'] = personalDetails.get("silo_33_set_weight").value
-    customCreate['recipeData']['cs_31_set_weight'] = personalDetails.get("cs_31_set_weight").value
-    customCreate['recipeData']['cs_32_set_weight'] = personalDetails.get("cs_32_set_weight").value
-    customCreate['recipeData']['cs_33_set_weight'] = personalDetails.get("cs_33_set_weight").value
-
-
-    console.log("customCreate",customCreate)
-    this.configurationService.createRecipe(customCreate)
-      .subscribe((resp) => {
-        this.router.navigate(['../'], { relativeTo: this.route });
-      },
-        (err) => {
-          this.handleError(err);
-        })
   }
 
   get name() { return this.masterForm.get('recipe_name'); }
 
-  private updateRecipe() {
-
+  private downloadRecipe() {
+    const customUpdate = {};
     const userDetails = this.masterForm.controls['userDetails'];
+    const contactDetails = this.masterForm.controls['contactDetails'];
+    const personalDetails = this.masterForm.controls['personalDetails'];
 
     let comp_11_size =
       parseFloat(userDetails.get("silo_11_set_weight").value) +
@@ -1932,7 +1833,6 @@ console.log("comp_11_size",comp_11_size)
       parseFloat(userDetails.get("cs_13_set_weight").value) +
       parseFloat(userDetails.get("cs_14_set_weight").value);
 
-    const contactDetails = this.masterForm.controls['contactDetails'];
     let comp_12_size =
       parseFloat(contactDetails.get("silo_21_set_weight").value) +
       parseFloat(contactDetails.get("silo_22_set_weight").value) +
@@ -1941,8 +1841,6 @@ console.log("comp_11_size",comp_11_size)
       parseFloat(contactDetails.get("cs_22_set_weight").value) +
       parseFloat(contactDetails.get("cs_23_set_weight").value);
 
-
-    const personalDetails = this.masterForm.controls['personalDetails'];
     let comp_13_size =
       parseFloat(personalDetails.get("silo_31_set_weight").value) +
       parseFloat(personalDetails.get("silo_32_set_weight").value) +
@@ -1953,42 +1851,60 @@ console.log("comp_11_size",comp_11_size)
 
     let batchSize = comp_11_size + comp_12_size + comp_13_size;
 
-    const customUpdate = { recipeId: this.data.recipeId, user_name: this.username, comp_1_size: comp_11_size, comp_2_size: comp_12_size, comp_3_size: comp_13_size, batch_size: batchSize };
+    customUpdate['recipeId'] = this.inputData.recipeId;
+    customUpdate['number_of_batches'] = this.inputData.number_of_batches;
+    customUpdate['recipe_machine'] = this.inputData.recipe_machine;
+    customUpdate['loggingTime'] = this.inputData.loggingTime;
+    customUpdate['user_name'] = this.inputData.user_name;
+    customUpdate['relative_recipe'] = this.inputData.relative_recipe;
+    
+    // customUpdate['user_name'] = this.username
+    customUpdate['comp_1_size'] = comp_11_size
+    customUpdate['comp_2_size'] = comp_12_size
+    customUpdate['comp_3_size'] = comp_13_size
+    customUpdate['batch_size'] = batchSize
 
     customUpdate['recipe_name'] = this.masterForm.get("recipe_name").value;
     customUpdate['liquid_addition'] = this.masterForm.get("liquid_addition").value;
     customUpdate['recipe_enable'] = this.masterForm.get("recipe_enable").value;
-    customUpdate['relative_recipe'] = true;
 
-    customUpdate['recipeData'] = { ...this.masterForm.controls['userDetails'].value, ...this.masterForm.controls['contactDetails'].value, ...this.masterForm.controls['personalDetails'].value }
-    customUpdate['recipeData']['silo_11_set_weight'] = userDetails.get("silo_11_set_weight").value
-    customUpdate['recipeData']['silo_12_set_weight'] = userDetails.get("silo_12_set_weight").value
-    customUpdate['recipeData']['cs_11_set_weight'] = userDetails.get("cs_11_set_weight").value
-    customUpdate['recipeData']['cs_12_set_weight'] = userDetails.get("cs_12_set_weight").value
-    customUpdate['recipeData']['cs_13_set_weight'] = userDetails.get("cs_13_set_weight").value
-    customUpdate['recipeData']['cs_14_set_weight'] = userDetails.get("cs_14_set_weight").value
+    if (this.inputType) {
+      const payload = this.doMapping(this.inputData, false);
+      customUpdate['recipeData'] = { ...payload['userDetails'], ...payload['contactDetails'], ...payload['personalDetails'] }
+    } else {
 
-    customUpdate['recipeData']['silo_21_set_weight'] = contactDetails.get("silo_21_set_weight").value
-    customUpdate['recipeData']['silo_22_set_weight'] = contactDetails.get("silo_22_set_weight").value
-    customUpdate['recipeData']['silo_23_set_weight'] = contactDetails.get("silo_23_set_weight").value
-    customUpdate['recipeData']['cs_21_set_weight'] = contactDetails.get("cs_21_set_weight").value
-    customUpdate['recipeData']['cs_22_set_weight'] = contactDetails.get("cs_22_set_weight").value
-    customUpdate['recipeData']['cs_23_set_weight'] = contactDetails.get("cs_23_set_weight").value
+      customUpdate['recipeData'] = { ...this.masterForm.controls['userDetails'].value, ...this.masterForm.controls['contactDetails'].value, ...this.masterForm.controls['personalDetails'].value }
 
-    customUpdate['recipeData']['silo_31_set_weight'] = personalDetails.get("silo_31_set_weight").value
-    customUpdate['recipeData']['silo_32_set_weight'] = personalDetails.get("silo_32_set_weight").value
-    customUpdate['recipeData']['silo_33_set_weight'] = personalDetails.get("silo_33_set_weight").value
-    customUpdate['recipeData']['cs_31_set_weight'] = personalDetails.get("cs_31_set_weight").value
-    customUpdate['recipeData']['cs_32_set_weight'] = personalDetails.get("cs_32_set_weight").value
-    customUpdate['recipeData']['cs_33_set_weight'] = personalDetails.get("cs_33_set_weight").value
+      customUpdate['recipeData']['silo_11_set_weight'] = userDetails.get("silo_11_set_weight").value
+      customUpdate['recipeData']['silo_12_set_weight'] = userDetails.get("silo_12_set_weight").value
+      customUpdate['recipeData']['cs_11_set_weight'] = userDetails.get("cs_11_set_weight").value
+      customUpdate['recipeData']['cs_12_set_weight'] = userDetails.get("cs_12_set_weight").value
+      customUpdate['recipeData']['cs_13_set_weight'] = userDetails.get("cs_13_set_weight").value
+      customUpdate['recipeData']['cs_14_set_weight'] = userDetails.get("cs_14_set_weight").value
 
+      customUpdate['recipeData']['silo_21_set_weight'] = contactDetails.get("silo_21_set_weight").value
+      customUpdate['recipeData']['silo_22_set_weight'] = contactDetails.get("silo_22_set_weight").value
+      customUpdate['recipeData']['silo_23_set_weight'] = contactDetails.get("silo_23_set_weight").value
+      customUpdate['recipeData']['cs_21_set_weight'] = contactDetails.get("cs_21_set_weight").value
+      customUpdate['recipeData']['cs_22_set_weight'] = contactDetails.get("cs_22_set_weight").value
+      customUpdate['recipeData']['cs_23_set_weight'] = contactDetails.get("cs_23_set_weight").value
 
+      customUpdate['recipeData']['silo_31_set_weight'] = personalDetails.get("silo_31_set_weight").value
+      customUpdate['recipeData']['silo_32_set_weight'] = personalDetails.get("silo_32_set_weight").value
+      customUpdate['recipeData']['silo_33_set_weight'] = personalDetails.get("silo_33_set_weight").value
+      customUpdate['recipeData']['cs_31_set_weight'] = personalDetails.get("cs_31_set_weight").value
+      customUpdate['recipeData']['cs_32_set_weight'] = personalDetails.get("cs_32_set_weight").value
+      customUpdate['recipeData']['cs_33_set_weight'] = personalDetails.get("cs_33_set_weight").value
 
+    }
 
-    console.log(customUpdate)
-    this.configurationService.updateRecipe(customUpdate)
+    console.log("Input payload from filter data", this.inputData)
+    console.log("Form processing data", this.masterForm.value)
+    console.log("Request payload for downloadRecipe", customUpdate)
+
+    this.configurationService.downloadRecipe(customUpdate)
       .subscribe((resp) => {
-        this.router.navigate(['../../'], { relativeTo: this.route });
+        window.location.reload();
       },
         (err) => {
           this.handleError(err);
@@ -1996,42 +1912,13 @@ console.log("comp_11_size",comp_11_size)
 
   }
 
-
   private handleError(err) {
     this.loading = false;
-    console.log(err)
     if (err.error.message) {
       this.errMessage = err.error.message;
     } else {
       this.errMessage = this.error.getErrorMessage(100);
     }
   }
-
-  // submit() {
-  // console.log("********submit**********")
-  // this.submitted = true;
-  // if (this.masterForm.controls.userDetails.invalid
-  //   && this.activeStepIndex == 1) {
-  //   return;    //this.submitted=false;
-  // }
-  // if (this.masterForm.controls.contactDetails.invalid
-  //   && this.activeStepIndex == 2) {
-  //   return;
-  // }
-  // if (this.masterForm.controls.personalDetails.invalid
-  //   && this.activeStepIndex == 3) {
-  //   return;
-  // }
-
-  // this.activeStepIndex = this.activeStepIndex + 1;
-  // if (this.activeStepIndex == 4) {
-  // or call rest api and redirect to another page
-  // console.log('call rest api and redirect to another page');
-  // this.activeStepIndex = 1;
-  // this.masterForm.reset();
-  // }
-  // }
-
-
 
 }

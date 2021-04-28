@@ -1,9 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
 import { ConfigurationService } from '../configuration/configuration.service';
+import { ADD_UPDATE_DIALOG_OPTIONS, DIALOG_BUTTONS, DIALOG_HEADER, DIALOG_OPTIONS } from '../configuration/shared/config/dialog-config';
 import { GlobalErrorHandler } from '../core/services/error-handler';
 import { NotificationService } from '../core/services/notification.service';
+import { PopUpComponent } from '../pop-up/pop-up.component';
 
 @Component({
   selector: 'app-filters',
@@ -21,57 +24,82 @@ export class FiltersComponent implements OnInit {
 
   errorMessage: string = "";
   reportType: string;
-
+  dialogRef;
   recipeOptions = [];
-  status: boolean;
+  status: boolean = false;
   machineOptions = ["R10", "R30"]
 
 
   constructor(private configurationService: ConfigurationService,
-    private globalErrorHandler: GlobalErrorHandler,
+    private globalErrorHandler: GlobalErrorHandler, private dialog: MatDialog,
     private formBuilder: FormBuilder, private notificationService: NotificationService) {
     this.report = this.formBuilder.group({
       recipeName: [null, Validators.required],
       batchSize: [null, [Validators.required, Validators.pattern(/^[.\d]+$/)]],
       downloadingMachine: [null, Validators.required],
-      autoBatch: [null, Validators.required]
+      numberOfBatches: [null, [Validators.required, Validators.pattern("^[0-9]*$")]],
+      autoBatch: [null]
     });
-
-    this.downloadEnable();
     this.loadAllRecipes();
+    this.downloadEnable();
   }
 
-  get batchWeight() { return this.report.get('batchSize'); }
 
   loadAllRecipes() {
     this.configurationService.getAllRecipe().subscribe(data => {
       this.recipeOptions = data;
-      console.log("loadAllRecipes",data)
+      console.log("loadAllRecipes", data)
     }, error => {
       this.handleError(error)
     });
   }
 
+
+  private _dialogOpen(options: DIALOG_OPTIONS, data) {
+
+    this.dialogRef = this.dialog.open(PopUpComponent, {
+      ...options,
+      data: { ...data }
+    });
+   
+
+  }
+ 
   downloadEnable() {
     this.configurationService.downloadEnable().subscribe(data => {
-      this.status = data['status'];
-      console.log("downloadEnable",data)
-    });
+      // alert(" message " + data['message'] + " status " + data['status']);
+      this._dialogOpen(ADD_UPDATE_DIALOG_OPTIONS(200, 350), { status: data['status'], message: data['message'] });
+     
+      this.dialogRef.afterClosed().subscribe(resp => {
+        this.status = data['status'];
+      })
+     
+    },
+      (err) => {
+        // alert(" message " + err.error['message'] + " status " + err.error['status']);
+        this._dialogOpen(ADD_UPDATE_DIALOG_OPTIONS(200, 350), { status: err.error['status'], message: err.error['message'] });
+        this.dialogRef.afterClosed().subscribe(resp => {
+          this.status = err.error['status'];
+        })
+       
+        
+      });
   }
+
+  get noOfBtch() { return this.report.get('numberOfBatches'); }
+
+  get batchWeight() { return this.report.get('batchSize'); }
 
   changeRecipeName(event) {
 
   }
 
   changeMachineName(event) {
-
   }
 
 
   ngOnInit() {
-    
   }
-
 
   onGenerate() {
     if (this.report.valid) {

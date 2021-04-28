@@ -1,6 +1,6 @@
 <div>
-  <h2 *ngIf="isAddMode">Add Recipe</h2>
-  <h2 *ngIf="!isAddMode">Edit Recipe</h2>
+  <h2 *ngIf="inputType">Add Recipe</h2>
+  <h2 *ngIf="!inputType">Edit Recipe</h2>
 
   <form [formGroup]="masterForm">
 
@@ -32,18 +32,17 @@
       </mat-checkbox>
 
       <!-- <mat-checkbox [disabled]="true" formControlName="relative_recipe">Relative Enable
-      </mat-checkbox> -->
+        </mat-checkbox> -->
 
     </div>
     <div class="controls">
       <button *ngIf="activeStepIndex != 1" (click)="goToPrevious()">Previous</button>
       <button *ngIf="activeStepIndex != 3" (click)="goToNext()">Next</button>
-      <button type="submit" [disabled]="masterForm.invalid" *ngIf="activeStepIndex == 3  && isAddMode" (click)="submit()">Save
-        Recipe</button>
+      <button type="submit"  *ngIf="activeStepIndex == 3"  mat-raised-button color="accent"
+        (click)="submit()">Download Recipe</button>
 
-      <button type="submit" [disabled]="masterForm.invalid" *ngIf="activeStepIndex == 3 && !isAddMode" (click)="submit()">Update
-        Recipe</button>
       
+
     </div>
     <div *ngIf="activeStepIndex == 1">
       <h2>Comp-1</h2>
@@ -3605,9 +3604,6 @@
       </div>
     </div>
 
-
-
   </form>
-
 
 </div>

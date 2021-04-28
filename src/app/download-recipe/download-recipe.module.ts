@@ -7,6 +7,7 @@ import { ErrorModule } from '../components/error/error.module';
 import { MaterialModule } from '../material/material.module';
 import { SpinnerModule } from '../components/spinner/spinner.module';
 import { FiltersModule } from '../filters/filters.module';
+import { CalculatedRecipeDataModule } from '../calculated-recipe-data/calculated-recipe-data.module';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { FiltersModule } from '../filters/filters.module';
     ErrorModule,
     SpinnerModule,
     FiltersModule,
+    CalculatedRecipeDataModule
   ]
 })
 export class DownloadRecipeModule { }

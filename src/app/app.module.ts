@@ -18,7 +18,7 @@ import { PipesModule } from './shared/pipes/pipe.module';
 
 
 @NgModule({
-  declarations: [AppComponent,  UserDialogComponent, ],
+  declarations: [AppComponent,  UserDialogComponent ],
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,
