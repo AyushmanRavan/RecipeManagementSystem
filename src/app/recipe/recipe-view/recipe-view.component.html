@@ -2,167 +2,195 @@
   <h2 class="mat-h2">Recipe Name : {{data.recipe_name}}</h2>
 </div>
 
-
-<div fxLayout="row" fxLayoutAlign="space-between center">
- 
+<div fxLayout="row" fxLayoutAlign="space-around center">
   <div>
-    <!-- <h3>Liquid Addition:{{data.liquid_addition}}</h3> -->
-    <mat-checkbox class="example-margin" [checked]="data.liquid_addition" [disabled]="true">Liquid Addition</mat-checkbox>
+    <mat-checkbox class="example-margin" [checked]="data.liquid_addition" [disabled]="true">Liquid Addition
+    </mat-checkbox>
   </div>
   <div>
-    <!-- <h3>Recipe Enable:{{data.recipe_enable}}</h3> -->
     <mat-checkbox class="example-margin" [checked]="data.recipe_enable" [disabled]="true">Recipe Enable</mat-checkbox>
-  </div>
-  <div>
-    <!-- <h3>Relative Enable:{{data.relative_recipe}}</h3> -->
-    <!-- <mat-checkbox class="example-margin" [checked]="data.relative_recipe" [disabled]="true">Relative Enable</mat-checkbox> -->
   </div>
 </div>
 
+<div class="controls">
+  <button *ngIf="activeStepIndex != 1" (click)="goToPrevious()" class="button">Previous</button>
+  <button *ngIf="activeStepIndex != 3" (click)="goToNext()" class="button">Next</button>
+  <button type="submit" *ngIf="activeStepIndex == 3" (click)="submit()">Go Back</button>
+</div>
 
 <div *ngIf="activeStepIndex == 1">
-  <h2 >Comp-1</h2>
-
-  <div fxLayout="row" fxLayoutAlign="space-between center">
-
-    <div fxLayout="row" fxLayoutAlign="space-between center">
+  <h2>Comp-1</h2>
+  <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="32px">
+    <div fxFlex="0 1 calc(33.3% - 32px)">
       <div>
         <fieldset>
           <legend>SILO-11</legend>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Set weight: {{data['recipeData'].silo_11_set_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Set weight: </h3>
+              <h3>Course weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course weight: {{data['recipeData'].silo_11_course_weight}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine weight: {{data['recipeData'].silo_11_fine_weight}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine weight: {{data['recipeData'].silo_11_extra_fine_weight}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_11_set_weight}}</h3>
+              <h3>{{data['recipeData'].silo_11_course_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight weight: {{data['recipeData'].silo_11_inflight_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine weight: </h3>
+              <h3>Extra fine weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course speed: {{data['recipeData'].silo_11_course_speed}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine speed: {{data['recipeData'].silo_11_fine_speed}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine speed: {{data['recipeData'].silo_11_extra_fine_speed}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_11_fine_weight}}</h3>
+              <h3>{{data['recipeData'].silo_11_extra_fine_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight time: {{data['recipeData'].silo_11_inflight_time}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight weight: </h3>
+              <h3>Course speed: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Tollerence: {{data['recipeData'].silo_11_tollerence}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_11_inflight_weight}}</h3>
+              <h3>{{data['recipeData'].silo_11_course_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine speed: </h3>
+              <h3>Extra fine speed: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_11_fine_speed}}</h3>
+              <h3>{{data['recipeData'].silo_11_extra_fine_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight time: </h3>
+              <h3>Tollerence: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_11_inflight_time}}</h3>
+              <h3>{{data['recipeData'].silo_11_tollerence}}</h3>
             </div>
           </div>
         </fieldset>
       </div>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxFlex="0 1 calc(33.3% - 32px)">
       <div>
         <fieldset>
           <legend>SILO-12</legend>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Set weight: {{data['recipeData'].silo_12_set_weight}}</h3>
+
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Set weight: </h3>
+              <h3>Course weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course weight: {{data['recipeData'].silo_12_course_weight}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine weight: {{data['recipeData'].silo_12_fine_weight}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine weight: {{data['recipeData'].silo_12_extra_fine_weight}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_12_set_weight}}</h3>
+              <h3>{{data['recipeData'].silo_12_course_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight weight: {{data['recipeData'].silo_12_inflight_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine weight: </h3>
+              <h3>Extra fine weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course speed: {{data['recipeData'].silo_12_course_speed}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine speed: {{data['recipeData'].silo_12_fine_speed}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine speed: {{data['recipeData'].silo_12_extra_fine_speed}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_12_fine_weight}}</h3>
+              <h3>{{data['recipeData'].silo_12_extra_fine_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight time: {{data['recipeData'].silo_12_inflight_time}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight weight: </h3>
+              <h3>Course speed: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Tollerence: {{data['recipeData'].silo_12_tollerence}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_12_inflight_weight}}</h3>
+              <h3>{{data['recipeData'].silo_12_course_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine speed:</h3>
+              <h3>Extra fine speed: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_12_fine_speed}}</h3>
+              <h3>{{data['recipeData'].silo_12_extra_fine_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight time: </h3>
+              <h3>Tollerence: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_12_inflight_time}}</h3>
+              <h3>{{data['recipeData'].silo_12_tollerence}}</h3>
             </div>
           </div>
         </fieldset>
       </div>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxFlex="0 1 calc(33.3% - 32px)">
       <div>
         <fieldset>
           <legend>CS-11</legend>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Set weight: {{data['recipeData'].cs_11_set_weight}}</h3>
+
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Set weight: </h3>
+              <h3>Course weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course weight: {{data['recipeData'].cs_11_course_weight}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine weight: {{data['recipeData'].cs_11_fine_weight}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine weight: {{data['recipeData'].cs_11_extra_fine_weight}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_11_set_weight}}</h3>
+              <h3>{{data['recipeData'].cs_11_course_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight weight: {{data['recipeData'].cs_11_inflight_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine weight: </h3>
+              <h3>Extra fine weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course speed: {{data['recipeData'].cs_11_course_speed}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine speed: {{data['recipeData'].cs_11_fine_speed}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine speed: {{data['recipeData'].cs_11_extra_fine_speed}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_11_fine_weight}}</h3>
+              <h3>{{data['recipeData'].cs_11_extra_fine_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight time: {{data['recipeData'].cs_11_inflight_time}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight weight: </h3>
+              <h3>Course speed: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Tollerence: {{data['recipeData'].cs_11_tollerence}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_11_inflight_weight}}</h3>
+              <h3>{{data['recipeData'].cs_11_course_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine speed:</h3>
+              <h3>Extra fine speed: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_11_fine_speed}}</h3>
+              <h3>{{data['recipeData'].cs_11_extra_fine_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight time: </h3>
+              <h3>Tollerence: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_11_inflight_time}}</h3>
+              <h3>{{data['recipeData'].cs_11_tollerence}}</h3>
             </div>
           </div>
         </fieldset>
@@ -170,466 +198,545 @@
     </div>
   </div>
 
-  <div fxLayout="row" fxLayoutAlign="space-between center">
+  <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="32px">
 
-    <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxFlex="0 1 calc(33.3% - 32px)">
       <div>
         <fieldset>
           <legend>CS-12</legend>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Set weight: {{data['recipeData'].cs_12_set_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Set weight: </h3>
+              <h3>Course weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course weight: {{data['recipeData'].cs_12_course_weight}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine weight: {{data['recipeData'].cs_12_fine_weight}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine weight: {{data['recipeData'].cs_12_extra_fine_weight}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_12_set_weight}}</h3>
+              <h3>{{data['recipeData'].cs_12_course_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight weight: {{data['recipeData'].cs_12_inflight_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine weight: </h3>
+              <h3>Extra fine weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course speed: {{data['recipeData'].cs_12_course_speed}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine speed: {{data['recipeData'].cs_12_fine_speed}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine speed: {{data['recipeData'].cs_12_extra_fine_speed}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_12_fine_weight}}</h3>
+              <h3>{{data['recipeData'].cs_12_extra_fine_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight time: {{data['recipeData'].cs_12_inflight_time}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight weight: </h3>
+              <h3>Course speed: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Tollerence: {{data['recipeData'].cs_12_tollerence}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_12_inflight_weight}}</h3>
+              <h3>{{data['recipeData'].cs_12_course_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine speed:</h3>
+              <h3>Extra fine speed: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_12_fine_speed}}</h3>
+              <h3>{{data['recipeData'].cs_12_extra_fine_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight time: </h3>
+              <h3>Tollerence: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_12_inflight_time}}</h3>
+              <h3>{{data['recipeData'].cs_12_tollerence}}</h3>
             </div>
           </div>
         </fieldset>
       </div>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxFlex="0 1 calc(33.3% - 32px)">
       <div>
         <fieldset>
           <legend>CS-13</legend>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Set weight: {{data['recipeData'].cs_13_set_weight}}</h3>
+
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Set weight: </h3>
+              <h3>Course weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course weight: {{data['recipeData'].cs_13_course_weight}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine weight: {{data['recipeData'].cs_13_fine_weight}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine weight: {{data['recipeData'].cs_13_extra_fine_weight}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_13_set_weight}}</h3>
+              <h3>{{data['recipeData'].cs_13_course_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight weight: {{data['recipeData'].cs_13_inflight_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine weight: </h3>
+              <h3>Extra fine weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course speed: {{data['recipeData'].cs_13_course_speed}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine speed: {{data['recipeData'].cs_13_fine_speed}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine speed: {{data['recipeData'].cs_13_extra_fine_speed}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_13_fine_weight}}</h3>
+              <h3>{{data['recipeData'].cs_13_extra_fine_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight time: {{data['recipeData'].cs_13_inflight_time}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight weight: </h3>
+              <h3>Course speed: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Tollerence: {{data['recipeData'].cs_13_tollerence}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_13_inflight_weight}}</h3>
+              <h3>{{data['recipeData'].cs_13_course_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine speed:</h3>
+              <h3>Extra fine speed: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_13_fine_speed}}</h3>
+              <h3>{{data['recipeData'].cs_13_extra_fine_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight time: </h3>
+              <h3>Tollerence: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_13_inflight_time}}</h3>
+              <h3>{{data['recipeData'].cs_13_tollerence}}</h3>
             </div>
           </div>
         </fieldset>
       </div>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxFlex="0 1 calc(33.3% - 32px)">
       <div>
         <fieldset>
           <legend>CS-14</legend>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Set weight: {{data['recipeData'].cs_14_set_weight}}</h3>
+
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Set weight: </h3>
+              <h3>Course weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course weight: {{data['recipeData'].cs_14_course_weight}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine weight: {{data['recipeData'].cs_14_fine_weight}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine weight: {{data['recipeData'].cs_14_extra_fine_weight}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_14_set_weight}}</h3>
+              <h3>{{data['recipeData'].cs_14_course_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight weight: {{data['recipeData'].cs_14_inflight_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine weight: </h3>
+              <h3>Extra fine weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course speed: {{data['recipeData'].cs_14_course_speed}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine speed: {{data['recipeData'].cs_14_fine_speed}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine speed: {{data['recipeData'].cs_14_extra_fine_speed}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_14_fine_weight}}</h3>
+              <h3>{{data['recipeData'].cs_14_extra_fine_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight time: {{data['recipeData'].cs_14_inflight_time}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight weight: </h3>
+              <h3>Course speed: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Tollerence: {{data['recipeData'].cs_14_tollerence}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_14_inflight_weight}}</h3>
+              <h3>{{data['recipeData'].cs_14_course_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine speed:</h3>
+              <h3>Extra fine speed: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_14_fine_speed}}</h3>
+              <h3>{{data['recipeData'].cs_14_extra_fine_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight time: </h3>
+              <h3>Tollerence: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_14_inflight_time}}</h3>
+              <h3>{{data['recipeData'].cs_14_tollerence}}</h3>
             </div>
           </div>
         </fieldset>
       </div>
     </div>
-
   </div>
-
 </div>
 
-
-
-
-
 <!-- 2 -->
-<!-- 2 -->
-<!-- 2 -->
-
 
 <div *ngIf="activeStepIndex == 2">
   <h2>Comp-2</h2>
+  <!-- 21,22,23 -->
+  <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="32px">
 
-  <div fxLayout="row" fxLayoutAlign="space-between center">
-
-    <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxFlex="0 1 calc(33.3% - 32px)">
       <div>
         <fieldset>
           <legend>SILO-21</legend>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Set weight: {{data['recipeData'].silo_21_set_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Set weight: </h3>
+              <h3>Course weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course weight: {{data['recipeData'].silo_21_course_weight}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine weight: {{data['recipeData'].silo_21_fine_weight}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine weight: {{data['recipeData'].silo_21_extra_fine_weight}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_21_set_weight}}</h3>
+              <h3>{{data['recipeData'].silo_21_course_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight weight: {{data['recipeData'].silo_21_inflight_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine weight: </h3>
+              <h3>Extra fine weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course speed: {{data['recipeData'].silo_21_course_speed}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine speed: {{data['recipeData'].silo_21_fine_speed}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine speed: {{data['recipeData'].silo_21_extra_fine_speed}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_21_fine_weight}}</h3>
+              <h3>{{data['recipeData'].silo_21_extra_fine_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight time: {{data['recipeData'].silo_21_inflight_time}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight weight: </h3>
+              <h3>Course speed: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Tollerence: {{data['recipeData'].silo_21_tollerence}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_21_inflight_weight}}</h3>
+              <h3>{{data['recipeData'].silo_21_course_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine speed:</h3>
+              <h3>Extra fine speed: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_21_fine_speed}}</h3>
+              <h3>{{data['recipeData'].silo_21_extra_fine_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight time: </h3>
+              <h3>Tollerence: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_21_inflight_time}}</h3>
+              <h3>{{data['recipeData'].silo_21_tollerence}}</h3>
             </div>
           </div>
         </fieldset>
       </div>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxFlex="0 1 calc(33.3% - 32px)">
       <div>
         <fieldset>
           <legend>SILO-22</legend>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Set weight: {{data['recipeData'].silo_22_set_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Set weight: </h3>
+              <h3>Course weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course weight: {{data['recipeData'].silo_22_course_weight}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine weight: {{data['recipeData'].silo_22_fine_weight}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine weight: {{data['recipeData'].silo_22_extra_fine_weight}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_22_set_weight}}</h3>
+              <h3>{{data['recipeData'].silo_22_course_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight weight: {{data['recipeData'].silo_22_inflight_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine weight: </h3>
+              <h3>Extra fine weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course speed: {{data['recipeData'].silo_22_course_speed}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine speed: {{data['recipeData'].silo_22_fine_speed}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine speed: {{data['recipeData'].silo_22_extra_fine_speed}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_22_fine_weight}}</h3>
+              <h3>{{data['recipeData'].silo_22_extra_fine_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight time: {{data['recipeData'].silo_22_inflight_time}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight weight: </h3>
+              <h3>Course speed: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Tollerence: {{data['recipeData'].silo_22_tollerence}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_22_inflight_weight}}</h3>
+              <h3>{{data['recipeData'].silo_22_course_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine speed:</h3>
+              <h3>Extra fine speed: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_22_fine_speed}}</h3>
+              <h3>{{data['recipeData'].silo_22_extra_fine_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight time: </h3>
+              <h3>Tollerence: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_22_inflight_time}}</h3>
+              <h3>{{data['recipeData'].silo_22_tollerence}}</h3>
             </div>
           </div>
         </fieldset>
       </div>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxFlex="0 1 calc(33.3% - 32px)">
       <div>
         <fieldset>
           <legend>SILO-23</legend>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Set weight: {{data['recipeData'].silo_23_set_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Set weight: </h3>
+              <h3>Course weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course weight: {{data['recipeData'].silo_23_course_weight}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine weight: {{data['recipeData'].silo_23_fine_weight}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine weight: {{data['recipeData'].silo_23_extra_fine_weight}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_23_set_weight}}</h3>
+              <h3>{{data['recipeData'].silo_23_course_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight weight: {{data['recipeData'].silo_23_inflight_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine weight: </h3>
+              <h3>Extra fine weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course speed: {{data['recipeData'].silo_23_course_speed}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine speed: {{data['recipeData'].silo_23_fine_speed}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine speed: {{data['recipeData'].silo_23_extra_fine_speed}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_23_fine_weight}}</h3>
+              <h3>{{data['recipeData'].silo_23_extra_fine_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight time: {{data['recipeData'].silo_23_inflight_time}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight weight: </h3>
+              <h3>Course speed: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Tollerence: {{data['recipeData'].silo_23_tollerence}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_23_inflight_weight}}</h3>
+              <h3>{{data['recipeData'].silo_23_course_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine speed:</h3>
+              <h3>Extra fine speed: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_23_fine_speed}}</h3>
+              <h3>{{data['recipeData'].silo_23_extra_fine_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight time: </h3>
+              <h3>Tollerence: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_23_inflight_time}}</h3>
+              <h3>{{data['recipeData'].silo_23_tollerence}}</h3>
             </div>
           </div>
         </fieldset>
       </div>
     </div>
   </div>
+  <!-- 21,22,23 -->
+  <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="32px">
 
-  <div fxLayout="row" fxLayoutAlign="space-between center">
-
-    <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxFlex="0 1 calc(33.3% - 32px)">
       <div>
         <fieldset>
           <legend>CS-21</legend>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Set weight: {{data['recipeData'].cs_21_set_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Set weight: </h3>
+              <h3>Course weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course weight: {{data['recipeData'].cs_21_course_weight}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine weight: {{data['recipeData'].cs_21_fine_weight}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine weight: {{data['recipeData'].cs_21_extra_fine_weight}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_21_set_weight}}</h3>
+              <h3>{{data['recipeData'].cs_21_course_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight weight: {{data['recipeData'].cs_21_inflight_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine weight: </h3>
+              <h3>Extra fine weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course speed: {{data['recipeData'].cs_21_course_speed}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine speed: {{data['recipeData'].cs_21_fine_speed}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine speed: {{data['recipeData'].cs_21_extra_fine_speed}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_21_fine_weight}}</h3>
+              <h3>{{data['recipeData'].cs_21_extra_fine_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight time: {{data['recipeData'].cs_21_inflight_time}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight weight: </h3>
+              <h3>Course speed: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Tollerence: {{data['recipeData'].cs_21_tollerence}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_21_inflight_weight}}</h3>
+              <h3>{{data['recipeData'].cs_21_course_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine speed:</h3>
+              <h3>Extra fine speed: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_21_fine_speed}}</h3>
+              <h3>{{data['recipeData'].cs_21_extra_fine_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight time: </h3>
+              <h3>Tollerence: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_21_inflight_time}}</h3>
+              <h3>{{data['recipeData'].cs_21_tollerence}}</h3>
             </div>
           </div>
         </fieldset>
       </div>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxFlex="0 1 calc(33.3% - 32px)">
       <div>
         <fieldset>
           <legend>CS-22</legend>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Set weight: {{data['recipeData'].cs_22_set_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Set weight: </h3>
+              <h3>Course weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course weight: {{data['recipeData'].cs_22_course_weight}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine weight: {{data['recipeData'].cs_22_fine_weight}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine weight: {{data['recipeData'].cs_22_extra_fine_weight}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_22_set_weight}}</h3>
+              <h3>{{data['recipeData'].cs_22_course_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight weight: {{data['recipeData'].cs_22_inflight_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine weight: </h3>
+              <h3>Extra fine weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course speed: {{data['recipeData'].cs_22_course_speed}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine speed: {{data['recipeData'].cs_22_fine_speed}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine speed: {{data['recipeData'].cs_22_extra_fine_speed}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_22_fine_weight}}</h3>
+              <h3>{{data['recipeData'].cs_22_extra_fine_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight time: {{data['recipeData'].cs_22_inflight_time}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight weight: </h3>
+              <h3>Course speed: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Tollerence: {{data['recipeData'].cs_22_tollerence}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_22_inflight_weight}}</h3>
+              <h3>{{data['recipeData'].cs_22_course_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine speed:</h3>
+              <h3>Extra fine speed: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_22_fine_speed}}</h3>
+              <h3>{{data['recipeData'].cs_22_extra_fine_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight time: </h3>
+              <h3>Tollerence: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_22_inflight_time}}</h3>
+              <h3>{{data['recipeData'].cs_22_tollerence}}</h3>
             </div>
           </div>
         </fieldset>
       </div>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxFlex="0 1 calc(33.3% - 32px)">
       <div>
         <fieldset>
           <legend>CS-23</legend>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Set weight: {{data['recipeData'].cs_23_set_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Set weight: </h3>
+              <h3>Course weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course weight: {{data['recipeData'].cs_23_course_weight}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine weight: {{data['recipeData'].cs_23_fine_weight}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine weight: {{data['recipeData'].cs_23_extra_fine_weight}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_23_set_weight}}</h3>
+              <h3>{{data['recipeData'].cs_23_course_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight weight: {{data['recipeData'].cs_23_inflight_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine weight: </h3>
+              <h3>Extra fine weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course speed: {{data['recipeData'].cs_23_course_speed}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine speed: {{data['recipeData'].cs_23_fine_speed}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine speed: {{data['recipeData'].cs_23_extra_fine_speed}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_23_fine_weight}}</h3>
+              <h3>{{data['recipeData'].cs_23_extra_fine_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight time: {{data['recipeData'].cs_23_inflight_time}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight weight: </h3>
+              <h3>Course speed: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Tollerence: {{data['recipeData'].cs_23_tollerence}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_23_inflight_weight}}</h3>
+              <h3>{{data['recipeData'].cs_23_course_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine speed:</h3>
+              <h3>Extra fine speed: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_23_fine_speed}}</h3>
+              <h3>{{data['recipeData'].cs_23_extra_fine_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight time: </h3>
+              <h3>Tollerence: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_23_inflight_time}}</h3>
+              <h3>{{data['recipeData'].cs_23_tollerence}}</h3>
             </div>
           </div>
         </fieldset>
       </div>
     </div>
-
   </div>
-
 </div>
-
-
 
 <!-- 3 -->
 <!-- 3 -->
@@ -638,146 +745,176 @@
 <div *ngIf="activeStepIndex == 3">
   <h2>Comp-3</h2>
 
-  <div fxLayout="row" fxLayoutAlign="space-between center">
+  <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="32px">
 
-    <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxFlex="0 1 calc(33.3% - 32px)">
       <div>
         <fieldset>
           <legend>SILO-31</legend>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Set weight: {{data['recipeData'].silo_31_set_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Set weight: </h3>
+              <h3>Course weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course weight: {{data['recipeData'].silo_31_course_weight}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine weight: {{data['recipeData'].silo_31_fine_weight}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine weight: {{data['recipeData'].silo_31_extra_fine_weight}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_31_set_weight}}</h3>
+              <h3>{{data['recipeData'].silo_31_course_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight weight: {{data['recipeData'].silo_31_inflight_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine weight: </h3>
+              <h3>Extra fine weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course speed: {{data['recipeData'].silo_31_course_speed}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine speed: {{data['recipeData'].silo_31_fine_speed}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine speed: {{data['recipeData'].silo_31_extra_fine_speed}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_31_fine_weight}}</h3>
+              <h3>{{data['recipeData'].silo_31_extra_fine_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight time: {{data['recipeData'].silo_31_inflight_time}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight weight: </h3>
+              <h3>Course speed: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Tollerence: {{data['recipeData'].silo_31_tollerence}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_31_inflight_weight}}</h3>
+              <h3>{{data['recipeData'].silo_31_course_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine speed:</h3>
+              <h3>Extra fine speed: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_31_fine_speed}}</h3>
+              <h3>{{data['recipeData'].silo_31_extra_fine_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight time: </h3>
+              <h3>Tollerence: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_31_inflight_time}}</h3>
+              <h3>{{data['recipeData'].silo_31_tollerence}}</h3>
             </div>
           </div>
         </fieldset>
       </div>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxFlex="0 1 calc(33.3% - 32px)">
       <div>
         <fieldset>
           <legend>SILO-32</legend>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Set weight: {{data['recipeData'].silo_32_set_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Set weight: </h3>
+              <h3>Course weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course weight: {{data['recipeData'].silo_32_course_weight}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine weight: {{data['recipeData'].silo_32_fine_weight}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine weight: {{data['recipeData'].silo_32_extra_fine_weight}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_32_set_weight}}</h3>
+              <h3>{{data['recipeData'].silo_32_course_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight weight: {{data['recipeData'].silo_32_inflight_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine weight: </h3>
+              <h3>Extra fine weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course speed: {{data['recipeData'].silo_32_course_speed}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine speed: {{data['recipeData'].silo_32_fine_speed}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine speed: {{data['recipeData'].silo_32_extra_fine_speed}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_32_fine_weight}}</h3>
+              <h3>{{data['recipeData'].silo_32_extra_fine_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight time: {{data['recipeData'].silo_32_inflight_time}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight weight: </h3>
+              <h3>Course speed: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Tollerence: {{data['recipeData'].silo_32_tollerence}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_32_inflight_weight}}</h3>
+              <h3>{{data['recipeData'].silo_32_course_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine speed:</h3>
+              <h3>Extra fine speed: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_32_fine_speed}}</h3>
+              <h3>{{data['recipeData'].silo_32_extra_fine_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight time: </h3>
+              <h3>Tollerence: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_32_inflight_time}}</h3>
+              <h3>{{data['recipeData'].silo_32_tollerence}}</h3>
             </div>
           </div>
         </fieldset>
       </div>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxFlex="0 1 calc(33.3% - 32px)">
       <div>
         <fieldset>
           <legend>SILO-33</legend>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Set weight: {{data['recipeData'].silo_33_set_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Set weight: </h3>
+              <h3>Course weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course weight: {{data['recipeData'].silo_33_course_weight}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine weight: {{data['recipeData'].silo_33_fine_weight}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine weight: {{data['recipeData'].silo_33_extra_fine_weight}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_33_set_weight}}</h3>
+              <h3>{{data['recipeData'].silo_33_course_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight weight: {{data['recipeData'].silo_33_inflight_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine weight: </h3>
+              <h3>Extra fine weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course speed: {{data['recipeData'].silo_33_course_speed}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine speed: {{data['recipeData'].silo_33_fine_speed}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine speed: {{data['recipeData'].silo_33_extra_fine_speed}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_33_fine_weight}}</h3>
+              <h3>{{data['recipeData'].silo_33_extra_fine_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight time: {{data['recipeData'].silo_33_inflight_time}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight weight: </h3>
+              <h3>Course speed: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Tollerence: {{data['recipeData'].silo_33_tollerence}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_33_inflight_weight}}</h3>
+              <h3>{{data['recipeData'].silo_33_course_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine speed:</h3>
+              <h3>Extra fine speed: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_33_fine_speed}}</h3>
+              <h3>{{data['recipeData'].silo_33_extra_fine_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight time: </h3>
+              <h3>Tollerence: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].silo_33_inflight_time}}</h3>
+              <h3>{{data['recipeData'].silo_33_tollerence}}</h3>
             </div>
           </div>
         </fieldset>
@@ -785,159 +922,182 @@
     </div>
   </div>
 
-  <div fxLayout="row" fxLayoutAlign="space-between center">
+  <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="32px">
 
-    <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxFlex="0 1 calc(33.3% - 32px)">
       <div>
         <fieldset>
           <legend>CS-31</legend>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Set weight: {{data['recipeData'].cs_31_set_weight}}</h3>
+
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Set weight: </h3>
+              <h3>Course weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course weight: {{data['recipeData'].cs_31_course_weight}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine weight: {{data['recipeData'].cs_31_fine_weight}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine weight: {{data['recipeData'].cs_31_extra_fine_weight}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_31_set_weight}}</h3>
+              <h3>{{data['recipeData'].cs_31_course_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight weight: {{data['recipeData'].cs_31_inflight_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine weight: </h3>
+              <h3>Extra fine weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course speed: {{data['recipeData'].cs_31_course_speed}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine speed: {{data['recipeData'].cs_31_fine_speed}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine speed: {{data['recipeData'].cs_31_extra_fine_speed}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_31_fine_weight}}</h3>
+              <h3>{{data['recipeData'].cs_31_extra_fine_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight time: {{data['recipeData'].cs_31_inflight_time}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight weight: </h3>
+              <h3>Course speed: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Tollerence: {{data['recipeData'].cs_31_tollerence}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_31_inflight_weight}}</h3>
+              <h3>{{data['recipeData'].cs_31_course_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine speed:</h3>
+              <h3>Extra fine speed: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_31_fine_speed}}</h3>
+              <h3>{{data['recipeData'].cs_31_extra_fine_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight time: </h3>
+              <h3>Tollerence: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_31_inflight_time}}</h3>
+              <h3>{{data['recipeData'].cs_31_tollerence}}</h3>
             </div>
           </div>
         </fieldset>
       </div>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxFlex="0 1 calc(33.3% - 32px)">
       <div>
         <fieldset>
           <legend>CS-32</legend>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Set weight: {{data['recipeData'].cs_32_set_weight}}</h3>
+
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Set weight: </h3>
+              <h3>Course weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course weight: {{data['recipeData'].cs_32_course_weight}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine weight: {{data['recipeData'].cs_32_fine_weight}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine weight: {{data['recipeData'].cs_32_extra_fine_weight}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_32_set_weight}}</h3>
+              <h3>{{data['recipeData'].cs_32_course_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight weight: {{data['recipeData'].cs_32_inflight_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine weight: </h3>
+              <h3>Extra fine weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course speed: {{data['recipeData'].cs_32_course_speed}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine speed: {{data['recipeData'].cs_32_fine_speed}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine speed: {{data['recipeData'].cs_32_extra_fine_speed}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_32_fine_weight}}</h3>
+              <h3>{{data['recipeData'].cs_32_extra_fine_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight time: {{data['recipeData'].cs_32_inflight_time}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight weight: </h3>
+              <h3>Course speed: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Tollerence: {{data['recipeData'].cs_32_tollerence}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_32_inflight_weight}}</h3>
+              <h3>{{data['recipeData'].cs_32_course_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine speed:</h3>
+              <h3>Extra fine speed: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_32_fine_speed}}</h3>
+              <h3>{{data['recipeData'].cs_32_extra_fine_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight time: </h3>
+              <h3>Tollerence: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_32_inflight_time}}</h3>
+              <h3>{{data['recipeData'].cs_32_tollerence}}</h3>
             </div>
           </div>
         </fieldset>
       </div>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxFlex="0 1 calc(33.3% - 32px)">
       <div>
         <fieldset>
           <legend>CS-33</legend>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Set weight: {{data['recipeData'].cs_33_set_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Set weight: </h3>
+              <h3>Course weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course weight: {{data['recipeData'].cs_33_course_weight}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine weight: {{data['recipeData'].cs_33_fine_weight}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine weight: {{data['recipeData'].cs_33_extra_fine_weight}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_33_set_weight}}</h3>
+              <h3>{{data['recipeData'].cs_33_course_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight weight: {{data['recipeData'].cs_33_inflight_weight}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine weight: </h3>
+              <h3>Extra fine weight: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Course speed: {{data['recipeData'].cs_33_course_speed}}</h3>
-            </div>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Fine speed: {{data['recipeData'].cs_33_fine_speed}}</h3>
-            </div>
-            <div fxFlex="50%">
-              <h3>Extra fine speed: {{data['recipeData'].cs_33_extra_fine_speed}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_33_fine_weight}}</h3>
+              <h3>{{data['recipeData'].cs_33_extra_fine_weight}}</h3>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-            <div fxFlex="50%">
-              <h3>Inflight time: {{data['recipeData'].cs_33_inflight_time}}</h3>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight weight: </h3>
+              <h3>Course speed: </h3>
             </div>
-            <div fxFlex="50%">
-              <h3>Tollerence: {{data['recipeData'].cs_33_tollerence}}</h3>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_33_inflight_weight}}</h3>
+              <h3>{{data['recipeData'].cs_33_course_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Fine speed:</h3>
+              <h3>Extra fine speed: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_33_fine_speed}}</h3>
+              <h3>{{data['recipeData'].cs_33_extra_fine_speed}}</h3>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div fxFlex="80%">
+              <h3>Inflight time: </h3>
+              <h3>Tollerence: </h3>
+            </div>
+            <div fxFlex="20%">
+              <h3>{{data['recipeData'].cs_33_inflight_time}}</h3>
+              <h3>{{data['recipeData'].cs_33_tollerence}}</h3>
             </div>
           </div>
         </fieldset>
       </div>
     </div>
-
   </div>
-
-</div>
-
-<div class="controls">
-  <button *ngIf="activeStepIndex != 1" (click)="goToPrevious()" class="button">Previous</button>
-  <button *ngIf="activeStepIndex != 3" (click)="goToNext()" class="button">Next</button>
-  <!-- <button type="submit" [disabled]="masterForm.invalid" *ngIf="activeStepIndex == 3"
-    (click)="submit()">Submit</button> -->
 </div>

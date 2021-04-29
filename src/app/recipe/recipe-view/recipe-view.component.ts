@@ -11,7 +11,8 @@ export class RecipeViewComponent implements OnInit {
   id: string
   data: any
   activeStepIndex: any = 1;
-  constructor(private route: ActivatedRoute, private router: Router, private configurationService: ConfigurationService) {
+  constructor(private route: ActivatedRoute, 
+    private router: Router, private configurationService: ConfigurationService) {
     this.id = this.route.snapshot.paramMap.get('id')
     this.getRecipeById(this.id);
   }
@@ -35,6 +36,9 @@ export class RecipeViewComponent implements OnInit {
     })
   }
 
+  submit() {
+    this.router.navigate(['../../'], { relativeTo: this.route });
+  }
 
   
 
