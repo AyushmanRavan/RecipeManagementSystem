@@ -14,7 +14,7 @@ import { GlobalErrorHandler } from '../core/services/error-handler';
 export class CalculatedRecipeDataComponent implements OnInit {
   @Input() inputData: any;
   @Input() inputType: boolean;
-
+ 
   errMessage: string;
   activeStepIndex: any = 1;
   submitted: boolean = false;
@@ -22,7 +22,7 @@ export class CalculatedRecipeDataComponent implements OnInit {
   masterForm: FormGroup;
   username: string;
   id!: string;
-
+  buttonType = "Reset";
   match: string
   constructor(
     private route: ActivatedRoute, private router: Router,
@@ -32,6 +32,234 @@ export class CalculatedRecipeDataComponent implements OnInit {
     this.createMasterForm();
   }
 
+
+  resetFormData(silo) {
+    const userDetails = this.masterForm.controls['userDetails'];
+    const contactDetails = this.masterForm.controls['contactDetails'];
+    const personalDetails = this.masterForm.controls['personalDetails'];
+    switch (silo) {
+      case "silo_11":
+        userDetails.get("silo_11_set_weight").setValue(0);
+        userDetails.get("silo_11_course_weight").setValue(0);
+        userDetails.get("silo_11_fine_weight").setValue(0);
+        userDetails.get("silo_11_extra_fine_weight").setValue(0);
+        userDetails.get("silo_11_inflight_weight").setValue(0);
+        userDetails.get("silo_11_course_speed").setValue(0);
+        userDetails.get("silo_11_fine_speed").setValue(0);
+        userDetails.get("silo_11_extra_fine_speed").setValue(0);
+        userDetails.get("silo_11_inflight_time").setValue(0);
+        userDetails.get("silo_11_tollerence").setValue(0);
+        break;
+      case "silo_12":
+        userDetails.get("silo_12_set_weight").setValue(0);
+        userDetails.get("silo_12_course_weight").setValue(0);
+        userDetails.get("silo_12_fine_weight").setValue(0);
+        userDetails.get("silo_12_extra_fine_weight").setValue(0);
+        userDetails.get("silo_12_inflight_weight").setValue(0);
+        userDetails.get("silo_12_course_speed").setValue(0);
+        userDetails.get("silo_12_fine_speed").setValue(0);
+        userDetails.get("silo_12_extra_fine_speed").setValue(0);
+        userDetails.get("silo_12_inflight_time").setValue(0);
+        userDetails.get("silo_12_tollerence").setValue(0);
+        break;
+      case "cs_11":
+        userDetails.get("cs_11_set_weight").setValue(0);
+        userDetails.get("cs_11_course_weight").setValue(0);
+        userDetails.get("cs_11_fine_weight").setValue(0);
+        userDetails.get("cs_11_extra_fine_weight").setValue(0);
+        userDetails.get("cs_11_inflight_weight").setValue(0);
+        userDetails.get("cs_11_course_speed").setValue(0);
+        userDetails.get("cs_11_fine_speed").setValue(0);
+        userDetails.get("cs_11_extra_fine_speed").setValue(0);
+        userDetails.get("cs_11_inflight_time").setValue(0);
+        userDetails.get("cs_11_tollerence").setValue(0);
+        break;
+      case "cs_12":
+        userDetails.get("cs_12_set_weight").setValue(0);
+        userDetails.get("cs_12_course_weight").setValue(0);
+        userDetails.get("cs_12_fine_weight").setValue(0);
+        userDetails.get("cs_12_extra_fine_weight").setValue(0);
+        userDetails.get("cs_12_inflight_weight").setValue(0);
+        userDetails.get("cs_12_course_speed").setValue(0);
+        userDetails.get("cs_12_fine_speed").setValue(0);
+        userDetails.get("cs_12_extra_fine_speed").setValue(0);
+        userDetails.get("cs_12_inflight_time").setValue(0);
+        userDetails.get("cs_12_tollerence").setValue(0);
+        break;
+      case "cs_13":
+        userDetails.get("cs_13_set_weight").setValue(0);
+        userDetails.get("cs_13_course_weight").setValue(0);
+        userDetails.get("cs_13_fine_weight").setValue(0);
+        userDetails.get("cs_13_extra_fine_weight").setValue(0);
+        userDetails.get("cs_13_inflight_weight").setValue(0);
+        userDetails.get("cs_13_course_speed").setValue(0);
+        userDetails.get("cs_13_fine_speed").setValue(0);
+        userDetails.get("cs_13_extra_fine_speed").setValue(0);
+        userDetails.get("cs_13_inflight_time").setValue(0);
+        userDetails.get("cs_13_tollerence").setValue(0);
+        break;
+      case "cs_14":
+        userDetails.get("cs_14_set_weight").setValue(0);
+        userDetails.get("cs_14_course_weight").setValue(0);
+        userDetails.get("cs_14_fine_weight").setValue(0);
+        userDetails.get("cs_14_extra_fine_weight").setValue(0);
+        userDetails.get("cs_14_inflight_weight").setValue(0);
+        userDetails.get("cs_14_course_speed").setValue(0);
+        userDetails.get("cs_14_fine_speed").setValue(0);
+        userDetails.get("cs_14_extra_fine_speed").setValue(0);
+        userDetails.get("cs_14_inflight_time").setValue(0);
+        userDetails.get("cs_14_tollerence").setValue(0);
+        break;
+
+      case "silo_21":
+        contactDetails.get("silo_21_set_weight").setValue(0);
+        contactDetails.get("silo_21_course_weight").setValue(0);
+        contactDetails.get("silo_21_fine_weight").setValue(0);
+        contactDetails.get("silo_21_extra_fine_weight").setValue(0);
+        contactDetails.get("silo_21_inflight_weight").setValue(0);
+        contactDetails.get("silo_21_course_speed").setValue(0);
+        contactDetails.get("silo_21_fine_speed").setValue(0);
+        contactDetails.get("silo_21_extra_fine_speed").setValue(0);
+        contactDetails.get("silo_21_inflight_time").setValue(0);
+        contactDetails.get("silo_21_tollerence").setValue(0);
+        break;
+      case "silo_22":
+        contactDetails.get("silo_22_set_weight").setValue(0);
+        contactDetails.get("silo_22_course_weight").setValue(0);
+        contactDetails.get("silo_22_fine_weight").setValue(0);
+        contactDetails.get("silo_22_extra_fine_weight").setValue(0);
+        contactDetails.get("silo_22_inflight_weight").setValue(0);
+        contactDetails.get("silo_22_course_speed").setValue(0);
+        contactDetails.get("silo_22_fine_speed").setValue(0);
+        contactDetails.get("silo_22_extra_fine_speed").setValue(0);
+        contactDetails.get("silo_22_inflight_time").setValue(0);
+        contactDetails.get("silo_22_tollerence").setValue(0);
+        break;
+      case "silo_23":
+        contactDetails.get("silo_23_set_weight").setValue(0);
+        contactDetails.get("silo_23_course_weight").setValue(0);
+        contactDetails.get("silo_23_fine_weight").setValue(0);
+        contactDetails.get("silo_23_extra_fine_weight").setValue(0);
+        contactDetails.get("silo_23_inflight_weight").setValue(0);
+        contactDetails.get("silo_23_course_speed").setValue(0);
+        contactDetails.get("silo_23_fine_speed").setValue(0);
+        contactDetails.get("silo_23_extra_fine_speed").setValue(0);
+        contactDetails.get("silo_23_inflight_time").setValue(0);
+        contactDetails.get("silo_23_tollerence").setValue(0);
+        break;
+      case "cs_21":
+        contactDetails.get("cs_21_set_weight").setValue(0);
+        contactDetails.get("cs_21_course_weight").setValue(0);
+        contactDetails.get("cs_21_fine_weight").setValue(0);
+        contactDetails.get("cs_21_extra_fine_weight").setValue(0);
+        contactDetails.get("cs_21_inflight_weight").setValue(0);
+        contactDetails.get("cs_21_course_speed").setValue(0);
+        contactDetails.get("cs_21_fine_speed").setValue(0);
+        contactDetails.get("cs_21_extra_fine_speed").setValue(0);
+        contactDetails.get("cs_21_inflight_time").setValue(0);
+        contactDetails.get("cs_21_tollerence").setValue(0);
+        break;
+      case "cs_22":
+        contactDetails.get("cs_22_set_weight").setValue(0);
+        contactDetails.get("cs_22_course_weight").setValue(0);
+        contactDetails.get("cs_22_fine_weight").setValue(0);
+        contactDetails.get("cs_22_extra_fine_weight").setValue(0);
+        contactDetails.get("cs_22_inflight_weight").setValue(0);
+        contactDetails.get("cs_22_course_speed").setValue(0);
+        contactDetails.get("cs_22_fine_speed").setValue(0);
+        contactDetails.get("cs_22_extra_fine_speed").setValue(0);
+        contactDetails.get("cs_22_inflight_time").setValue(0);
+        contactDetails.get("cs_22_tollerence").setValue(0);
+        break;
+      case "cs_23":
+        contactDetails.get("cs_23_set_weight").setValue(0);
+        contactDetails.get("cs_23_course_weight").setValue(0);
+        contactDetails.get("cs_23_fine_weight").setValue(0);
+        contactDetails.get("cs_23_extra_fine_weight").setValue(0);
+        contactDetails.get("cs_23_inflight_weight").setValue(0);
+        contactDetails.get("cs_23_course_speed").setValue(0);
+        contactDetails.get("cs_23_fine_speed").setValue(0);
+        contactDetails.get("cs_23_extra_fine_speed").setValue(0);
+        contactDetails.get("cs_23_inflight_time").setValue(0);
+        contactDetails.get("cs_23_tollerence").setValue(0);
+        break;
+
+
+      case "silo_31":
+        personalDetails.get("silo_31_set_weight").setValue(0);
+        personalDetails.get("silo_31_course_weight").setValue(0);
+        personalDetails.get("silo_31_fine_weight").setValue(0);
+        personalDetails.get("silo_31_extra_fine_weight").setValue(0);
+        personalDetails.get("silo_31_inflight_weight").setValue(0);
+        personalDetails.get("silo_31_course_speed").setValue(0);
+        personalDetails.get("silo_31_fine_speed").setValue(0);
+        personalDetails.get("silo_31_extra_fine_speed").setValue(0);
+        personalDetails.get("silo_31_inflight_time").setValue(0);
+        personalDetails.get("silo_31_tollerence").setValue(0);
+        break;
+      case "silo_32":
+        personalDetails.get("silo_32_set_weight").setValue(0);
+        personalDetails.get("silo_32_course_weight").setValue(0);
+        personalDetails.get("silo_32_fine_weight").setValue(0);
+        personalDetails.get("silo_32_extra_fine_weight").setValue(0);
+        personalDetails.get("silo_32_inflight_weight").setValue(0);
+        personalDetails.get("silo_32_course_speed").setValue(0);
+        personalDetails.get("silo_32_fine_speed").setValue(0);
+        personalDetails.get("silo_32_extra_fine_speed").setValue(0);
+        personalDetails.get("silo_32_inflight_time").setValue(0);
+        personalDetails.get("silo_32_tollerence").setValue(0);
+        break;
+      case "silo_33":
+        personalDetails.get("silo_33_set_weight").setValue(0);
+        personalDetails.get("silo_33_course_weight").setValue(0);
+        personalDetails.get("silo_33_fine_weight").setValue(0);
+        personalDetails.get("silo_33_extra_fine_weight").setValue(0);
+        personalDetails.get("silo_33_inflight_weight").setValue(0);
+        personalDetails.get("silo_33_course_speed").setValue(0);
+        personalDetails.get("silo_33_fine_speed").setValue(0);
+        personalDetails.get("silo_33_extra_fine_speed").setValue(0);
+        personalDetails.get("silo_33_inflight_time").setValue(0);
+        personalDetails.get("silo_33_tollerence").setValue(0);
+        break;
+      case "cs_31":
+        personalDetails.get("cs_31_set_weight").setValue(0);
+        personalDetails.get("cs_31_course_weight").setValue(0);
+        personalDetails.get("cs_31_fine_weight").setValue(0);
+        personalDetails.get("cs_31_extra_fine_weight").setValue(0);
+        personalDetails.get("cs_31_inflight_weight").setValue(0);
+        personalDetails.get("cs_31_course_speed").setValue(0);
+        personalDetails.get("cs_31_fine_speed").setValue(0);
+        personalDetails.get("cs_31_extra_fine_speed").setValue(0);
+        personalDetails.get("cs_31_inflight_time").setValue(0);
+        personalDetails.get("cs_31_tollerence").setValue(0);
+        break;
+      case "cs_32":
+        personalDetails.get("cs_32_set_weight").setValue(0);
+        personalDetails.get("cs_32_course_weight").setValue(0);
+        personalDetails.get("cs_32_fine_weight").setValue(0);
+        personalDetails.get("cs_32_extra_fine_weight").setValue(0);
+        personalDetails.get("cs_32_inflight_weight").setValue(0);
+        personalDetails.get("cs_32_course_speed").setValue(0);
+        personalDetails.get("cs_32_fine_speed").setValue(0);
+        personalDetails.get("cs_32_extra_fine_speed").setValue(0);
+        personalDetails.get("cs_32_inflight_time").setValue(0);
+        personalDetails.get("cs_32_tollerence").setValue(0);
+        break;
+      case "cs_33":
+        personalDetails.get("cs_33_set_weight").setValue(0);
+        personalDetails.get("cs_33_course_weight").setValue(0);
+        personalDetails.get("cs_33_fine_weight").setValue(0);
+        personalDetails.get("cs_33_extra_fine_weight").setValue(0);
+        personalDetails.get("cs_33_inflight_weight").setValue(0);
+        personalDetails.get("cs_33_course_speed").setValue(0);
+        personalDetails.get("cs_33_fine_speed").setValue(0);
+        personalDetails.get("cs_33_extra_fine_speed").setValue(0);
+        personalDetails.get("cs_33_inflight_time").setValue(0);
+        personalDetails.get("cs_33_tollerence").setValue(0);
+        break;
+    }
+
+  }
 
   ValidateRecipeName(control: AbstractControl) {
     if (control.value.length > 20) {
@@ -1857,7 +2085,7 @@ export class CalculatedRecipeDataComponent implements OnInit {
     customUpdate['loggingTime'] = this.inputData.loggingTime;
     customUpdate['user_name'] = this.inputData.user_name;
     customUpdate['relative_recipe'] = this.inputData.relative_recipe;
-    
+
     // customUpdate['user_name'] = this.username
     customUpdate['comp_1_size'] = comp_11_size
     customUpdate['comp_2_size'] = comp_12_size

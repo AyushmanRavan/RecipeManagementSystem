@@ -35,15 +35,17 @@
         </mat-checkbox> -->
 
     </div>
+
     <div class="controls">
       <button *ngIf="activeStepIndex != 1" (click)="goToPrevious()">Previous</button>
       <button *ngIf="activeStepIndex != 3" (click)="goToNext()">Next</button>
-      <button type="submit"  *ngIf="activeStepIndex == 3"  mat-raised-button color="accent"
-        (click)="submit()">Download Recipe</button>
+      <button type="submit" *ngIf="activeStepIndex == 3" mat-raised-button color="accent" (click)="submit()">Download
+        Recipe</button>
 
-      
+
 
     </div>
+
     <div *ngIf="activeStepIndex == 1">
       <h2>Comp-1</h2>
       <div formGroupName="userDetails">
@@ -184,7 +186,10 @@
                   </mat-form-field>
                 </div>
               </div>
-
+              <div *ngIf="!inputType" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('silo_11')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
           <!-- SILO-12 -->
@@ -314,7 +319,10 @@
                   </mat-form-field>
                 </div>
               </div>
-
+              <div *ngIf="!inputType" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('silo_12')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
           <!-- CS-11 -->
@@ -443,7 +451,10 @@
                   </mat-form-field>
                 </div>
               </div>
-
+              <div *ngIf="!inputType" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('cs_11')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
         </div>
@@ -575,7 +586,10 @@
                   </mat-form-field>
                 </div>
               </div>
-
+              <div *ngIf="!inputType" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('cs_12')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
           <!-- CS-13 -->
@@ -744,16 +758,10 @@
                   </mat-form-field>
                 </div>
               </div>
-
-
-
-
-
-
-
-
-
-
+              <div *ngIf="!inputType" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('cs_13')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
           <!-- CS-14 -->
@@ -925,7 +933,10 @@
                   </mat-form-field>
                 </div>
               </div>
-
+              <div *ngIf="!inputType" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('cs_14')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
         </div>
@@ -1120,7 +1131,10 @@
                   </mat-form-field>
                 </div>
               </div>
-
+              <div *ngIf="!inputType" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('silo_21')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
           <!-- SILO-22 -->
@@ -1338,7 +1352,10 @@
                   </mat-form-field>
                 </div>
               </div>
-
+              <div *ngIf="!inputType" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('silo_22')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
           <!-- SILO-23 -->
@@ -1557,7 +1574,10 @@
                   </mat-form-field>
                 </div>
               </div>
-
+              <div *ngIf="!inputType" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('silo_23')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
         </div>
@@ -1778,7 +1798,10 @@
                   </mat-form-field>
                 </div>
               </div>
-
+              <div *ngIf="!inputType" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('cs_21')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
           <!-- CS-22 -->
@@ -1997,7 +2020,10 @@
                   </mat-form-field>
                 </div>
               </div>
-
+              <div *ngIf="!inputType" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('cs_22')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
           <!-- CS-23 -->
@@ -2225,7 +2251,10 @@
                 </div>
               </div>
 
-
+              <div *ngIf="!inputType" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('cs_23')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
         </div>
@@ -2462,7 +2491,10 @@
                 </div>
               </div>
 
-
+              <div *ngIf="!inputType" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('silo_31')">{{buttonType}}</button></div>
+              </div>
 
             </fieldset>
           </div>
@@ -2686,7 +2718,10 @@
                   </mat-form-field>
                 </div>
               </div>
-
+              <div *ngIf="!inputType" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('silo_32')">{{buttonType}}</button></div>
+              </div>
 
             </fieldset>
           </div>
@@ -2908,7 +2943,10 @@
                   </mat-form-field>
                 </div>
               </div>
-
+              <div *ngIf="!inputType" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('silo_33')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
         </div>
@@ -3134,9 +3172,10 @@
                 </div>
               </div>
 
-
-
-
+              <div *ngIf="!inputType" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('cs_31')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
           <!-- CS-32 -->
@@ -3367,7 +3406,10 @@
                   </mat-form-field>
                 </div>
               </div>
-
+              <div *ngIf="!inputType" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('cs_32')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
           <!-- CS-33 -->
@@ -3597,7 +3639,10 @@
                   </mat-form-field>
                 </div>
               </div>
-
+              <div *ngIf="!inputType" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('cs_33')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
         </div>

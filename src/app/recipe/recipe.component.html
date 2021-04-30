@@ -35,19 +35,24 @@
       </mat-checkbox> -->
 
     </div>
+
     <div class="controls">
       <button *ngIf="activeStepIndex != 1" (click)="goToPrevious()">Previous</button>
       <button *ngIf="activeStepIndex != 3" (click)="goToNext()">Next</button>
-      <button type="submit" [disabled]="masterForm.invalid" *ngIf="activeStepIndex == 3  && isAddMode" (click)="submit()">Save
+      <button type="submit" [disabled]="masterForm.invalid" *ngIf="activeStepIndex == 3  && isAddMode"
+        (click)="submit()">Save
         Recipe</button>
 
-      <button type="submit" [disabled]="masterForm.invalid" *ngIf="activeStepIndex == 3 && !isAddMode" (click)="submit()">Update
+      <button type="submit" [disabled]="masterForm.invalid" *ngIf="activeStepIndex == 3 && !isAddMode"
+        (click)="submit()">Update
         Recipe</button>
-      
+
     </div>
+
     <div *ngIf="activeStepIndex == 1">
       <h2>Comp-1</h2>
       <div formGroupName="userDetails">
+        <!-- Silo-11,Silo-12,CS-11 -->
         <div fxLayout="row" fxLayoutAlign="space-around center">
           <!-- SILO-11  -->
           <div>
@@ -186,6 +191,10 @@
                 </div>
               </div>
 
+              <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('silo_11')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
           <!-- SILO-12 -->
@@ -315,7 +324,10 @@
                   </mat-form-field>
                 </div>
               </div>
-
+              <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('silo_12')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
           <!-- CS-11 -->
@@ -444,12 +456,16 @@
                   </mat-form-field>
                 </div>
               </div>
-
+              <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('cs_11')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
         </div>
-        <!-- CS-12 -->
+        <!-- CS-12,CS-13,CS-14 -->
         <div fxLayout="row" fxLayoutAlign="space-around center">
+          <!-- CS-12 -->
           <div>
 
             <fieldset>
@@ -576,7 +592,10 @@
                   </mat-form-field>
                 </div>
               </div>
-
+              <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('cs_12')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
           <!-- CS-13 -->
@@ -745,16 +764,10 @@
                   </mat-form-field>
                 </div>
               </div>
-
-
-
-
-
-
-
-
-
-
+              <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('cs_13')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
           <!-- CS-14 -->
@@ -926,7 +939,10 @@
                   </mat-form-field>
                 </div>
               </div>
-
+              <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('cs_14')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
         </div>
@@ -1121,7 +1137,10 @@
                   </mat-form-field>
                 </div>
               </div>
-
+              <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('silo_21')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
           <!-- SILO-22 -->
@@ -1339,7 +1358,10 @@
                   </mat-form-field>
                 </div>
               </div>
-
+              <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('silo_22')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
           <!-- SILO-23 -->
@@ -1558,7 +1580,10 @@
                   </mat-form-field>
                 </div>
               </div>
-
+              <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('silo_23')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
         </div>
@@ -1779,7 +1804,10 @@
                   </mat-form-field>
                 </div>
               </div>
-
+              <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('cs_21')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
           <!-- CS-22 -->
@@ -1998,7 +2026,10 @@
                   </mat-form-field>
                 </div>
               </div>
-
+              <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('cs_22')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
           <!-- CS-23 -->
@@ -2226,7 +2257,10 @@
                 </div>
               </div>
 
-
+              <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('cs_23')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
         </div>
@@ -2463,7 +2497,10 @@
                 </div>
               </div>
 
-
+              <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('silo_31')">{{buttonType}}</button></div>
+              </div>
 
             </fieldset>
           </div>
@@ -2688,7 +2725,10 @@
                 </div>
               </div>
 
-
+              <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('silo_32')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
           <!-- SILO-33 -->
@@ -2909,7 +2949,10 @@
                   </mat-form-field>
                 </div>
               </div>
-
+              <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('silo_33')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
         </div>
@@ -3136,7 +3179,10 @@
               </div>
 
 
-
+              <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('cs_31')">{{buttonType}}</button></div>
+              </div>
 
             </fieldset>
           </div>
@@ -3368,7 +3414,10 @@
                   </mat-form-field>
                 </div>
               </div>
-
+              <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('cs_32')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
           <!-- CS-33 -->
@@ -3598,16 +3647,16 @@
                   </mat-form-field>
                 </div>
               </div>
-
+              <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div fxFlex="50%"></div>
+                <div fxFlex="50%"><button (click)="resetFormData('cs_33')">{{buttonType}}</button></div>
+              </div>
             </fieldset>
           </div>
         </div>
       </div>
     </div>
 
-
-
   </form>
-
 
 </div>
