@@ -37,64 +37,67 @@ export class RecipeComponent implements OnInit {
   }
 
   calculateBatchSize() {
+    let c1 = 0, c2 = 0, c3 = 0;
     const userDetails = this.masterForm.controls['userDetails'];
     if (!isNaN(parseFloat(userDetails.get("silo_11_set_weight").value)))
-      this.compOne = this.compOne + parseFloat(userDetails.get("silo_11_set_weight").value);
+      c1 = c1 + parseFloat(userDetails.get("silo_11_set_weight").value);
 
     if (!isNaN(parseFloat(userDetails.get("silo_12_set_weight").value)))
-      this.compOne = this.compOne + parseFloat(userDetails.get("silo_12_set_weight").value);
+      c1 = c1 + parseFloat(userDetails.get("silo_12_set_weight").value);
 
     if (!isNaN(parseFloat(userDetails.get("cs_11_set_weight").value)))
-      this.compOne = this.compOne + parseFloat(userDetails.get("cs_11_set_weight").value);
+      c1 = c1 + parseFloat(userDetails.get("cs_11_set_weight").value);
 
     if (!isNaN(parseFloat(userDetails.get("cs_12_set_weight").value)))
-      this.compOne = this.compOne + parseFloat(userDetails.get("cs_12_set_weight").value);
+      c1 = c1 + parseFloat(userDetails.get("cs_12_set_weight").value);
 
     if (!isNaN(parseFloat(userDetails.get("cs_13_set_weight").value)))
-      this.compOne = this.compOne + parseFloat(userDetails.get("cs_13_set_weight").value);
+      c1 = c1 + parseFloat(userDetails.get("cs_13_set_weight").value);
 
     if (!isNaN(parseFloat(userDetails.get("cs_14_set_weight").value)))
-      this.compOne = this.compOne + parseFloat(userDetails.get("cs_14_set_weight").value);
+      c1 = c1 + parseFloat(userDetails.get("cs_14_set_weight").value);
     ////////////////////////////////////////////////////////////////////////////////////////////////
     const contactDetails = this.masterForm.controls['contactDetails'];
     if (!isNaN(parseFloat(contactDetails.get("silo_21_set_weight").value)))
-      this.compTwo = this.compTwo + parseFloat(contactDetails.get("silo_21_set_weight").value);
+      c2 = c2 + parseFloat(contactDetails.get("silo_21_set_weight").value);
 
     if (!isNaN(parseFloat(contactDetails.get("silo_22_set_weight").value)))
-      this.compTwo = this.compTwo + parseFloat(contactDetails.get("silo_22_set_weight").value);
+      c2 = c2 + parseFloat(contactDetails.get("silo_22_set_weight").value);
 
     if (!isNaN(parseFloat(contactDetails.get("silo_23_set_weight").value)))
-      this.compTwo = this.compTwo + parseFloat(contactDetails.get("silo_23_set_weight").value);
+      c2 = c2 + parseFloat(contactDetails.get("silo_23_set_weight").value);
 
     if (!isNaN(parseFloat(contactDetails.get("cs_21_set_weight").value)))
-      this.compTwo = this.compTwo + parseFloat(contactDetails.get("cs_21_set_weight").value);
+      c2 = c2 + parseFloat(contactDetails.get("cs_21_set_weight").value);
 
     if (!isNaN(parseFloat(contactDetails.get("cs_22_set_weight").value)))
-      this.compTwo = this.compTwo + parseFloat(contactDetails.get("cs_22_set_weight").value);
+      c2 = c2 + parseFloat(contactDetails.get("cs_22_set_weight").value);
 
     if (!isNaN(parseFloat(contactDetails.get("cs_23_set_weight").value)))
-      this.compTwo = this.compTwo + parseFloat(contactDetails.get("cs_23_set_weight").value);
+      c2 = c2 + parseFloat(contactDetails.get("cs_23_set_weight").value);
     ////////////////////////////////////////////////////////////////////////////////////////////////
     const personalDetails = this.masterForm.controls['personalDetails'];
     if (!isNaN(parseFloat(personalDetails.get("silo_31_set_weight").value)))
-      this.compThree = this.compThree + parseFloat(personalDetails.get("silo_31_set_weight").value);
+      c3 = c3 + parseFloat(personalDetails.get("silo_31_set_weight").value);
 
     if (!isNaN(parseFloat(personalDetails.get("silo_32_set_weight").value)))
-      this.compThree = this.compThree + parseFloat(personalDetails.get("silo_32_set_weight").value);
+      c3 = c3 + parseFloat(personalDetails.get("silo_32_set_weight").value);
 
     if (!isNaN(parseFloat(personalDetails.get("silo_33_set_weight").value)))
-      this.compThree = this.compThree + parseFloat(personalDetails.get("silo_33_set_weight").value);
+      c3 = c3 + parseFloat(personalDetails.get("silo_33_set_weight").value);
 
     if (!isNaN(parseFloat(personalDetails.get("cs_31_set_weight").value)))
-      this.compThree = this.compThree + parseFloat(personalDetails.get("cs_31_set_weight").value);
+      c3 = c3 + parseFloat(personalDetails.get("cs_31_set_weight").value);
 
     if (!isNaN(parseFloat(personalDetails.get("cs_32_set_weight").value)))
-      this.compThree = this.compThree + parseFloat(personalDetails.get("cs_32_set_weight").value);
+      c3 = c3 + parseFloat(personalDetails.get("cs_32_set_weight").value);
 
     if (!isNaN(parseFloat(personalDetails.get("cs_33_set_weight").value)))
-      this.compThree = this.compThree + parseFloat(personalDetails.get("cs_33_set_weight").value);
-
-    this.compBatchSize = (this.compOne + this.compTwo + this.compThree);
+      c3 = c3 + parseFloat(personalDetails.get("cs_33_set_weight").value);
+    this.compOne = c1;
+    this.compTwo = c2;
+    this.compThree = c3;
+    this.compBatchSize = (c1 + c2 + c3);
 
   }
 

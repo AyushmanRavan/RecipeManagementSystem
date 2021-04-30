@@ -35,7 +35,11 @@
       </mat-checkbox> -->
 
     </div>
-    <h2>batch size: {{compBatchSize}}</h2>
+    <div fxLayout="row" fxLayoutAlign="space-around center">
+      <h3>Batch Size (kg) = {{compBatchSize}}</h3>
+      <h3></h3>
+      <h3></h3>
+    </div>
     <div class="controls">
       <button *ngIf="activeStepIndex != 1" (click)="goToPrevious()">Previous</button>
       <button *ngIf="activeStepIndex != 3" (click)="goToNext()">Next</button>
@@ -51,6 +55,11 @@
 
     <div *ngIf="activeStepIndex == 1">
       <h2>Comp-1</h2>
+      <div fxLayout="row" fxLayoutAlign="space-around center">
+        <h3>Comp1 Size (kg) = {{compOne}}</h3>
+        <h3></h3>
+        <h3></h3>
+      </div>
       <div formGroupName="userDetails">
         <!-- Silo-11,Silo-12,CS-11 -->
         <div fxLayout="row" fxLayoutAlign="space-around center">
@@ -192,8 +201,9 @@
               </div>
 
               <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-                
-                <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('silo_11')">Reset Silo 11</button></div>
+
+                <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('silo_11')">Reset Silo
+                    11</button></div>
               </div>
             </fieldset>
           </div>
@@ -325,8 +335,9 @@
                 </div>
               </div>
               <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-                
-                 <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('silo_12')">Reset Silo 12</button></div>
+
+                <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('silo_12')">Reset Silo
+                    12</button></div>
               </div>
             </fieldset>
           </div>
@@ -457,8 +468,9 @@
                 </div>
               </div>
               <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-                
-                 <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('cs_11')">Reset CS 11</button></div>
+
+                <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('cs_11')">Reset CS
+                    11</button></div>
               </div>
             </fieldset>
           </div>
@@ -593,8 +605,9 @@
                 </div>
               </div>
               <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-                
-                 <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('cs_12')">Reset CS 12</button></div>
+
+                <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('cs_12')">Reset CS
+                    12</button></div>
               </div>
             </fieldset>
           </div>
@@ -765,8 +778,9 @@
                 </div>
               </div>
               <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-                
-                 <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('cs_13')">Reset CS 13</button></div>
+
+                <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('cs_13')">Reset CS
+                    13</button></div>
               </div>
             </fieldset>
           </div>
@@ -940,8 +954,9 @@
                 </div>
               </div>
               <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-                
-                 <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('cs_14')">Reset CS 14</button></div>
+
+                <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('cs_14')">Reset CS
+                    14</button></div>
               </div>
             </fieldset>
           </div>
@@ -951,6 +966,11 @@
 
     <div *ngIf="activeStepIndex == 2">
       <h2>Comp-2</h2>
+      <div fxLayout="row" fxLayoutAlign="space-around center">
+        <h3>Comp2 Size (kg) = {{compTwo}}</h3>
+        <h3></h3>
+        <h3></h3>
+      </div>
       <div formGroupName="contactDetails">
         <div fxLayout="row" fxLayoutAlign="space-around center">
           <!-- SILO-21  -->
@@ -1138,8 +1158,9 @@
                 </div>
               </div>
               <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-                
-                 <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('silo_21')">Reset Silo 21</button></div>
+
+                <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('silo_21')">Reset Silo
+                    21</button></div>
               </div>
             </fieldset>
           </div>
@@ -1359,8 +1380,9 @@
                 </div>
               </div>
               <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-                
-                 <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('silo_22')">Reset Silo 22</button></div>
+
+                <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('silo_22')">Reset Silo
+                    22</button></div>
               </div>
             </fieldset>
           </div>
@@ -1581,8 +1603,9 @@
                 </div>
               </div>
               <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-                
-                 <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('silo_23')">Reset Silo 23</button></div>
+
+                <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('silo_23')">Reset Silo
+                    23</button></div>
               </div>
             </fieldset>
           </div>
@@ -1805,8 +1828,9 @@
                 </div>
               </div>
               <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-                
-                 <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('cs_21')">Reset CS 21</button></div>
+
+                <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('cs_21')">Reset CS
+                    21</button></div>
               </div>
             </fieldset>
           </div>
@@ -2027,8 +2051,9 @@
                 </div>
               </div>
               <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-                
-                 <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('cs_22')">Reset CS 22</button></div>
+
+                <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('cs_22')">Reset CS
+                    22</button></div>
               </div>
             </fieldset>
           </div>
@@ -2258,8 +2283,9 @@
               </div>
 
               <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-                
-                 <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('cs_23')">Reset CS 23</button></div>
+
+                <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('cs_23')">Reset CS
+                    23</button></div>
               </div>
             </fieldset>
           </div>
@@ -2268,9 +2294,12 @@
     </div>
 
     <div *ngIf="activeStepIndex == 3">
-      <h2>
-        Comp-3
-      </h2>
+      <h2>Comp-3</h2>
+      <div fxLayout="row" fxLayoutAlign="space-around center">
+        <h3>Comp3 Size (kg) = {{compThree}}</h3>
+        <h3></h3>
+        <h3></h3>
+      </div>
       <div formGroupName="personalDetails">
         <!-- SILO-31  -->
         <div fxLayout="row" fxLayoutAlign="space-around center">
@@ -2498,8 +2527,9 @@
               </div>
 
               <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-                
-                 <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('silo_31')">Reset Silo 31</button></div>
+
+                <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('silo_31')">Reset Silo
+                    31</button></div>
               </div>
 
             </fieldset>
@@ -2726,8 +2756,9 @@
               </div>
 
               <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-                
-                 <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('silo_32')">Reset Silo 32</button></div>
+
+                <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('silo_32')">Reset Silo
+                    32</button></div>
               </div>
             </fieldset>
           </div>
@@ -2950,8 +2981,9 @@
                 </div>
               </div>
               <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-                
-                 <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('silo_33')">Reset Silo 33</button></div>
+
+                <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('silo_33')">Reset Silo
+                    33</button></div>
               </div>
             </fieldset>
           </div>
@@ -3180,8 +3212,9 @@
 
 
               <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-                
-                 <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('cs_31')">Reset CS 31</button></div>
+
+                <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('cs_31')">Reset CS
+                    31</button></div>
               </div>
 
             </fieldset>
@@ -3415,8 +3448,9 @@
                 </div>
               </div>
               <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-                
-                 <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('cs_32')">Reset CS 32</button></div>
+
+                <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('cs_32')">Reset CS
+                    32</button></div>
               </div>
             </fieldset>
           </div>
@@ -3648,8 +3682,9 @@
                 </div>
               </div>
               <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-                
-                 <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('cs_33')">Reset CS 33</button></div>
+
+                <div fxFlex="100%" fxLayoutAlign="center center"><button (click)="resetFormData('cs_33')">Reset CS
+                    33</button></div>
               </div>
             </fieldset>
           </div>
