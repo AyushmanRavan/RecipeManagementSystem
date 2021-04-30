@@ -14,7 +14,7 @@ import { GlobalErrorHandler } from '../core/services/error-handler';
 export class CalculatedRecipeDataComponent implements OnInit {
   @Input() inputData: any;
   @Input() inputType: boolean;
- 
+
   errMessage: string;
   activeStepIndex: any = 1;
   submitted: boolean = false;
@@ -22,8 +22,12 @@ export class CalculatedRecipeDataComponent implements OnInit {
   masterForm: FormGroup;
   username: string;
   id!: string;
-  buttonType = "Reset";
-  match: string
+  match: string;
+  compOne = 0;
+  compTwo = 0;
+  compThree = 0;
+  compBatchSize = 0;
+
   constructor(
     private route: ActivatedRoute, private router: Router,
     private configurationService: ConfigurationService, private error: GlobalErrorHandler,
@@ -32,6 +36,67 @@ export class CalculatedRecipeDataComponent implements OnInit {
     this.createMasterForm();
   }
 
+  calculateBatchSize() {
+    const userDetails = this.masterForm.controls['userDetails'];
+    if (!isNaN(parseFloat(userDetails.get("silo_11_set_weight").value)))
+      this.compOne = this.compOne + parseFloat(userDetails.get("silo_11_set_weight").value);
+
+    if (!isNaN(parseFloat(userDetails.get("silo_12_set_weight").value)))
+      this.compOne = this.compOne + parseFloat(userDetails.get("silo_12_set_weight").value);
+
+    if (!isNaN(parseFloat(userDetails.get("cs_11_set_weight").value)))
+      this.compOne = this.compOne + parseFloat(userDetails.get("cs_11_set_weight").value);
+
+    if (!isNaN(parseFloat(userDetails.get("cs_12_set_weight").value)))
+      this.compOne = this.compOne + parseFloat(userDetails.get("cs_12_set_weight").value);
+
+    if (!isNaN(parseFloat(userDetails.get("cs_13_set_weight").value)))
+      this.compOne = this.compOne + parseFloat(userDetails.get("cs_13_set_weight").value);
+
+    if (!isNaN(parseFloat(userDetails.get("cs_14_set_weight").value)))
+      this.compOne = this.compOne + parseFloat(userDetails.get("cs_14_set_weight").value);
+
+    const contactDetails = this.masterForm.controls['contactDetails'];
+    if (!isNaN(parseFloat(contactDetails.get("silo_21_set_weight").value)))
+      this.compTwo = this.compTwo + parseFloat(contactDetails.get("silo_21_set_weight").value);
+
+    if (!isNaN(parseFloat(contactDetails.get("silo_22_set_weight").value)))
+      this.compTwo = this.compTwo + parseFloat(contactDetails.get("silo_22_set_weight").value);
+
+    if (!isNaN(parseFloat(contactDetails.get("silo_23_set_weight").value)))
+      this.compTwo = this.compTwo + parseFloat(contactDetails.get("silo_23_set_weight").value);
+
+    if (!isNaN(parseFloat(contactDetails.get("cs_21_set_weight").value)))
+      this.compTwo = this.compTwo + parseFloat(contactDetails.get("cs_21_set_weight").value);
+
+    if (!isNaN(parseFloat(contactDetails.get("cs_22_set_weight").value)))
+      this.compTwo = this.compTwo + parseFloat(contactDetails.get("cs_22_set_weight").value);
+
+    if (!isNaN(parseFloat(contactDetails.get("cs_23_set_weight").value)))
+      this.compTwo = this.compTwo + parseFloat(contactDetails.get("cs_23_set_weight").value);
+
+    const personalDetails = this.masterForm.controls['personalDetails'];
+    if (!isNaN(parseFloat(personalDetails.get("silo_31_set_weight").value)))
+      this.compThree = this.compThree + parseFloat(personalDetails.get("silo_31_set_weight").value);
+
+    if (!isNaN(parseFloat(personalDetails.get("silo_32_set_weight").value)))
+      this.compThree = this.compThree + parseFloat(personalDetails.get("silo_32_set_weight").value);
+
+    if (!isNaN(parseFloat(personalDetails.get("silo_33_set_weight").value)))
+      this.compThree = this.compThree + parseFloat(personalDetails.get("silo_33_set_weight").value);
+
+    if (!isNaN(parseFloat(personalDetails.get("cs_31_set_weight").value)))
+      this.compThree = this.compThree + parseFloat(personalDetails.get("cs_31_set_weight").value);
+
+    if (!isNaN(parseFloat(personalDetails.get("cs_32_set_weight").value)))
+      this.compThree = this.compThree + parseFloat(personalDetails.get("cs_32_set_weight").value);
+
+    if (!isNaN(parseFloat(personalDetails.get("cs_33_set_weight").value)))
+      this.compThree = this.compThree + parseFloat(personalDetails.get("cs_33_set_weight").value);
+
+    this.compBatchSize = this.compBatchSize + (this.compOne + this.compTwo + this.compThree);
+
+  }
 
   resetFormData(silo) {
     const userDetails = this.masterForm.controls['userDetails'];
@@ -480,31 +545,9 @@ export class CalculatedRecipeDataComponent implements OnInit {
   ngOnInit(): void {
     this.doMapping(this.inputData, true)
 
-
     const userDetails = this.masterForm.controls['userDetails'];
     const contactDetails = this.masterForm.controls['contactDetails'];
     const personalDetails = this.masterForm.controls['personalDetails'];
-
-    // userDetails.get("silo_11_set_weight").disable()
-    // userDetails.get("silo_12_set_weight").disable()
-    // userDetails.get("cs_11_set_weight").disable()
-    // userDetails.get("cs_12_set_weight").disable()
-    // userDetails.get("cs_13_set_weight").disable()
-    // userDetails.get("cs_14_set_weight").disable()
-
-    // contactDetails.get("silo_21_set_weight").disable()
-    // contactDetails.get("silo_22_set_weight").disable()
-    // contactDetails.get("silo_23_set_weight").disable()
-    // contactDetails.get("cs_21_set_weight").disable()
-    // contactDetails.get("cs_22_set_weight").disable()
-    // contactDetails.get("cs_23_set_weight").disable()
-
-    // personalDetails.get("silo_31_set_weight").disable()
-    // personalDetails.get("silo_32_set_weight").disable()
-    // personalDetails.get("silo_33_set_weight").disable()
-    // personalDetails.get("cs_31_set_weight").disable()
-    // personalDetails.get("cs_32_set_weight").disable()
-    // personalDetails.get("cs_33_set_weight").disable()
 
     userDetails.get("silo_11_course_weight").valueChanges.subscribe(selectedValue => {
       let totalValue = 0;
@@ -520,7 +563,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(userDetails.get("silo_11_inflight_weight").value)))
         totalValue = totalValue + parseFloat(userDetails.get("silo_11_inflight_weight").value);
 
-      userDetails.get("silo_11_set_weight").setValue(totalValue)
+      userDetails.get("silo_11_set_weight").setValue(totalValue);
+      this.calculateBatchSize();
     })
 
     userDetails.get("silo_11_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -537,7 +581,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(userDetails.get("silo_11_inflight_weight").value)))
         totalValue = totalValue + parseFloat(userDetails.get("silo_11_inflight_weight").value);
 
-      userDetails.get("silo_11_set_weight").setValue(totalValue)
+      userDetails.get("silo_11_set_weight").setValue(totalValue);
+      this.calculateBatchSize();
     })
 
     userDetails.get("silo_11_extra_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -554,7 +599,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(userDetails.get("silo_11_inflight_weight").value)))
         totalValue = totalValue + parseFloat(userDetails.get("silo_11_inflight_weight").value);
 
-      userDetails.get("silo_11_set_weight").setValue(totalValue)
+      userDetails.get("silo_11_set_weight").setValue(totalValue);
+      this.calculateBatchSize();
     })
 
     userDetails.get("silo_11_inflight_weight").valueChanges.subscribe(selectedValue => {
@@ -571,7 +617,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(userDetails.get("silo_11_fine_weight").value)))
         totalValue = totalValue + parseFloat(userDetails.get("silo_11_fine_weight").value);
 
-      userDetails.get("silo_11_set_weight").setValue(totalValue)
+      userDetails.get("silo_11_set_weight").setValue(totalValue);
+      this.calculateBatchSize();
     })
 
     /////////
@@ -590,7 +637,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(userDetails.get("silo_12_inflight_weight").value)))
         totalValue = totalValue + parseFloat(userDetails.get("silo_12_inflight_weight").value);
 
-      userDetails.get("silo_12_set_weight").setValue(totalValue)
+      userDetails.get("silo_12_set_weight").setValue(totalValue);
+      this.calculateBatchSize();
     })
 
     userDetails.get("silo_12_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -607,7 +655,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(userDetails.get("silo_12_inflight_weight").value)))
         totalValue = totalValue + parseFloat(userDetails.get("silo_12_inflight_weight").value);
 
-      userDetails.get("silo_12_set_weight").setValue(totalValue)
+      userDetails.get("silo_12_set_weight").setValue(totalValue);
+      this.calculateBatchSize();
     })
 
     userDetails.get("silo_12_extra_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -624,7 +673,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(userDetails.get("silo_12_inflight_weight").value)))
         totalValue = totalValue + parseFloat(userDetails.get("silo_12_inflight_weight").value);
 
-      userDetails.get("silo_12_set_weight").setValue(totalValue)
+      userDetails.get("silo_12_set_weight").setValue(totalValue);
+      this.calculateBatchSize();
     })
 
     userDetails.get("silo_12_inflight_weight").valueChanges.subscribe(selectedValue => {
@@ -641,7 +691,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(userDetails.get("silo_12_inflight_weight").value)))
         totalValue = totalValue + parseFloat(userDetails.get("silo_12_inflight_weight").value);
 
-      userDetails.get("silo_12_set_weight").setValue(totalValue)
+      userDetails.get("silo_12_set_weight").setValue(totalValue);
+      this.calculateBatchSize();
     })
 
     userDetails.get("cs_11_course_weight").valueChanges.subscribe(selectedValue => {
@@ -659,7 +710,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(userDetails.get("cs_11_course_weight").value)))
         totalValue = totalValue + parseFloat(userDetails.get("cs_11_course_weight").value);
 
-      userDetails.get("cs_11_set_weight").setValue(totalValue)
+      userDetails.get("cs_11_set_weight").setValue(totalValue);
+       this.calculateBatchSize();
     })
 
     userDetails.get("cs_11_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -676,7 +728,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(userDetails.get("cs_11_course_weight").value)))
         totalValue = totalValue + parseFloat(userDetails.get("cs_11_course_weight").value);
 
-      userDetails.get("cs_11_set_weight").setValue(totalValue)
+      userDetails.get("cs_11_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     userDetails.get("cs_11_extra_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -693,7 +746,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(userDetails.get("cs_11_inflight_weight").value)))
         totalValue = totalValue + parseFloat(userDetails.get("cs_11_inflight_weight").value);
 
-      userDetails.get("cs_11_set_weight").setValue(totalValue)
+      userDetails.get("cs_11_set_weight").setValue(totalValue);
+       this.calculateBatchSize();
     })
 
     userDetails.get("cs_11_inflight_weight").valueChanges.subscribe(selectedValue => {
@@ -710,7 +764,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(userDetails.get("cs_11_inflight_weight").value)))
         totalValue = totalValue + parseFloat(userDetails.get("cs_11_inflight_weight").value);
 
-      userDetails.get("cs_11_set_weight").setValue(totalValue)
+      userDetails.get("cs_11_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
     userDetails.get("cs_12_course_weight").valueChanges.subscribe(selectedValue => {
 
@@ -727,7 +782,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(userDetails.get("cs_12_fine_weight").value)))
         totalValue = totalValue + parseFloat(userDetails.get("cs_12_fine_weight").value);
 
-      userDetails.get("cs_12_set_weight").setValue(totalValue)
+      userDetails.get("cs_12_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     userDetails.get("cs_12_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -744,7 +800,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(userDetails.get("cs_12_fine_weight").value)))
         totalValue = totalValue + parseFloat(userDetails.get("cs_12_fine_weight").value);
 
-      userDetails.get("cs_12_set_weight").setValue(totalValue)
+      userDetails.get("cs_12_set_weight").setValue(totalValue);
+       this.calculateBatchSize();
     })
 
     userDetails.get("cs_12_extra_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -761,7 +818,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(userDetails.get("cs_12_fine_weight").value)))
         totalValue = totalValue + parseFloat(userDetails.get("cs_12_fine_weight").value);
 
-      userDetails.get("cs_12_set_weight").setValue(totalValue)
+      userDetails.get("cs_12_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     userDetails.get("cs_12_inflight_weight").valueChanges.subscribe(selectedValue => {
@@ -778,7 +836,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(userDetails.get("cs_12_fine_weight").value)))
         totalValue = totalValue + parseFloat(userDetails.get("cs_12_fine_weight").value);
 
-      userDetails.get("cs_12_set_weight").setValue(totalValue)
+      userDetails.get("cs_12_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
     userDetails.get("cs_13_course_weight").valueChanges.subscribe(selectedValue => {
 
@@ -795,7 +854,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(userDetails.get("cs_13_course_weight").value)))
         totalValue = totalValue + parseFloat(userDetails.get("cs_13_course_weight").value);
 
-      userDetails.get("cs_13_set_weight").setValue(totalValue)
+      userDetails.get("cs_13_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     userDetails.get("cs_13_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -812,7 +872,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(userDetails.get("cs_13_course_weight").value)))
         totalValue = totalValue + parseFloat(userDetails.get("cs_13_course_weight").value);
 
-      userDetails.get("cs_13_set_weight").setValue(totalValue)
+      userDetails.get("cs_13_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     userDetails.get("cs_13_extra_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -829,7 +890,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(userDetails.get("cs_13_extra_fine_weight").value)))
         totalValue = totalValue + parseFloat(userDetails.get("cs_13_extra_fine_weight").value);
 
-      userDetails.get("cs_13_set_weight").setValue(totalValue)
+      userDetails.get("cs_13_set_weight").setValue(totalValue);
+       this.calculateBatchSize();
     })
 
     userDetails.get("cs_13_inflight_weight").valueChanges.subscribe(selectedValue => {
@@ -846,7 +908,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(userDetails.get("cs_13_extra_fine_weight").value)))
         totalValue = totalValue + parseFloat(userDetails.get("cs_13_extra_fine_weight").value);
 
-      userDetails.get("cs_13_set_weight").setValue(totalValue)
+      userDetails.get("cs_13_set_weight").setValue(totalValue);
+       this.calculateBatchSize();
     })
 
 
@@ -864,7 +927,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
 
       if (!isNaN(parseFloat(userDetails.get("cs_14_course_weight").value)))
         totalValue = totalValue + parseFloat(userDetails.get("cs_14_course_weight").value);
-      userDetails.get("cs_14_set_weight").setValue(totalValue)
+      userDetails.get("cs_14_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     userDetails.get("cs_14_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -881,7 +945,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
 
       if (!isNaN(parseFloat(userDetails.get("cs_14_course_weight").value)))
         totalValue = totalValue + parseFloat(userDetails.get("cs_14_course_weight").value);
-      userDetails.get("cs_14_set_weight").setValue(totalValue)
+      userDetails.get("cs_14_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     userDetails.get("cs_14_extra_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -898,7 +963,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
 
       if (!isNaN(parseFloat(userDetails.get("cs_14_course_weight").value)))
         totalValue = totalValue + parseFloat(userDetails.get("cs_14_course_weight").value);
-      userDetails.get("cs_14_set_weight").setValue(totalValue)
+      userDetails.get("cs_14_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     userDetails.get("cs_14_inflight_weight").valueChanges.subscribe(selectedValue => {
@@ -915,7 +981,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
 
       if (!isNaN(parseFloat(userDetails.get("cs_14_course_weight").value)))
         totalValue = totalValue + parseFloat(userDetails.get("cs_14_course_weight").value);
-      userDetails.get("cs_14_set_weight").setValue(totalValue)
+      userDetails.get("cs_14_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
     ///////////////////////////////////////
     /////////////////////////////////////////
@@ -933,7 +1000,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
 
       if (!isNaN(parseFloat(contactDetails.get("silo_21_course_weight").value)))
         totalValue = totalValue + parseFloat(contactDetails.get("silo_21_course_weight").value);
-      contactDetails.get("silo_21_set_weight").setValue(totalValue)
+      contactDetails.get("silo_21_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     contactDetails.get("silo_21_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -949,7 +1017,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
 
       if (!isNaN(parseFloat(contactDetails.get("silo_21_course_weight").value)))
         totalValue = totalValue + parseFloat(contactDetails.get("silo_21_course_weight").value);
-      contactDetails.get("silo_21_set_weight").setValue(totalValue)
+      contactDetails.get("silo_21_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     contactDetails.get("silo_21_extra_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -965,7 +1034,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
 
       if (!isNaN(parseFloat(contactDetails.get("silo_21_course_weight").value)))
         totalValue = totalValue + parseFloat(contactDetails.get("silo_21_course_weight").value);
-      contactDetails.get("silo_21_set_weight").setValue(totalValue)
+      contactDetails.get("silo_21_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     contactDetails.get("silo_21_inflight_weight").valueChanges.subscribe(selectedValue => {
@@ -981,7 +1051,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
 
       if (!isNaN(parseFloat(contactDetails.get("silo_21_course_weight").value)))
         totalValue = totalValue + parseFloat(contactDetails.get("silo_21_course_weight").value);
-      contactDetails.get("silo_21_set_weight").setValue(totalValue)
+      contactDetails.get("silo_21_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
 
@@ -1000,7 +1071,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(contactDetails.get("silo_22_inflight_weight").value)))
         totalValue = totalValue + parseFloat(contactDetails.get("silo_22_inflight_weight").value);
 
-      contactDetails.get("silo_22_set_weight").setValue(totalValue)
+      contactDetails.get("silo_22_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     contactDetails.get("silo_22_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -1017,7 +1089,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(contactDetails.get("silo_22_inflight_weight").value)))
         totalValue = totalValue + parseFloat(contactDetails.get("silo_22_inflight_weight").value);
 
-      contactDetails.get("silo_22_set_weight").setValue(totalValue)
+      contactDetails.get("silo_22_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     contactDetails.get("silo_22_extra_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -1034,7 +1107,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(contactDetails.get("silo_22_inflight_weight").value)))
         totalValue = totalValue + parseFloat(contactDetails.get("silo_22_inflight_weight").value);
 
-      contactDetails.get("silo_22_set_weight").setValue(totalValue)
+      contactDetails.get("silo_22_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     contactDetails.get("silo_22_inflight_weight").valueChanges.subscribe(selectedValue => {
@@ -1051,7 +1125,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(contactDetails.get("silo_22_inflight_weight").value)))
         totalValue = totalValue + parseFloat(contactDetails.get("silo_22_inflight_weight").value);
 
-      contactDetails.get("silo_22_set_weight").setValue(totalValue)
+      contactDetails.get("silo_22_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     contactDetails.get("silo_23_course_weight").valueChanges.subscribe(selectedValue => {
@@ -1069,7 +1144,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(contactDetails.get("silo_23_inflight_weight").value)))
         totalValue = totalValue + parseFloat(contactDetails.get("silo_23_inflight_weight").value);
 
-      contactDetails.get("silo_23_set_weight").setValue(totalValue)
+      contactDetails.get("silo_23_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     contactDetails.get("silo_23_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -1086,7 +1162,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(contactDetails.get("silo_23_inflight_weight").value)))
         totalValue = totalValue + parseFloat(contactDetails.get("silo_23_inflight_weight").value);
 
-      contactDetails.get("silo_23_set_weight").setValue(totalValue)
+      contactDetails.get("silo_23_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     contactDetails.get("silo_23_extra_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -1103,7 +1180,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(contactDetails.get("silo_23_inflight_weight").value)))
         totalValue = totalValue + parseFloat(contactDetails.get("silo_23_inflight_weight").value);
 
-      contactDetails.get("silo_23_set_weight").setValue(totalValue)
+      contactDetails.get("silo_23_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     contactDetails.get("silo_23_inflight_weight").valueChanges.subscribe(selectedValue => {
@@ -1120,7 +1198,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(contactDetails.get("silo_23_inflight_weight").value)))
         totalValue = totalValue + parseFloat(contactDetails.get("silo_23_inflight_weight").value);
 
-      contactDetails.get("silo_23_set_weight").setValue(totalValue)
+      contactDetails.get("silo_23_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     contactDetails.get("cs_21_course_weight").valueChanges.subscribe(selectedValue => {
@@ -1138,7 +1217,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(contactDetails.get("cs_21_course_weight").value)))
         totalValue = totalValue + parseFloat(contactDetails.get("cs_21_course_weight").value);
 
-      contactDetails.get("cs_21_set_weight").setValue(totalValue)
+      contactDetails.get("cs_21_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     contactDetails.get("cs_21_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -1155,7 +1235,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(contactDetails.get("cs_21_course_weight").value)))
         totalValue = totalValue + parseFloat(contactDetails.get("cs_21_course_weight").value);
 
-      contactDetails.get("cs_21_set_weight").setValue(totalValue)
+      contactDetails.get("cs_21_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     contactDetails.get("cs_21_extra_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -1172,7 +1253,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(contactDetails.get("cs_21_course_weight").value)))
         totalValue = totalValue + parseFloat(contactDetails.get("cs_21_course_weight").value);
 
-      contactDetails.get("cs_21_set_weight").setValue(totalValue)
+      contactDetails.get("cs_21_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     contactDetails.get("cs_21_inflight_weight").valueChanges.subscribe(selectedValue => {
@@ -1189,7 +1271,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(contactDetails.get("cs_21_course_weight").value)))
         totalValue = totalValue + parseFloat(contactDetails.get("cs_21_course_weight").value);
 
-      contactDetails.get("cs_21_set_weight").setValue(totalValue)
+      contactDetails.get("cs_21_set_weight").setValue(totalValue);
+       this.calculateBatchSize();
     })
     contactDetails.get("cs_22_course_weight").valueChanges.subscribe(selectedValue => {
 
@@ -1206,7 +1289,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(contactDetails.get("cs_22_inflight_weight").value)))
         totalValue = totalValue + parseFloat(contactDetails.get("cs_22_inflight_weight").value);
 
-      contactDetails.get("cs_22_set_weight").setValue(totalValue)
+      contactDetails.get("cs_22_set_weight").setValue(totalValue);
+       this.calculateBatchSize();
     })
 
     contactDetails.get("cs_22_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -1223,7 +1307,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(contactDetails.get("cs_22_inflight_weight").value)))
         totalValue = totalValue + parseFloat(contactDetails.get("cs_22_inflight_weight").value);
 
-      contactDetails.get("cs_22_set_weight").setValue(totalValue)
+      contactDetails.get("cs_22_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     contactDetails.get("cs_22_extra_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -1240,7 +1325,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(contactDetails.get("cs_22_inflight_weight").value)))
         totalValue = totalValue + parseFloat(contactDetails.get("cs_22_inflight_weight").value);
 
-      contactDetails.get("cs_22_set_weight").setValue(totalValue)
+      contactDetails.get("cs_22_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     contactDetails.get("cs_22_inflight_weight").valueChanges.subscribe(selectedValue => {
@@ -1257,7 +1343,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(contactDetails.get("cs_22_inflight_weight").value)))
         totalValue = totalValue + parseFloat(contactDetails.get("cs_22_inflight_weight").value);
 
-      contactDetails.get("cs_22_set_weight").setValue(totalValue)
+      contactDetails.get("cs_22_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
     contactDetails.get("cs_23_course_weight").valueChanges.subscribe(selectedValue => {
 
@@ -1274,7 +1361,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(contactDetails.get("cs_23_course_weight").value)))
         totalValue = totalValue + parseFloat(contactDetails.get("cs_23_course_weight").value);
 
-      contactDetails.get("cs_23_set_weight").setValue(totalValue)
+      contactDetails.get("cs_23_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     contactDetails.get("cs_23_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -1291,7 +1379,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(contactDetails.get("cs_23_course_weight").value)))
         totalValue = totalValue + parseFloat(contactDetails.get("cs_23_course_weight").value);
 
-      contactDetails.get("cs_23_set_weight").setValue(totalValue)
+      contactDetails.get("cs_23_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     contactDetails.get("cs_23_extra_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -1308,7 +1397,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(contactDetails.get("cs_23_course_weight").value)))
         totalValue = totalValue + parseFloat(contactDetails.get("cs_23_course_weight").value);
 
-      contactDetails.get("cs_23_set_weight").setValue(totalValue)
+      contactDetails.get("cs_23_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     contactDetails.get("cs_23_inflight_weight").valueChanges.subscribe(selectedValue => {
@@ -1325,7 +1415,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(contactDetails.get("cs_23_course_weight").value)))
         totalValue = totalValue + parseFloat(contactDetails.get("cs_23_course_weight").value);
 
-      contactDetails.get("cs_23_set_weight").setValue(totalValue)
+      contactDetails.get("cs_23_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
     ///////////////////////////////////////////
     //////////////////////////////////////////
@@ -1344,7 +1435,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(personalDetails.get("silo_31_inflight_weight").value)))
         totalValue = totalValue + parseFloat(personalDetails.get("silo_31_inflight_weight").value);
 
-      personalDetails.get("silo_31_set_weight").setValue(totalValue)
+      personalDetails.get("silo_31_set_weight").setValue(totalValue);
+       this.calculateBatchSize();
     })
 
     personalDetails.get("silo_31_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -1361,7 +1453,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(personalDetails.get("silo_31_inflight_weight").value)))
         totalValue = totalValue + parseFloat(personalDetails.get("silo_31_inflight_weight").value);
 
-      personalDetails.get("silo_31_set_weight").setValue(totalValue)
+      personalDetails.get("silo_31_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     personalDetails.get("silo_31_extra_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -1378,7 +1471,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(personalDetails.get("silo_31_inflight_weight").value)))
         totalValue = totalValue + parseFloat(personalDetails.get("silo_31_inflight_weight").value);
 
-      personalDetails.get("silo_31_set_weight").setValue(totalValue)
+      personalDetails.get("silo_31_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     personalDetails.get("silo_31_inflight_weight").valueChanges.subscribe(selectedValue => {
@@ -1395,7 +1489,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(personalDetails.get("silo_31_inflight_weight").value)))
         totalValue = totalValue + parseFloat(personalDetails.get("silo_31_inflight_weight").value);
 
-      personalDetails.get("silo_31_set_weight").setValue(totalValue)
+      personalDetails.get("silo_31_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     personalDetails.get("silo_32_course_weight").valueChanges.subscribe(selectedValue => {
@@ -1412,7 +1507,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(personalDetails.get("silo_32_course_weight").value)))
         totalValue = totalValue + parseFloat(personalDetails.get("silo_32_course_weight").value);
 
-      personalDetails.get("silo_32_set_weight").setValue(totalValue)
+      personalDetails.get("silo_32_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     personalDetails.get("silo_32_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -1429,7 +1525,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(personalDetails.get("silo_32_course_weight").value)))
         totalValue = totalValue + parseFloat(personalDetails.get("silo_32_course_weight").value);
 
-      personalDetails.get("silo_32_set_weight").setValue(totalValue)
+      personalDetails.get("silo_32_set_weight").setValue(totalValue);
+       this.calculateBatchSize();
     })
 
     personalDetails.get("silo_32_extra_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -1446,7 +1543,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(personalDetails.get("silo_32_course_weight").value)))
         totalValue = totalValue + parseFloat(personalDetails.get("silo_32_course_weight").value);
 
-      personalDetails.get("silo_32_set_weight").setValue(totalValue)
+      personalDetails.get("silo_32_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     personalDetails.get("silo_32_inflight_weight").valueChanges.subscribe(selectedValue => {
@@ -1463,7 +1561,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(personalDetails.get("silo_32_course_weight").value)))
         totalValue = totalValue + parseFloat(personalDetails.get("silo_32_course_weight").value);
 
-      personalDetails.get("silo_32_set_weight").setValue(totalValue)
+      personalDetails.get("silo_32_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
 
@@ -1481,7 +1580,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(personalDetails.get("silo_33_fine_weight").value)))
         totalValue = totalValue + parseFloat(personalDetails.get("silo_33_fine_weight").value);
 
-      personalDetails.get("silo_33_set_weight").setValue(totalValue)
+      personalDetails.get("silo_33_set_weight").setValue(totalValue);
+       this.calculateBatchSize();
     })
 
     personalDetails.get("silo_33_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -1498,7 +1598,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(personalDetails.get("silo_33_fine_weight").value)))
         totalValue = totalValue + parseFloat(personalDetails.get("silo_33_fine_weight").value);
 
-      personalDetails.get("silo_33_set_weight").setValue(totalValue)
+      personalDetails.get("silo_33_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     personalDetails.get("silo_33_extra_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -1515,7 +1616,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(personalDetails.get("silo_33_fine_weight").value)))
         totalValue = totalValue + parseFloat(personalDetails.get("silo_33_fine_weight").value);
 
-      personalDetails.get("silo_33_set_weight").setValue(totalValue)
+      personalDetails.get("silo_33_set_weight").setValue(totalValue);
+       this.calculateBatchSize();
     })
 
     personalDetails.get("silo_33_inflight_weight").valueChanges.subscribe(selectedValue => {
@@ -1533,7 +1635,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(personalDetails.get("silo_33_fine_weight").value)))
         totalValue = totalValue + parseFloat(personalDetails.get("silo_33_fine_weight").value);
 
-      personalDetails.get("silo_33_set_weight").setValue(totalValue)
+      personalDetails.get("silo_33_set_weight").setValue(totalValue);
+       this.calculateBatchSize();
     })
 
     personalDetails.get("cs_31_course_weight").valueChanges.subscribe(selectedValue => {
@@ -1552,7 +1655,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(personalDetails.get("cs_31_course_weight").value)))
         totalValue = totalValue + parseFloat(personalDetails.get("cs_31_course_weight").value);
 
-      personalDetails.get("cs_31_set_weight").setValue(totalValue)
+      personalDetails.get("cs_31_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     personalDetails.get("cs_31_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -1569,7 +1673,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(personalDetails.get("cs_31_fine_weight").value)))
         totalValue = totalValue + parseFloat(personalDetails.get("cs_31_fine_weight").value);
 
-      personalDetails.get("cs_31_set_weight").setValue(totalValue)
+      personalDetails.get("cs_31_set_weight").setValue(totalValue);
+       this.calculateBatchSize();
     })
 
     personalDetails.get("cs_31_extra_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -1586,7 +1691,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(personalDetails.get("cs_31_course_weight").value)))
         totalValue = totalValue + parseFloat(personalDetails.get("cs_31_course_weight").value);
 
-      personalDetails.get("cs_31_set_weight").setValue(totalValue)
+      personalDetails.get("cs_31_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     personalDetails.get("cs_31_inflight_weight").valueChanges.subscribe(selectedValue => {
@@ -1604,7 +1710,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(personalDetails.get("cs_31_course_weight").value)))
         totalValue = totalValue + parseFloat(personalDetails.get("cs_31_course_weight").value);
 
-      personalDetails.get("cs_31_set_weight").setValue(totalValue)
+      personalDetails.get("cs_31_set_weight").setValue(totalValue);
+       this.calculateBatchSize();
     })
 
 
@@ -1623,7 +1730,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(personalDetails.get("cs_32_inflight_weight").value)))
         totalValue = totalValue + parseFloat(personalDetails.get("cs_32_inflight_weight").value);
 
-      personalDetails.get("cs_32_set_weight").setValue(totalValue)
+      personalDetails.get("cs_32_set_weight").setValue(totalValue);
+       this.calculateBatchSize();
     })
 
     personalDetails.get("cs_32_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -1640,7 +1748,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(personalDetails.get("cs_32_inflight_weight").value)))
         totalValue = totalValue + parseFloat(personalDetails.get("cs_32_inflight_weight").value);
 
-      personalDetails.get("cs_32_set_weight").setValue(totalValue)
+      personalDetails.get("cs_32_set_weight").setValue(totalValue);
+       this.calculateBatchSize();
     })
 
     personalDetails.get("cs_32_extra_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -1658,7 +1767,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(personalDetails.get("cs_32_inflight_weight").value)))
         totalValue = totalValue + parseFloat(personalDetails.get("cs_32_inflight_weight").value);
 
-      personalDetails.get("cs_32_set_weight").setValue(totalValue)
+      personalDetails.get("cs_32_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     personalDetails.get("cs_32_inflight_weight").valueChanges.subscribe(selectedValue => {
@@ -1676,7 +1786,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(personalDetails.get("cs_32_inflight_weight").value)))
         totalValue = totalValue + parseFloat(personalDetails.get("cs_32_inflight_weight").value);
 
-      personalDetails.get("cs_32_set_weight").setValue(totalValue)
+      personalDetails.get("cs_32_set_weight").setValue(totalValue);
+       this.calculateBatchSize();
     })
 
     personalDetails.get("cs_33_course_weight").valueChanges.subscribe(selectedValue => {
@@ -1694,7 +1805,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(personalDetails.get("cs_33_course_weight").value)))
         totalValue = totalValue + parseFloat(personalDetails.get("cs_33_course_weight").value);
 
-      personalDetails.get("cs_33_set_weight").setValue(totalValue)
+      personalDetails.get("cs_33_set_weight").setValue(totalValue);
+       this.calculateBatchSize();
     })
 
     personalDetails.get("cs_33_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -1712,7 +1824,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(personalDetails.get("cs_33_inflight_weight").value)))
         totalValue = totalValue + parseFloat(personalDetails.get("cs_33_inflight_weight").value);
 
-      personalDetails.get("cs_33_set_weight").setValue(totalValue)
+      personalDetails.get("cs_33_set_weight").setValue(totalValue); 
+      this.calculateBatchSize();
     })
 
     personalDetails.get("cs_33_extra_fine_weight").valueChanges.subscribe(selectedValue => {
@@ -1730,7 +1843,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(personalDetails.get("cs_33_course_weight").value)))
         totalValue = totalValue + parseFloat(personalDetails.get("cs_33_course_weight").value);
 
-      personalDetails.get("cs_33_set_weight").setValue(totalValue)
+      personalDetails.get("cs_33_set_weight").setValue(totalValue);
+       this.calculateBatchSize();
     })
 
     personalDetails.get("cs_33_inflight_weight").valueChanges.subscribe(selectedValue => {
@@ -1747,7 +1861,8 @@ export class CalculatedRecipeDataComponent implements OnInit {
       if (!isNaN(parseFloat(personalDetails.get("cs_33_course_weight").value)))
         totalValue = totalValue + parseFloat(personalDetails.get("cs_33_course_weight").value);
 
-      personalDetails.get("cs_33_set_weight").setValue(totalValue)
+      personalDetails.get("cs_33_set_weight").setValue(totalValue);
+       this.calculateBatchSize();
     })
 
   }
