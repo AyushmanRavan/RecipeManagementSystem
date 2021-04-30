@@ -55,7 +55,7 @@ export class CalculatedRecipeDataComponent implements OnInit {
 
     if (!isNaN(parseFloat(userDetails.get("cs_14_set_weight").value)))
       this.compOne = this.compOne + parseFloat(userDetails.get("cs_14_set_weight").value);
-
+  ////////////////////////////////////////////////////////////////////////////////////////////////
     const contactDetails = this.masterForm.controls['contactDetails'];
     if (!isNaN(parseFloat(contactDetails.get("silo_21_set_weight").value)))
       this.compTwo = this.compTwo + parseFloat(contactDetails.get("silo_21_set_weight").value);
@@ -74,7 +74,7 @@ export class CalculatedRecipeDataComponent implements OnInit {
 
     if (!isNaN(parseFloat(contactDetails.get("cs_23_set_weight").value)))
       this.compTwo = this.compTwo + parseFloat(contactDetails.get("cs_23_set_weight").value);
-
+  ////////////////////////////////////////////////////////////////////////////////////////////////
     const personalDetails = this.masterForm.controls['personalDetails'];
     if (!isNaN(parseFloat(personalDetails.get("silo_31_set_weight").value)))
       this.compThree = this.compThree + parseFloat(personalDetails.get("silo_31_set_weight").value);
