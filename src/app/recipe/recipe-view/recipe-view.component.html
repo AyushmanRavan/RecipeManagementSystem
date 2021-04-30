@@ -15,7 +15,7 @@
 <div class="controls">
   <button *ngIf="activeStepIndex != 1" (click)="goToPrevious()" class="button">Previous</button>
   <button *ngIf="activeStepIndex != 3" (click)="goToNext()" class="button">Next</button>
-  <button type="submit" *ngIf="activeStepIndex == 3" (click)="submit()">Go Back</button>
+  <button type="submit" mat-raised-button color="accent" (click)="submit()">Back to Recipe List</button>
 </div>
 
 <div *ngIf="activeStepIndex == 1">
