@@ -43,12 +43,14 @@ import { MatTreeModule } from '@angular/material/tree';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 const materialModule:any[] =  [
   A11yModule,
   ClipboardModule,
   CdkStepperModule,
   CdkTableModule,
+  MatFormFieldModule ,
   CdkTreeModule,
   DragDropModule,
   MatAutocompleteModule,

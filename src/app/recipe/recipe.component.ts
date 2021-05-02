@@ -112,7 +112,7 @@ export class RecipeComponent implements OnInit {
     this.masterForm = new FormGroup({
       recipe_name: new FormControl('', [Validators.required, this.ValidateRecipeName]),
       liquid_addition: new FormControl(false),
-      recipe_enable: new FormControl(false),
+      // recipe_enable: new FormControl(false),
       // relative_recipe: new FormControl(true),
       userDetails: new FormGroup({
         silo_11_set_weight: this.formControl(),//new FormControl('', [Validators.required, Validators.pattern(/^[.\d]+$/), this.silo_11_set_weight]),  // 
@@ -1908,7 +1908,7 @@ export class RecipeComponent implements OnInit {
     const masterFormMapping = {
       recipe_name: inputData.recipe_name,
       liquid_addition: inputData.liquid_addition,
-      recipe_enable: inputData.recipe_enable,
+      // recipe_enable: inputData.recipe_enable,
       // relative_recipe: inputData.relative_recipe,
       userDetails: {
         silo_11_set_weight: inputData['recipeData'].silo_11_set_weight,
@@ -2248,7 +2248,7 @@ export class RecipeComponent implements OnInit {
 
     customCreate['recipe_name'] = this.masterForm.get("recipe_name").value;
     customCreate['liquid_addition'] = this.masterForm.get("liquid_addition").value;
-    customCreate['recipe_enable'] = this.masterForm.get("recipe_enable").value;
+    customCreate['recipe_enable'] = true;
     customCreate['relative_recipe'] = true;
 
     customCreate['recipeData'] = { ...this.masterForm.controls['userDetails'].value, ...this.masterForm.controls['contactDetails'].value, ...this.masterForm.controls['personalDetails'].value }
@@ -2324,7 +2324,7 @@ export class RecipeComponent implements OnInit {
 
     customUpdate['recipe_name'] = this.masterForm.get("recipe_name").value;
     customUpdate['liquid_addition'] = this.masterForm.get("liquid_addition").value;
-    customUpdate['recipe_enable'] = this.masterForm.get("recipe_enable").value;
+    customUpdate['recipe_enable'] = true;
     customUpdate['relative_recipe'] = true;
 
     customUpdate['recipeData'] = { ...this.masterForm.controls['userDetails'].value, ...this.masterForm.controls['contactDetails'].value, ...this.masterForm.controls['personalDetails'].value }

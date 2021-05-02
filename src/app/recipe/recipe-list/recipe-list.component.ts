@@ -8,6 +8,7 @@ import { ConfigurationService } from 'src/app/configuration/configuration.servic
 import { ADD_UPDATE_DIALOG_OPTIONS, DELETE_DIALOG_OPTIONS, DIALOG_BUTTONS, DIALOG_HEADER, DIALOG_OPTIONS, MODE } from 'src/app/configuration/shared/config';
 import { DATA } from 'src/app/core/data.enum';
 import { StorageServiceService } from 'src/app/core/services/auth/storage-service.service';
+import { PopUpComponent } from 'src/app/pop-up/pop-up.component';
 
 @Component({
   selector: 'app-recipe-list',
@@ -17,10 +18,8 @@ import { StorageServiceService } from 'src/app/core/services/auth/storage-servic
 export class RecipeListComponent implements OnInit {
 
   actionMode: string;
-  dataSource = new MatTableDataSource<any>();
+
   dialogRef;
-  // displayedColumns = ["plantName","actions"];
-  // displayedColumns = ["name", "value", "unit"];
   errMessage: string;
   loaded: boolean;
   subscriber: Subscription;
@@ -32,18 +31,30 @@ export class RecipeListComponent implements OnInit {
   array: any;
 
   datasetLength: number;
-  @ViewChild(MatPaginator)
-  paginator: MatPaginator;
-
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  dataSource = new MatTableDataSource<any>();
   constructor(private _intl: MatPaginatorIntl, private router: Router,
-    private storageServiceService: StorageServiceService,
+    private storageServiceService: StorageServiceService, private dialog: MatDialog,
     private configurationService: ConfigurationService) {
     this.username = this.storageServiceService.getStorageItem(DATA.USERNAME);
     this.getAllRecipe();
   }
 
-  ngOnInit(): void {
+  doFilter = (value: string) => {
+    // this.dataSource.filter = value.trim().toLocaleLowerCase();
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
+    console.log(value)
+    // if (this.dataSource.paginator) {
+    //   this.dataSource.paginator.firstPage();
+    // }
+  }
 
+  ngOnInit(): void {
+    this.dataSource.filterPredicate = (data: any, filter: string) => {
+      console.log(data, filter);
+      // return data['recipe_name'] == filter;
+      return data['recipe_name'].toLowerCase().includes(filter)
+    };
   }
 
   getAllRecipe() {
@@ -69,26 +80,45 @@ export class RecipeListComponent implements OnInit {
     this._intl.itemsPerPageLabel = "Records Per Page";
   }
 
-
   addRecipe() {
+    // this.dialogOpen(ADD_UPDATE_DIALOG_OPTIONS(200, 350), {  message: "Do you want to add new recipe ?." });
+    // this.dialogRef.afterClosed().subscribe(resp => {
+    //   if (resp) {
+    //     this.router.navigate(['dashboard/config/recipe/recipeCrud']);
+    //   }
+    // })
     this.router.navigate(['dashboard/config/recipe/recipeCrud']);
   }
 
   updateRecipe(recipeId) {
-    this.router.navigate([`dashboard/config/recipe/recipeCrud/${recipeId}`]);
+    this.dialogOpen(ADD_UPDATE_DIALOG_OPTIONS(200, 350), { message: "Do you want to update this recipe ?." });
+    this.dialogRef.afterClosed().subscribe(resp => {
+      if (resp) {
+        this.router.navigate([`dashboard/config/recipe/recipeCrud/${recipeId}`]);
+      }
+    })
   }
 
   deleteRecipe(recipeId) {
-    this.configurationService.deleteRecipe(recipeId, this.username).subscribe(
-      (resp) => {  this.getAllRecipe();},
-      (err) => { console.log("Error while deleting batch",recipeId)}
-    );
+    this.dialogOpen(ADD_UPDATE_DIALOG_OPTIONS(200, 350), { message: "Do you want to delete this recipe ?." });
+    this.dialogRef.afterClosed().subscribe(resp => {
+      if (resp) {
+        this.configurationService.deleteRecipe(recipeId, this.username).subscribe(
+          (resp) => { this.getAllRecipe(); },
+          (err) => { console.log("Error while deleting batch", recipeId) }
+        );
+      }
+    })
   }
 
   viewRecipe(recipeId) {
-    this.router.navigate([`dashboard/config/recipe/recipeView/${recipeId}`]);
+    this.dialogOpen(ADD_UPDATE_DIALOG_OPTIONS(200, 350), { message: "Do you want to view this recipe ?." });
+    this.dialogRef.afterClosed().subscribe(resp => {
+      if (resp) {
+        this.router.navigate([`dashboard/config/recipe/recipeView/${recipeId}`]);
+      }
+    })
   }
-
 
   ngOnDestroy() {
     if (this.subscriber) {
@@ -96,6 +126,15 @@ export class RecipeListComponent implements OnInit {
     }
   }
 
+  dialogOpen(options: DIALOG_OPTIONS, data) {
+
+    this.dialogRef = this.dialog.open(PopUpComponent, {
+      ...options,
+      data: { ...data, status: true }
+    });
+
+
+  }
 
   updateDataset(event: any) {
     this.currentPage = event.pageIndex;
@@ -110,7 +149,6 @@ export class RecipeListComponent implements OnInit {
     this.dataSource = part;
   }
 
-
   private setTableData(data) {
 
     if (data && data.length > 0) {
@@ -124,8 +162,6 @@ export class RecipeListComponent implements OnInit {
     }
     this.reset();
   }
-
-
 
   private handleError(err) {
     this.reset();

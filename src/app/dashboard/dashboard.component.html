@@ -26,12 +26,11 @@
                                     <button mat-button [matMenuTriggerFor]="menu">Configuration</button>
                                     <mat-menu #menu="matMenu">
 
-
                                         <span [hidden]="HIDE_ACCESS_DETAILS">
                                             <button mat-menu-item
                                                 routerLink="/dashboard/config/password-policy">Password Policy</button>
                                         </span>
-                                        <span [hidden]="hideMenu">
+                                        <!-- <span [hidden]="!hideMenu">
                                             <button mat-menu-item routerLink="/dashboard/config/user">User</button>
                                             <button mat-menu-item
                                                 routerLink="/dashboard/config/associated-machine">Associated
@@ -39,7 +38,8 @@
                                             <button mat-menu-item
                                                 routerLink="/dashboard/config/time-slot-assign-reason">Time-slot Assign
                                                 reason</button>
-                                        </span>
+                                        </span> -->
+                                        <button mat-menu-item routerLink="/dashboard/config/user">User</button>
                                         <button mat-menu-item routerLink="/dashboard/config/recipe">Recipe</button>
                                         <button mat-menu-item routerLink="/dashboard/config/download">Download Recipe</button>
                                         <button mat-menu-item [matMenuTriggerFor]="machine">Machine</button>

@@ -3,5 +3,6 @@
    <!-- <strong> Status: {{dialog.status}}</strong> -->
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-button (click)="submit()">OK</button>
+    <button mat-button (click)="ok()">OK</button>
+    <button *ngIf="dialog.status" mat-button (click)="cancel()">Cancel</button>
 </mat-dialog-actions>

@@ -8,7 +8,6 @@
 
                 <div fxLayout fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap="25px">
                     <div fxFlex="100%">
-
                         <mat-form-field>
                             <mat-select placeholder="Recipe Name" formControlName="recipeName"
                                 (selectionChange)="changeRecipeName($event)">
@@ -17,7 +16,6 @@
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
-
                         <mat-form-field>
                             <mat-select placeholder="Machine Name" formControlName="downloadingMachine"
                                 (selectionChange)="changeMachineName($event)">
@@ -26,7 +24,8 @@
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
-
+                        <mat-checkbox formControlName="autoBatch" (change)="onCheckboxChange($event)">Auto Weight
+                        </mat-checkbox>
                         <mat-form-field>
                             <mat-label>Batch Weight</mat-label>
                             <input matInput formControlName="batchSize">
@@ -40,10 +39,7 @@
                                     Enter only number
                                 </mat-error>
                             </mat-error>
-
-
                         </mat-form-field>
-
                         <mat-form-field>
                             <mat-label>Number Of Batches</mat-label>
                             <input matInput formControlName="numberOfBatches">
@@ -58,16 +54,12 @@
                             </mat-error>
 
                         </mat-form-field>
-
-
-
-                        <mat-checkbox formControlName="autoBatch">Auto Weight</mat-checkbox>
-
                     </div>
                 </div>
             </mat-card-content>
 
-            <button (click)="onGenerate()" [disabled]="!status" mat-raised-button color="accent">Generate Recipe</button>
+            <button (click)="onGenerate()" [disabled]="!status" mat-raised-button color="accent">Generate
+                Recipe</button>
             <!-- <button #downloadPdfBtn [disabled]="true" mat-raised-button color="accent">DownloadPDF</button> -->
         </mat-card>
 

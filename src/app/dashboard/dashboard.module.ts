@@ -10,6 +10,7 @@ import { DashboardComponent } from "./dashboard.component";
 import { DefaultComponent } from "./default/default.component";
 import {MachineService} from "../machine/machine.service";
 import { MaterialModule } from "../material/material.module";
+import { PopUpComponent } from "../pop-up/pop-up.component";
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { MaterialModule } from "../material/material.module";
     SharedModule ,
     MaterialModule,
   ],
-  declarations: [DashboardComponent, DefaultComponent],
-  providers: [DashboardService, MachineService]
+  declarations: [DashboardComponent, DefaultComponent,PopUpComponent],
+  providers: [DashboardService, MachineService],
+  entryComponents: [PopUpComponent]
 })
 export class DashboardModule {}

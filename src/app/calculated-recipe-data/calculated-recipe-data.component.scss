@@ -5,13 +5,20 @@
     align-items: center;
     justify-content: space-between;
 }
+
 h2{
     text-align: center;
+}
+
+h3{
+    text-align: center;
+    color: blue;
 }
 
 .text-danger{ 
     color: red;
 }
+
 fieldset > *{
     display: flex;
     align-items: center;

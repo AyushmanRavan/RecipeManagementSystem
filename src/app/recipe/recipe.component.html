@@ -28,12 +28,10 @@
       <mat-checkbox formControlName="liquid_addition">Liquid addtion
       </mat-checkbox>
 
-      <mat-checkbox formControlName="recipe_enable">Recipe Enable
-      </mat-checkbox>
-
-      <!-- <mat-checkbox [disabled]="true" formControlName="relative_recipe">Relative Enable
+      <!-- <mat-checkbox formControlName="recipe_enable">Recipe Enable
       </mat-checkbox> -->
 
+     
     </div>
     <div fxLayout="row" fxLayoutAlign="space-around center">
       <h3>Batch Size (kg) = {{compBatchSize}}</h3>
@@ -72,7 +70,7 @@
 
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Set weight</mat-label>
+                    <mat-label>Set weight (Kg)</mat-label>
                     <input matInput formControlName="silo_11_set_weight">
                     <mat-error *ngIf="userDtls.silo_11_set_weight.hasError('required') && submitted">Number is
                       required.</mat-error>
@@ -84,7 +82,7 @@
                 </div>
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Course weight</mat-label>
+                    <mat-label>Course weight (Kg)</mat-label>
                     <input matInput formControlName="silo_11_course_weight">
                     <mat-error *ngIf="userDtls.silo_11_course_weight.hasError('required') && submitted">Number
                       is required.</mat-error>
@@ -100,7 +98,7 @@
 
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Fine weight</mat-label>
+                    <mat-label>Fine weight (Kg)</mat-label>
                     <input matInput formControlName="silo_11_fine_weight">
                     <mat-error *ngIf="userDtls.silo_11_fine_weight.hasError('required') && submitted">Number
                       is required.</mat-error>
@@ -110,7 +108,7 @@
                 </div>
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Extra fine weight</mat-label>
+                    <mat-label>Extra fine weight (Kg)</mat-label>
                     <input matInput formControlName="silo_11_extra_fine_weight">
                     <mat-error *ngIf="userDtls.silo_11_extra_fine_weight.hasError('required') && submitted">
                       Number is required.</mat-error>
@@ -125,7 +123,7 @@
 
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Inflight weight</mat-label>
+                    <mat-label>Inflight weight (Kg)</mat-label>
                     <input matInput formControlName="silo_11_inflight_weight">
                     <mat-error *ngIf="userDtls.silo_11_inflight_weight.hasError('required') && submitted">
                       Number is required.</mat-error>
@@ -136,7 +134,7 @@
                 </div>
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Course speed</mat-label>
+                    <mat-label>Course speed (Hz)</mat-label>
                     <input matInput formControlName="silo_11_course_speed">
                     <mat-error *ngIf="userDtls.silo_11_course_speed.hasError('required') && submitted">Number
                       is required.</mat-error>
@@ -152,7 +150,7 @@
 
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Fine speed</mat-label>
+                    <mat-label>Fine speed (Hz)</mat-label>
                     <input matInput formControlName="silo_11_fine_speed">
                     <mat-error *ngIf="userDtls.silo_11_fine_speed.hasError('required') && submitted">Number is
                       required.</mat-error>
@@ -163,7 +161,7 @@
                 </div>
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Extra fine speed</mat-label>
+                    <mat-label>Extra fine speed (Hz)</mat-label>
                     <input matInput formControlName="silo_11_extra_fine_speed">
                     <mat-error *ngIf="userDtls.silo_11_extra_fine_speed.hasError('required') && submitted">
                       Number is required.</mat-error>
@@ -178,7 +176,7 @@
 
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Inflight time</mat-label>
+                    <mat-label>Inflight time (sec)</mat-label>
                     <input matInput formControlName="silo_11_inflight_time">
                     <mat-error *ngIf="userDtls.silo_11_inflight_time.hasError('required') && submitted">Number
                       is required.</mat-error>
@@ -216,7 +214,7 @@
               <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Set weight</mat-label>
+                    <mat-label>Set weight (Kg)</mat-label>
                     <input matInput formControlName="silo_12_set_weight">
                     <mat-error *ngIf="userDtls.silo_12_set_weight.hasError('required') && submitted">Number is
                       required.</mat-error>
@@ -227,7 +225,7 @@
                 </div>
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Course weight</mat-label>
+                    <mat-label>Course weight (Kg)</mat-label>
                     <input matInput formControlName="silo_12_course_weight">
                     <mat-error *ngIf="userDtls.silo_12_course_weight.hasError('required') && submitted">Number
                       is required.</mat-error>
@@ -240,7 +238,7 @@
               <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Fine weight</mat-label>
+                    <mat-label>Fine weight (Kg)</mat-label>
                     <input matInput formControlName="silo_12_fine_weight">
                     <mat-error *ngIf="userDtls.silo_12_fine_weight.hasError('required') && submitted">Number
                       is required.</mat-error>
@@ -251,7 +249,7 @@
                 </div>
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Extra fine weight</mat-label>
+                    <mat-label>Extra fine weight (Kg)</mat-label>
                     <input matInput formControlName="silo_12_extra_fine_weight">
                     <mat-error *ngIf="userDtls.silo_12_extra_fine_weight.hasError('required') && submitted">
                       Number is required.</mat-error>
@@ -265,7 +263,7 @@
                 <div fxFlex="50%">
 
                   <mat-form-field>
-                    <mat-label>Inflight weight</mat-label>
+                    <mat-label>Inflight weight (Kg)</mat-label>
                     <input matInput formControlName="silo_12_inflight_weight">
                     <mat-error *ngIf="userDtls.silo_12_inflight_weight.hasError('required') && submitted">
                       Number is required.</mat-error>
@@ -276,7 +274,7 @@
                 </div>
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Course speed</mat-label>
+                    <mat-label>Course speed (Hz)</mat-label>
                     <input matInput formControlName="silo_12_course_speed">
                     <mat-error *ngIf="userDtls.silo_12_course_speed.hasError('required') && submitted">Number
                       is required.</mat-error>
@@ -289,7 +287,7 @@
               <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Fine speed</mat-label>
+                    <mat-label>Fine speed (Hz)</mat-label>
                     <input matInput formControlName="silo_12_fine_speed">
                     <mat-error *ngIf="userDtls.silo_12_fine_speed.hasError('required') && submitted">Number
                       is required.</mat-error>
@@ -300,7 +298,7 @@
                 </div>
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Extra fine speed</mat-label>
+                    <mat-label>Extra fine speed (Hz)</mat-label>
                     <input matInput formControlName="silo_12_extra_fine_speed">
                     <mat-error *ngIf="userDtls.silo_12_extra_fine_speed.hasError('required') && submitted">
                       Number is required.</mat-error>
@@ -313,7 +311,7 @@
               <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Inflight time</mat-label>
+                    <mat-label>Inflight time (sec)</mat-label>
                     <input matInput formControlName="silo_12_inflight_time">
                     <mat-error *ngIf="userDtls.silo_12_inflight_time.hasError('required') && submitted">
                       Number is required.</mat-error>
@@ -350,7 +348,7 @@
               <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Set weight</mat-label>
+                    <mat-label>Set weight (Kg)</mat-label>
                     <input matInput formControlName="cs_11_set_weight">
                     <mat-error *ngIf="userDtls.cs_11_set_weight.hasError('required') && submitted">
                       Number is required.</mat-error>
@@ -361,7 +359,7 @@
                 </div>
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Course weight</mat-label>
+                    <mat-label>Course weight (Kg)</mat-label>
                     <input matInput formControlName="cs_11_course_weight">
                     <mat-error *ngIf="userDtls.cs_11_course_weight.hasError('required') && submitted">
                       Number is required.</mat-error>
@@ -374,7 +372,7 @@
               <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Fine weight</mat-label>
+                    <mat-label>Fine weight (Kg)</mat-label>
                     <input matInput formControlName="cs_11_fine_weight">
                     <mat-error *ngIf="userDtls.cs_11_fine_weight.hasError('required') && submitted">
                       Number is required.</mat-error>
@@ -385,7 +383,7 @@
                 </div>
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Extra fine weight</mat-label>
+                    <mat-label>Extra fine weight (Kg)</mat-label>
                     <input matInput formControlName="cs_11_extra_fine_weight">
                     <mat-error *ngIf="userDtls.cs_11_extra_fine_weight.hasError('required') && submitted">
                       Number is required.</mat-error>
@@ -398,7 +396,7 @@
               <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Inflight weight</mat-label>
+                    <mat-label>Inflight weight (Kg)</mat-label>
                     <input matInput formControlName="cs_11_inflight_weight">
                     <mat-error *ngIf="userDtls.cs_11_inflight_weight.hasError('required') && submitted">
                       Number is required.</mat-error>
@@ -409,7 +407,7 @@
                 </div>
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Course speed</mat-label>
+                    <mat-label>Course speed (Hz)</mat-label>
                     <input matInput formControlName="cs_11_course_speed">
                     <mat-error *ngIf="userDtls.cs_11_course_speed.hasError('required') && submitted">
                       Number is required.</mat-error>
@@ -422,7 +420,7 @@
               <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Fine speed</mat-label>
+                    <mat-label>Fine speed (Hz)</mat-label>
                     <input matInput formControlName="cs_11_fine_speed">
                     <mat-error *ngIf="userDtls.cs_11_fine_speed.hasError('required') && submitted">
                       Number is required.</mat-error>
@@ -433,7 +431,7 @@
                 </div>
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Extra fine speed</mat-label>
+                    <mat-label>Extra fine speed (Hz)</mat-label>
                     <input matInput formControlName="cs_11_extra_fine_speed">
                     <mat-error *ngIf="userDtls.cs_11_extra_fine_speed.hasError('required') && submitted">
                       Number is required.</mat-error>
@@ -446,7 +444,7 @@
               <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Inflight time</mat-label>
+                    <mat-label>Inflight time (sec)</mat-label>
                     <input matInput formControlName="cs_11_inflight_time">
                     <mat-error *ngIf="userDtls.cs_11_inflight_time.hasError('required') && submitted">
                       Number is required.</mat-error>
@@ -486,7 +484,7 @@
               <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Set weight</mat-label>
+                    <mat-label>Set weight (Kg)</mat-label>
                     <input matInput formControlName="cs_12_set_weight">
                     <mat-error *ngIf="userDtls.cs_12_set_weight.hasError('required') && submitted">
                       Number is required.</mat-error>
@@ -497,7 +495,7 @@
                 </div>
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Course weight</mat-label>
+                    <mat-label>Course weight (Kg)</mat-label>
                     <input matInput formControlName="cs_12_course_weight">
                     <mat-error *ngIf="userDtls.cs_12_course_weight.hasError('required') && submitted">
                       Number is required.</mat-error>
@@ -510,7 +508,7 @@
               <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Fine weight</mat-label>
+                    <mat-label>Fine weight (Kg)</mat-label>
                     <input matInput formControlName="cs_12_fine_weight">
                     <mat-error *ngIf="userDtls.cs_12_fine_weight.hasError('required') && submitted">
                       Number is required.</mat-error>
@@ -521,7 +519,7 @@
                 </div>
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Extra fine weight</mat-label>
+                    <mat-label>Extra fine weight (Kg)</mat-label>
                     <input matInput formControlName="cs_12_extra_fine_weight">
                     <mat-error *ngIf="userDtls.cs_12_extra_fine_weight.hasError('required') && submitted">
                       Number is required.</mat-error>
@@ -534,7 +532,7 @@
               <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Inflight weight</mat-label>
+                    <mat-label>Inflight weight (Kg)</mat-label>
                     <input matInput formControlName="cs_12_inflight_weight">
                     <mat-error *ngIf="userDtls.cs_12_inflight_weight.hasError('required') && submitted">
                       Number is required.</mat-error>
@@ -545,7 +543,7 @@
                 </div>
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Course speed</mat-label>
+                    <mat-label>Course speed (Hz)</mat-label>
                     <input matInput formControlName="cs_12_course_speed">
                     <mat-error *ngIf="userDtls.cs_12_course_speed.hasError('required') && submitted">
                       Number is required.</mat-error>
@@ -558,7 +556,7 @@
               <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Fine speed</mat-label>
+                    <mat-label>Fine speed (Hz)</mat-label>
                     <input matInput formControlName="cs_12_fine_speed">
                     <mat-error *ngIf="userDtls.cs_12_fine_speed.hasError('required') && submitted">
                       Number is required.</mat-error>
@@ -569,8 +567,7 @@
                 </div>
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Extra fine speed
-                    </mat-label>
+                    <mat-label>Extra fine speed (Hz)</mat-label>
                     <input matInput formControlName="cs_12_extra_fine_speed">
                     <mat-error *ngIf="userDtls.cs_12_extra_fine_speed.hasError('required') && submitted">
                       Number is required.</mat-error>
@@ -583,7 +580,7 @@
               <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Inflight time</mat-label>
+                    <mat-label>Inflight time (sec)</mat-label>
                     <input matInput formControlName="cs_12_inflight_time">
                     <mat-error *ngIf="userDtls.cs_12_inflight_time.hasError('required') && submitted">
                       Number is required.</mat-error>
@@ -620,8 +617,7 @@
               <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Set weight
-                    </mat-label>
+                    <mat-label>Set weight (Kg)</mat-label>
                     <input matInput formControlName="cs_13_set_weight">
                     <mat-error *ngIf="userDtls.cs_13_set_weight.hasError('required') && submitted">
                       Number is
@@ -634,8 +630,7 @@
                 </div>
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Course weight
-                    </mat-label>
+                    <mat-label>Course weight (Kg)</mat-label>
                     <input matInput formControlName="cs_13_course_weight">
                     <mat-error *ngIf="userDtls.cs_13_course_weight.hasError('required') && submitted">
                       Number
@@ -652,8 +647,7 @@
               <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Fine weight
-                    </mat-label>
+                    <mat-label>Fine weight (Kg)</mat-label>
                     <input matInput formControlName="cs_13_fine_weight">
                     <mat-error *ngIf="userDtls.cs_13_fine_weight.hasError('required') && submitted">
                       Number is
@@ -667,7 +661,7 @@
                 <div fxFlex="50%">
                   <mat-form-field>
                     <mat-label>Extra fine
-                      weight</mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_13_extra_fine_weight">
                     <mat-error *ngIf="userDtls.cs_13_extra_fine_weight.hasError('required') && submitted">
                       Number
@@ -685,7 +679,7 @@
                 <div fxFlex="50%">
                   <mat-form-field>
                     <mat-label>Inflight
-                      weight</mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_13_inflight_weight">
                     <mat-error *ngIf="userDtls.cs_13_inflight_weight.hasError('required') && submitted">
                       Number
@@ -700,8 +694,7 @@
                 </div>
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Course speed
-                    </mat-label>
+                    <mat-label>Course speed (Hz)</mat-label>
                     <input matInput formControlName="cs_13_course_speed">
                     <mat-error *ngIf="userDtls.cs_13_course_speed.hasError('required') && submitted">
                       Number is
@@ -716,8 +709,7 @@
               <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
                 <div fxFlex="50%">
                   <mat-form-field>
-                    <mat-label>Fine speed
-                    </mat-label>
+                    <mat-label>Fine speed (Hz)</mat-label>
                     <input matInput formControlName="cs_13_fine_speed">
                     <mat-error *ngIf="userDtls.cs_13_fine_speed.hasError('required') && submitted">
                       Number is
@@ -731,7 +723,7 @@
                 <div fxFlex="50%">
                   <mat-form-field>
                     <mat-label>Extra
-                      fine speed</mat-label>
+                      fine speed (Hz)</mat-label>
                     <input matInput formControlName="cs_13_extra_fine_speed">
                     <mat-error *ngIf="userDtls.cs_13_extra_fine_speed.hasError('required') && submitted">
                       Number
@@ -749,7 +741,7 @@
                 <div fxFlex="50%">
                   <mat-form-field>
                     <mat-label>Inflight
-                      time</mat-label>
+                      time (sec)</mat-label>
                     <input matInput formControlName="cs_13_inflight_time">
                     <mat-error *ngIf="userDtls.cs_13_inflight_time.hasError('required') && submitted">
                       Number
@@ -793,7 +785,7 @@
                 <div fxFlex="50%">
                   <mat-form-field>
                     <mat-label>Set
-                      weight</mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_14_set_weight">
                     <mat-error *ngIf="userDtls.cs_14_set_weight.hasError('required') && submitted">
                       Number is
@@ -807,7 +799,7 @@
                 <div fxFlex="50%">
                   <mat-form-field>
                     <mat-label>
-                      Course weight</mat-label>
+                      Course weight (Kg)</mat-label>
                     <input matInput formControlName="cs_14_course_weight">
                     <mat-error *ngIf="userDtls.cs_14_course_weight.hasError('required') && submitted">
                       Number
@@ -826,7 +818,7 @@
 
                   <mat-form-field>
                     <mat-label>Fine
-                      weight</mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_14_fine_weight">
                     <mat-error *ngIf="userDtls.cs_14_fine_weight.hasError('required') && submitted">
                       Number is
@@ -841,7 +833,7 @@
                   <mat-form-field>
                     <mat-label>
                       Extra
-                      fine weight</mat-label>
+                      fine weight (Kg)</mat-label>
                     <input matInput formControlName="cs_14_extra_fine_weight">
                     <mat-error *ngIf="userDtls.cs_14_extra_fine_weight.hasError('required') && submitted">
                       Number
@@ -859,7 +851,7 @@
                 <div fxFlex="50%">
                   <mat-form-field>
                     <mat-label>
-                      Inflight weight</mat-label>
+                      Inflight weight (Kg)</mat-label>
                     <input matInput formControlName="cs_14_inflight_weight">
                     <mat-error *ngIf="userDtls.cs_14_inflight_weight.hasError('required') && submitted">
                       Number
@@ -876,7 +868,7 @@
                   <mat-form-field>
                     <mat-label>
                       Course
-                      speed</mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="cs_14_course_speed">
                     <mat-error *ngIf="userDtls.cs_14_course_speed.hasError('required') && submitted">
                       Number is
@@ -892,7 +884,7 @@
                 <div fxFlex="50%">
                   <mat-form-field>
                     <mat-label>Fine
-                      speed</mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="cs_14_fine_speed">
                     <mat-error *ngIf="userDtls.cs_14_fine_speed.hasError('required') && submitted">
                       Number is
@@ -906,8 +898,7 @@
                 <div fxFlex="50%">
                   <mat-form-field>
                     <mat-label>
-                      Extra fine speed
-                    </mat-label>
+                      Extra fine speed (Hz)</mat-label>
                     <input matInput formControlName="cs_14_extra_fine_speed">
                     <mat-error *ngIf="userDtls.cs_14_extra_fine_speed.hasError('required') && submitted">
                       Number
@@ -925,7 +916,7 @@
                 <div fxFlex="50%">
                   <mat-form-field>
                     <mat-label>
-                      Inflight time</mat-label>
+                      Inflight time (sec)</mat-label>
                     <input matInput formControlName="cs_14_inflight_time">
                     <mat-error *ngIf="userDtls.cs_14_inflight_time.hasError('required') && submitted">
                       Number
@@ -982,8 +973,7 @@
                 <div fxFlex="50%">
                   <mat-form-field>
                     <mat-label>
-                      Set weight
-                    </mat-label>
+                      Set weight (Kg)</mat-label>
                     <input matInput formControlName="silo_21_set_weight">
                     <mat-error *ngIf="contactDtls.silo_21_set_weight.hasError('required') && submitted">
                       Number
@@ -1001,8 +991,7 @@
                 <div fxFlex="50%">
                   <mat-form-field>
                     <mat-label>
-                      Course weight
-                    </mat-label>
+                      Course weight (Kg)</mat-label>
                     <input matInput formControlName="silo_21_course_weight">
                     <mat-error *ngIf="contactDtls.silo_21_course_weight.hasError('required') && submitted">
                       Number is
@@ -1019,8 +1008,7 @@
                 <div fxFlex="50%">
                   <mat-form-field>
                     <mat-label>
-                      Fine weight
-                    </mat-label>
+                      Fine weight (Kg)</mat-label>
                     <input matInput formControlName="silo_21_fine_weight">
                     <mat-error *ngIf="contactDtls.silo_21_fine_weight.hasError('required') && submitted">
                       Number
@@ -1036,8 +1024,7 @@
                 <div fxFlex="50%">
                   <mat-form-field>
                     <mat-label>
-                      Extra fine weight
-                    </mat-label>
+                      Extra fine weight (Kg)</mat-label>
                     <input matInput formControlName="silo_21_extra_fine_weight">
                     <mat-error *ngIf="contactDtls.silo_21_extra_fine_weight.hasError('required') && submitted">
                       Number is
@@ -1053,8 +1040,7 @@
                 <div fxFlex="50%">
                   <mat-form-field>
                     <mat-label>
-                      Inflight weight
-                    </mat-label>
+                      Inflight weight (Kg)</mat-label>
                     <input matInput formControlName="silo_21_inflight_weight">
                     <mat-error *ngIf="contactDtls.silo_21_inflight_weight.hasError('required') && submitted">
                       Number is
@@ -1068,8 +1054,7 @@
                 <div fxFlex="50%">
                   <mat-form-field>
                     <mat-label>
-                      Course speed
-                    </mat-label>
+                      Course speed (Hz)</mat-label>
                     <input matInput formControlName="silo_21_course_speed">
                     <mat-error *ngIf="contactDtls.silo_21_course_speed.hasError('required') && submitted">
                       Number
@@ -1087,8 +1072,7 @@
                 <div fxFlex="50%">
                   <mat-form-field>
                     <mat-label>
-                      Fine speed
-                    </mat-label>
+                      Fine speed (Hz)</mat-label>
                     <input matInput formControlName="silo_21_fine_speed">
                     <mat-error *ngIf="contactDtls.silo_21_fine_speed.hasError('required') && submitted">
                       Number
@@ -1105,8 +1089,7 @@
                   <mat-form-field>
                     <mat-label>
                       Extra fine
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="silo_21_extra_fine_speed">
                     <mat-error *ngIf="contactDtls.silo_21_extra_fine_speed.hasError('required') && submitted">
                       Number is
@@ -1122,8 +1105,7 @@
                 <div fxFlex="50%">
                   <mat-form-field>
                     <mat-label>
-                      Inflight time
-                    </mat-label>
+                      Inflight time (sec)</mat-label>
                     <input matInput formControlName="silo_21_inflight_time">
                     <mat-error *ngIf="contactDtls.silo_21_inflight_time.hasError('required') && submitted">
                       Number is
@@ -1174,8 +1156,7 @@
                   <mat-form-field>
                     <mat-label>
                       Set
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="silo_22_set_weight">
                     <mat-error *ngIf="contactDtls.silo_22_set_weight.hasError('required') && submitted">
                       Number
@@ -1194,8 +1175,7 @@
                   <mat-form-field>
                     <mat-label>
                       Course
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="silo_22_course_weight">
                     <mat-error *ngIf="contactDtls.silo_22_course_weight.hasError('required') && submitted">
                       Number is
@@ -1215,8 +1195,7 @@
                   <mat-form-field>
                     <mat-label>
                       Fine
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="silo_22_fine_weight">
                     <mat-error *ngIf="contactDtls.silo_22_fine_weight.hasError('required') && submitted">
                       Number
@@ -1236,8 +1215,7 @@
                     <mat-label>
                       Extra
                       fine
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="silo_22_extra_fine_weight">
                     <mat-error *ngIf="contactDtls.silo_22_extra_fine_weight.hasError('required') && submitted">
                       Number
@@ -1258,8 +1236,7 @@
                   <mat-form-field>
                     <mat-label>
                       Inflight
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="silo_22_inflight_weight">
                     <mat-error *ngIf="contactDtls.silo_22_inflight_weight.hasError('required') && submitted">
                       Number
@@ -1278,8 +1255,7 @@
                   <mat-form-field>
                     <mat-label>
                       Course
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="silo_22_course_speed">
                     <mat-error *ngIf="contactDtls.silo_22_course_speed.hasError('required') && submitted">
                       Number
@@ -1300,8 +1276,7 @@
                   <mat-form-field>
                     <mat-label>
                       Fine
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="silo_22_fine_speed">
                     <mat-error *ngIf="contactDtls.silo_22_fine_speed.hasError('required') && submitted">
                       Number
@@ -1321,8 +1296,7 @@
                     <mat-label>
                       Extra
                       fine
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="silo_22_extra_fine_speed">
                     <mat-error *ngIf="contactDtls.silo_22_extra_fine_speed.hasError('required') && submitted">
                       Number
@@ -1343,8 +1317,7 @@
                   <mat-form-field>
                     <mat-label>
                       Inflight
-                      time
-                    </mat-label>
+                      time (sec)</mat-label>
                     <input matInput formControlName="silo_22_inflight_time">
                     <mat-error *ngIf="contactDtls.silo_22_inflight_time.hasError('required') && submitted">
                       Number
@@ -1396,8 +1369,7 @@
                   <mat-form-field>
                     <mat-label>
                       Set
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="silo_23_set_weight">
                     <mat-error *ngIf="contactDtls.silo_23_set_weight.hasError('required') && submitted">
                       Number
@@ -1416,8 +1388,7 @@
                   <mat-form-field>
                     <mat-label>
                       Course
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="silo_23_course_weight">
                     <mat-error *ngIf="contactDtls.silo_23_course_weight.hasError('required') && submitted">
                       Number
@@ -1438,8 +1409,7 @@
                   <mat-form-field>
                     <mat-label>
                       Fine
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="silo_23_fine_weight">
                     <mat-error *ngIf="contactDtls.silo_23_fine_weight.hasError('required') && submitted">
                       Number
@@ -1459,8 +1429,7 @@
                     <mat-label>
                       Extra
                       fine
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="silo_23_extra_fine_weight">
                     <mat-error *ngIf="contactDtls.silo_23_extra_fine_weight.hasError('required') && submitted">
                       Number
@@ -1481,8 +1450,7 @@
                   <mat-form-field>
                     <mat-label>
                       Inflight
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="silo_23_inflight_weight">
                     <mat-error *ngIf="contactDtls.silo_23_inflight_weight.hasError('required') && submitted">
                       Number
@@ -1501,8 +1469,7 @@
                   <mat-form-field>
                     <mat-label>
                       Course
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="silo_23_course_speed">
                     <mat-error *ngIf="contactDtls.silo_23_course_speed.hasError('required') && submitted">
                       Number
@@ -1523,8 +1490,7 @@
                   <mat-form-field>
                     <mat-label>
                       Fine
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="silo_23_fine_speed">
                     <mat-error *ngIf="contactDtls.silo_23_fine_speed.hasError('required') && submitted">
                       Number
@@ -1544,8 +1510,7 @@
                     <mat-label>
                       Extra
                       fine
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="silo_23_extra_fine_speed">
                     <mat-error *ngIf="contactDtls.silo_23_extra_fine_speed.hasError('required') && submitted">
                       Number
@@ -1566,8 +1531,7 @@
                   <mat-form-field>
                     <mat-label>
                       Inflight
-                      time
-                    </mat-label>
+                      time (sec)</mat-label>
                     <input matInput formControlName="silo_23_inflight_time">
                     <mat-error *ngIf="contactDtls.silo_23_inflight_time.hasError('required') && submitted">
                       Number
@@ -1621,8 +1585,7 @@
                   <mat-form-field>
                     <mat-label>
                       Set
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_21_set_weight">
                     <mat-error *ngIf="contactDtls.cs_21_set_weight.hasError('required') && submitted">
                       Number
@@ -1641,8 +1604,7 @@
                   <mat-form-field>
                     <mat-label>
                       Course
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_21_course_weight">
                     <mat-error *ngIf="contactDtls.cs_21_course_weight.hasError('required') && submitted">
                       Number
@@ -1663,8 +1625,7 @@
                   <mat-form-field>
                     <mat-label>
                       Fine
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_21_fine_weight">
                     <mat-error *ngIf="contactDtls.cs_21_fine_weight.hasError('required') && submitted">
                       Number
@@ -1684,8 +1645,7 @@
                     <mat-label>
                       Extra
                       fine
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_21_extra_fine_weight">
                     <mat-error *ngIf="contactDtls.cs_21_extra_fine_weight.hasError('required') && submitted">
                       Number
@@ -1706,8 +1666,7 @@
                   <mat-form-field>
                     <mat-label>
                       Inflight
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_21_inflight_weight">
                     <mat-error *ngIf="contactDtls.cs_21_inflight_weight.hasError('required') && submitted">
                       Number
@@ -1726,8 +1685,7 @@
                   <mat-form-field>
                     <mat-label>
                       Course
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="cs_21_course_speed">
                     <mat-error *ngIf="contactDtls.cs_21_course_speed.hasError('required') && submitted">
                       Number
@@ -1748,8 +1706,7 @@
                   <mat-form-field>
                     <mat-label>
                       Fine
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="cs_21_fine_speed">
                     <mat-error *ngIf="contactDtls.cs_21_fine_speed.hasError('required') && submitted">
                       Number
@@ -1769,8 +1726,7 @@
                     <mat-label>
                       Extra
                       fine
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="cs_21_extra_fine_speed">
                     <mat-error *ngIf="contactDtls.cs_21_extra_fine_speed.hasError('required') && submitted">
                       Number
@@ -1791,8 +1747,7 @@
                   <mat-form-field>
                     <mat-label>
                       Inflight
-                      time
-                    </mat-label>
+                      time (sec)</mat-label>
                     <input matInput formControlName="cs_21_inflight_time">
                     <mat-error *ngIf="contactDtls.cs_21_inflight_time.hasError('required') && submitted">
                       Number
@@ -1844,8 +1799,7 @@
                   <mat-form-field>
                     <mat-label>
                       Set
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_22_set_weight">
                     <mat-error *ngIf="contactDtls.cs_22_set_weight.hasError('required') && submitted">
                       Number
@@ -1864,8 +1818,7 @@
                   <mat-form-field>
                     <mat-label>
                       Course
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_22_course_weight">
                     <mat-error *ngIf="contactDtls.cs_22_course_weight.hasError('required') && submitted">
                       Number
@@ -1886,8 +1839,7 @@
                   <mat-form-field>
                     <mat-label>
                       Fine
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_22_fine_weight">
                     <mat-error *ngIf="contactDtls.cs_22_fine_weight.hasError('required') && submitted">
                       Number
@@ -1907,8 +1859,7 @@
                     <mat-label>
                       Extra
                       fine
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_22_extra_fine_weight">
                     <mat-error *ngIf="contactDtls.cs_22_extra_fine_weight.hasError('required') && submitted">
                       Number
@@ -1929,8 +1880,7 @@
                   <mat-form-field>
                     <mat-label>
                       Inflight
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_22_inflight_weight">
                     <mat-error *ngIf="contactDtls.cs_22_inflight_weight.hasError('required') && submitted">
                       Number
@@ -1949,8 +1899,7 @@
                   <mat-form-field>
                     <mat-label>
                       Course
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="cs_22_course_speed">
                     <mat-error *ngIf="contactDtls.cs_22_course_speed.hasError('required') && submitted">
                       Number
@@ -1971,8 +1920,7 @@
                   <mat-form-field>
                     <mat-label>
                       Fine
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="cs_22_fine_speed">
                     <mat-error *ngIf="contactDtls.cs_22_fine_speed.hasError('required') && submitted">
                       Number
@@ -1992,8 +1940,7 @@
                     <mat-label>
                       Extra
                       fine
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="cs_22_extra_fine_speed">
                     <mat-error *ngIf="contactDtls.cs_22_extra_fine_speed.hasError('required') && submitted">
                       Number
@@ -2014,8 +1961,7 @@
                   <mat-form-field>
                     <mat-label>
                       Inflight
-                      time
-                    </mat-label>
+                      time (sec)</mat-label>
                     <input matInput formControlName="cs_22_inflight_time">
                     <mat-error *ngIf="contactDtls.cs_22_inflight_time.hasError('required') && submitted">
                       Number
@@ -2067,8 +2013,7 @@
                   <mat-form-field>
                     <mat-label>
                       Set
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_23_set_weight">
                     <mat-error *ngIf="contactDtls.cs_23_set_weight.hasError('required') && submitted">
                       Number
@@ -2087,8 +2032,7 @@
                   <mat-form-field>
                     <mat-label>
                       Course
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_23_course_weight">
                     <mat-error *ngIf="contactDtls.cs_23_course_weight.hasError('required') && submitted">
                       Number
@@ -2109,8 +2053,7 @@
                   <mat-form-field>
                     <mat-label>
                       Fine
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_23_fine_weight">
                     <mat-error *ngIf="contactDtls.cs_23_fine_weight.hasError('required') && submitted">
                       Number
@@ -2130,8 +2073,7 @@
                     <mat-label>
                       Extra
                       fine
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_23_extra_fine_weight">
                     <mat-error *ngIf="contactDtls.cs_23_extra_fine_weight.hasError('required') && submitted">
                       Number
@@ -2152,8 +2094,7 @@
                   <mat-form-field>
                     <mat-label>
                       Inflight
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_23_inflight_weight">
                     <mat-error *ngIf="contactDtls.cs_23_inflight_weight.hasError('required') && submitted">
                       Number
@@ -2176,8 +2117,7 @@
                   <mat-form-field>
                     <mat-label>
                       Course
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="cs_23_course_speed">
                     <mat-error *ngIf="contactDtls.cs_23_course_speed.hasError('required') && submitted">
                       Number
@@ -2200,8 +2140,7 @@
                   <mat-form-field>
                     <mat-label>
                       Fine
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="cs_23_fine_speed">
                     <mat-error *ngIf="contactDtls.cs_23_fine_speed.hasError('required') && submitted">
                       Number
@@ -2221,8 +2160,7 @@
                     <mat-label>
                       Extra
                       fine
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="cs_23_extra_fine_speed">
                     <mat-error *ngIf="contactDtls.cs_23_extra_fine_speed.hasError('required') && submitted">
                       Number
@@ -2244,8 +2182,7 @@
                   <mat-form-field>
                     <mat-label>
                       Inflight
-                      time
-                    </mat-label>
+                      time (sec)</mat-label>
                     <input matInput formControlName="cs_23_inflight_time">
                     <mat-error *ngIf="contactDtls.cs_23_inflight_time.hasError('required') && submitted">
                       Number
@@ -2315,8 +2252,7 @@
                   <mat-form-field>
                     <mat-label>
                       Set
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="silo_31_set_weight">
                     <mat-error *ngIf="personalDtls.silo_31_set_weight.hasError('required') && submitted">
                       Number
@@ -2335,8 +2271,7 @@
                   <mat-form-field>
                     <mat-label>
                       Course
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="silo_31_course_weight">
                     <mat-error *ngIf="personalDtls.silo_31_course_weight.hasError('required') && submitted">
                       Number
@@ -2358,8 +2293,7 @@
                   <mat-form-field>
                     <mat-label>
                       Fine
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="silo_31_fine_weight">
                     <mat-error *ngIf="personalDtls.silo_31_fine_weight.hasError('required') && submitted">
                       Number
@@ -2379,8 +2313,7 @@
                     <mat-label>
                       Extra
                       fine
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="silo_31_extra_fine_weight">
                     <mat-error *ngIf="personalDtls.silo_31_extra_fine_weight.hasError('required') && submitted">
                       Number
@@ -2401,8 +2334,7 @@
                   <mat-form-field>
                     <mat-label>
                       Inflight
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="silo_31_inflight_weight">
                     <mat-error *ngIf="personalDtls.silo_31_inflight_weight.hasError('required') && submitted">
                       Number
@@ -2421,8 +2353,7 @@
                   <mat-form-field>
                     <mat-label>
                       Course
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="silo_31_course_speed">
                     <mat-error *ngIf="personalDtls.silo_31_course_speed.hasError('required') && submitted">
                       Number
@@ -2445,8 +2376,7 @@
                   <mat-form-field>
                     <mat-label>
                       Fine
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="silo_31_fine_speed">
                     <mat-error *ngIf="personalDtls.silo_31_fine_speed.hasError('required') && submitted">
                       Number
@@ -2466,8 +2396,7 @@
                     <mat-label>
                       Extra
                       fine
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="silo_31_extra_fine_speed">
                     <mat-error *ngIf="personalDtls.silo_31_extra_fine_speed.hasError('required') && submitted">
                       Number
@@ -2489,8 +2418,7 @@
                   <mat-form-field>
                     <mat-label>
                       Inflight
-                      time
-                    </mat-label>
+                      time (sec)</mat-label>
                     <input matInput formControlName="silo_31_inflight_time">
                     <mat-error *ngIf="personalDtls.silo_31_inflight_time.hasError('required') && submitted">
                       Number
@@ -2546,8 +2474,7 @@
                   <mat-form-field>
                     <mat-label>
                       Set
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="silo_32_set_weight">
                     <mat-error *ngIf="personalDtls.silo_32_set_weight.hasError('required') && submitted">
                       Number
@@ -2566,8 +2493,7 @@
                   <mat-form-field>
                     <mat-label>
                       Course
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="silo_32_course_weight">
                     <mat-error *ngIf="personalDtls.silo_32_course_weight.hasError('required') && submitted">
                       Number
@@ -2588,8 +2514,7 @@
                   <mat-form-field>
                     <mat-label>
                       Fine
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="silo_32_fine_weight">
                     <mat-error *ngIf="personalDtls.silo_32_fine_weight.hasError('required') && submitted">
                       Number
@@ -2609,8 +2534,7 @@
                     <mat-label>
                       Extra
                       fine
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="silo_32_extra_fine_weight">
                     <mat-error *ngIf="personalDtls.silo_32_extra_fine_weight.hasError('required') && submitted">
                       Number
@@ -2631,8 +2555,7 @@
                   <mat-form-field>
                     <mat-label>
                       Inflight
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="silo_32_inflight_weight">
                     <mat-error *ngIf="personalDtls.silo_32_inflight_weight.hasError('required') && submitted">
                       Number
@@ -2651,8 +2574,7 @@
                   <mat-form-field>
                     <mat-label>
                       Course
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="silo_32_course_speed">
                     <mat-error *ngIf="personalDtls.silo_32_course_speed.hasError('required') && submitted">
                       Number
@@ -2673,8 +2595,7 @@
                   <mat-form-field>
                     <mat-label>
                       Fine
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="silo_32_fine_speed">
                     <mat-error *ngIf="personalDtls.silo_32_fine_speed.hasError('required') && submitted">
                       Number
@@ -2695,8 +2616,7 @@
                     <mat-label>
                       Extra
                       fine
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="silo_32_extra_fine_speed">
                     <mat-error *ngIf="personalDtls.silo_32_extra_fine_speed.hasError('required') && submitted">
                       Number
@@ -2718,8 +2638,7 @@
                   <mat-form-field>
                     <mat-label>
                       Inflight
-                      time
-                    </mat-label>
+                      time (sec)</mat-label>
                     <input matInput formControlName="silo_32_inflight_time">
                     <mat-error *ngIf="personalDtls.silo_32_inflight_time.hasError('required') && submitted">
                       Number
@@ -2774,8 +2693,7 @@
                   <mat-form-field>
                     <mat-label>
                       Set
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="silo_33_set_weight">
                     <mat-error *ngIf="personalDtls.silo_33_set_weight.hasError('required') && submitted">
                       Number
@@ -2794,8 +2712,7 @@
                   <mat-form-field>
                     <mat-label>
                       Course
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="silo_33_course_weight">
                     <mat-error *ngIf="personalDtls.silo_33_course_weight.hasError('required') && submitted">
                       Number
@@ -2816,8 +2733,7 @@
                   <mat-form-field>
                     <mat-label>
                       Fine
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="silo_33_fine_weight">
                     <mat-error *ngIf="personalDtls.silo_33_fine_weight.hasError('required') && submitted">
                       Number
@@ -2837,8 +2753,7 @@
                     <mat-label>
                       Extra
                       fine
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="silo_33_extra_fine_weight">
                     <mat-error *ngIf="personalDtls.silo_33_extra_fine_weight.hasError('required') && submitted">
                       Number
@@ -2859,8 +2774,7 @@
                   <mat-form-field>
                     <mat-label>
                       Inflight
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="silo_33_inflight_weight">
                     <mat-error *ngIf="personalDtls.silo_33_inflight_weight.hasError('required') && submitted">
                       Number
@@ -2879,8 +2793,7 @@
                   <mat-form-field>
                     <mat-label>
                       Course
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="silo_33_course_speed">
                     <mat-error *ngIf="personalDtls.silo_33_course_speed.hasError('required') && submitted">
                       Number
@@ -2901,8 +2814,7 @@
                   <mat-form-field>
                     <mat-label>
                       Fine
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="silo_33_fine_speed">
                     <mat-error *ngIf="personalDtls.silo_33_fine_speed.hasError('required') && submitted">
                       Number
@@ -2922,8 +2834,7 @@
                     <mat-label>
                       Extra
                       fine
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="silo_33_extra_fine_speed">
                     <mat-error *ngIf="personalDtls.silo_33_extra_fine_speed.hasError('required') && submitted">
                       Number
@@ -2944,8 +2855,7 @@
                   <mat-form-field>
                     <mat-label>
                       Inflight
-                      time
-                    </mat-label>
+                      time (sec)</mat-label>
                     <input matInput formControlName="silo_33_inflight_time">
                     <mat-error *ngIf="personalDtls.silo_33_inflight_time.hasError('required') && submitted">
                       Number
@@ -3002,8 +2912,7 @@
                   <mat-form-field>
                     <mat-label>
                       Set
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_31_set_weight">
                     <mat-error *ngIf="personalDtls.cs_31_set_weight.hasError('required') && submitted">
                       Number
@@ -3022,8 +2931,7 @@
                   <mat-form-field>
                     <mat-label>
                       Course
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_31_course_weight">
                     <mat-error *ngIf="personalDtls.cs_31_course_weight.hasError('required') && submitted">
                       Number
@@ -3044,8 +2952,7 @@
                   <mat-form-field>
                     <mat-label>
                       Fine
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_31_fine_weight">
                     <mat-error *ngIf="personalDtls.cs_31_fine_weight.hasError('required') && submitted">
                       Number
@@ -3065,8 +2972,7 @@
                     <mat-label>
                       Extra
                       fine
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_31_extra_fine_weight">
                     <mat-error *ngIf="personalDtls.cs_31_extra_fine_weight.hasError('required') && submitted">
                       Number
@@ -3087,8 +2993,7 @@
                   <mat-form-field>
                     <mat-label>
                       Inflight
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_31_inflight_weight">
                     <mat-error *ngIf="personalDtls.cs_31_inflight_weight.hasError('required') && submitted">
                       Number
@@ -3107,8 +3012,7 @@
                   <mat-form-field>
                     <mat-label>
                       Course
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="cs_31_course_speed">
                     <mat-error *ngIf="personalDtls.cs_31_course_speed.hasError('required') && submitted">
                       Number
@@ -3130,8 +3034,7 @@
                   <mat-form-field>
                     <mat-label>
                       Fine
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="cs_31_fine_speed">
                     <mat-error *ngIf="personalDtls.cs_31_fine_speed.hasError('required') && submitted">
                       Number
@@ -3151,8 +3054,7 @@
                     <mat-label>
                       Extra
                       fine
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="cs_31_extra_fine_speed">
                     <mat-error *ngIf="personalDtls.cs_31_extra_fine_speed.hasError('required') && submitted">
                       Number
@@ -3173,8 +3075,7 @@
                   <mat-form-field>
                     <mat-label>
                       Inflight
-                      time
-                    </mat-label>
+                      time (sec)</mat-label>
                     <input matInput formControlName="cs_31_inflight_time">
                     <mat-error *ngIf="personalDtls.cs_31_inflight_time.hasError('required') && submitted">
                       Number
@@ -3231,8 +3132,7 @@
                   <mat-form-field>
                     <mat-label>
                       Set
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_32_set_weight">
 
                     <mat-error *ngIf="personalDtls.cs_32_set_weight.hasError('required') && submitted">
@@ -3252,8 +3152,7 @@
                   <mat-form-field>
                     <mat-label>
                       Course
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_32_course_weight">
 
                     <mat-error *ngIf="personalDtls.cs_32_course_weight.hasError('required') && submitted">
@@ -3275,8 +3174,7 @@
                   <mat-form-field>
                     <mat-label>
                       Fine
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_32_fine_weight">
 
                     <mat-error *ngIf="personalDtls.cs_32_fine_weight.hasError('required') && submitted">
@@ -3297,8 +3195,7 @@
                     <mat-label>
                       Extra
                       fine
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_32_extra_fine_weight">
 
                     <mat-error *ngIf="personalDtls.cs_32_extra_fine_weight.hasError('required') && submitted">
@@ -3320,8 +3217,7 @@
                   <mat-form-field>
                     <mat-label>
                       Inflight
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_32_inflight_weight">
 
                     <mat-error *ngIf="personalDtls.cs_32_inflight_weight.hasError('required') && submitted">
@@ -3341,8 +3237,7 @@
                   <mat-form-field>
                     <mat-label>
                       Course
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="cs_32_course_speed">
 
                     <mat-error *ngIf="personalDtls.cs_32_course_speed.hasError('required') && submitted">
@@ -3364,8 +3259,7 @@
                   <mat-form-field>
                     <mat-label>
                       Fine
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="cs_32_fine_speed">
 
                     <mat-error *ngIf="personalDtls.cs_32_fine_speed.hasError('required') && submitted">
@@ -3386,8 +3280,7 @@
                     <mat-label>
                       Extra
                       fine
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="cs_32_extra_fine_speed">
 
                     <mat-error *ngIf="personalDtls.cs_32_extra_fine_speed.hasError('required') && submitted">
@@ -3409,8 +3302,7 @@
                   <mat-form-field>
                     <mat-label>
                       Inflight
-                      time
-                    </mat-label>
+                      time (sec)</mat-label>
                     <input matInput formControlName="cs_32_inflight_time">
 
                     <mat-error *ngIf="personalDtls.cs_32_inflight_time.hasError('required') && submitted">
@@ -3465,8 +3357,7 @@
                   <mat-form-field>
                     <mat-label>
                       Set
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_33_set_weight">
 
                     <mat-error *ngIf="personalDtls.cs_33_set_weight.hasError('required') && submitted">
@@ -3486,8 +3377,7 @@
                   <mat-form-field>
                     <mat-label>
                       Course
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_33_course_weight">
 
                     <mat-error *ngIf="personalDtls.cs_33_course_weight.hasError('required') && submitted">
@@ -3509,8 +3399,7 @@
                   <mat-form-field>
                     <mat-label>
                       Fine
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_33_fine_weight">
 
                     <mat-error *ngIf="personalDtls.cs_33_fine_weight.hasError('required') && submitted">
@@ -3531,8 +3420,7 @@
                     <mat-label>
                       Extra
                       fine
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_33_extra_fine_weight">
 
                     <mat-error *ngIf="personalDtls.cs_33_extra_fine_weight.hasError('required') && submitted">
@@ -3554,8 +3442,7 @@
                   <mat-form-field>
                     <mat-label>
                       Inflight
-                      weight
-                    </mat-label>
+                      weight (Kg)</mat-label>
                     <input matInput formControlName="cs_33_inflight_weight">
 
                     <mat-error *ngIf="personalDtls.cs_33_inflight_weight.hasError('required') && submitted">
@@ -3575,8 +3462,7 @@
                   <mat-form-field>
                     <mat-label>
                       Course
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="cs_33_course_speed">
 
                     <mat-error *ngIf="personalDtls.cs_33_course_speed.hasError('required') && submitted">
@@ -3598,8 +3484,7 @@
                   <mat-form-field>
                     <mat-label>
                       Fine
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="cs_33_fine_speed">
 
                     <mat-error *ngIf="personalDtls.cs_33_fine_speed.hasError('required') && submitted">
@@ -3620,8 +3505,7 @@
                     <mat-label>
                       Extra
                       fine
-                      speed
-                    </mat-label>
+                      speed (Hz)</mat-label>
                     <input matInput formControlName="cs_33_extra_fine_speed">
 
                     <mat-error *ngIf="personalDtls.cs_33_extra_fine_speed.hasError('required') && submitted">
@@ -3643,8 +3527,7 @@
                   <mat-form-field>
                     <mat-label>
                       Inflight
-                      time
-                    </mat-label>
+                      time (sec)</mat-label>
                     <input matInput formControlName="cs_33_inflight_time">
 
                     <mat-error *ngIf="personalDtls.cs_33_inflight_time.hasError('required') && submitted">

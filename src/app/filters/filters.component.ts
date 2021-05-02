@@ -21,7 +21,7 @@ export class FiltersComponent implements OnInit {
 
   //@Input is used to pass data from parent to child
   @Input() pageType: String;
-
+  batchSizeControl: boolean = true;
   errorMessage: string = "";
   reportType: string;
   dialogRef;
@@ -29,21 +29,32 @@ export class FiltersComponent implements OnInit {
   status: boolean = false;
   machineOptions = ["R10", "R30"]
 
-
   constructor(private configurationService: ConfigurationService,
     private globalErrorHandler: GlobalErrorHandler, private dialog: MatDialog,
     private formBuilder: FormBuilder, private notificationService: NotificationService) {
     this.report = this.formBuilder.group({
       recipeName: [null, Validators.required],
-      batchSize: [null, [Validators.required, Validators.pattern(/^[.\d]+$/)]],
+      batchSize: [null],
       downloadingMachine: [null, Validators.required],
       numberOfBatches: [null, [Validators.required, Validators.pattern("^[0-9]*$")]],
       autoBatch: [null]
     });
+    this.report.get('batchSize').disable();
     this.loadAllRecipes();
     this.downloadEnable();
   }
 
+  onCheckboxChange(event) {
+    if (event.checked) {
+      this.report.get('batchSize').enable()
+      this.report.get('batchSize').setValidators([Validators.required, Validators.pattern(/^[.\d]+$/)]);
+    } else {
+      this.report.get('batchSize').reset();
+      this.report.get('batchSize').disable();
+      this.report.get('batchSize').setValidators(null);
+      this.report.get('batchSize').updateValueAndValidity();
+    }
+  }
 
   loadAllRecipes() {
     this.configurationService.getAllRecipe().subscribe(data => {
@@ -55,34 +66,33 @@ export class FiltersComponent implements OnInit {
   }
 
 
-  private _dialogOpen(options: DIALOG_OPTIONS, data) {
+  dialogOpen(options: DIALOG_OPTIONS, data) {
 
     this.dialogRef = this.dialog.open(PopUpComponent, {
       ...options,
-      data: { ...data }
+      data: { ...data, status: false }
     });
-   
+
 
   }
- 
+
   downloadEnable() {
     this.configurationService.downloadEnable().subscribe(data => {
       // alert(" message " + data['message'] + " status " + data['status']);
-      this._dialogOpen(ADD_UPDATE_DIALOG_OPTIONS(200, 350), { status: data['status'], message: data['message'] });
-     
+      this.dialogOpen(ADD_UPDATE_DIALOG_OPTIONS(200, 350), { status: data['status'], message: data['message'] });
+
       this.dialogRef.afterClosed().subscribe(resp => {
         this.status = data['status'];
       })
-     
+
     },
       (err) => {
         // alert(" message " + err.error['message'] + " status " + err.error['status']);
-        this._dialogOpen(ADD_UPDATE_DIALOG_OPTIONS(200, 350), { status: err.error['status'], message: err.error['message'] });
+        this.dialogOpen(ADD_UPDATE_DIALOG_OPTIONS(200, 350), { status: err.error['status'], message: err.error['message'] });
         this.dialogRef.afterClosed().subscribe(resp => {
-          this.status = err.error['status'];
+          // this.status = err.error['status'];
+          this.status = true;
         })
-       
-        
       });
   }
 
@@ -103,7 +113,11 @@ export class FiltersComponent implements OnInit {
 
   onGenerate() {
     if (this.report.valid) {
-      this.passFormValues(this.report.value);
+      if (this.report.get('autoBatch').value) {
+        this.passFormValues(this.report.value);
+      } else {
+        this.passFormValues({ ...this.report.value, batchSize: 0 });
+      }
       this.status = !this.status
     }
   }

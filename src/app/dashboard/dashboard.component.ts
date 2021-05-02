@@ -16,14 +16,14 @@ const OPERATOR_MENU_GAP_SMALL = 54;
 export class DashboardComponent {
 
   menus: Menu[] = this.dashboard.getMenu();
-  hideMenu: boolean = true;
+  hideMenu: boolean = false;
 
   HIDE_ACCESS_DETAILS = HIDE_ACCESS_DETAILS;
   constructor(private storageServiceService: StorageServiceService, private breakpointObserver: BreakpointObserver, private dashboard: DashboardService, private user: AuthService) {
 
     let role = this.storageServiceService.getStorageItem(DATA.ROLE);
     if (role == 'SUPERADMIN') {
-      this.hideMenu = false;
+      this.hideMenu = true;
     } 
   }
 
