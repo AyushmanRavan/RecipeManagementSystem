@@ -77,6 +77,7 @@ export class FiltersComponent implements OnInit {
   }
 
   downloadEnable() {
+    console.log("downloadEnable=========>>>>")
     this.configurationService.downloadEnable().subscribe(data => {
       // alert(" message " + data['message'] + " status " + data['status']);
       this.dialogOpen(ADD_UPDATE_DIALOG_OPTIONS(200, 350), { status: data['status'], message: data['message'] });

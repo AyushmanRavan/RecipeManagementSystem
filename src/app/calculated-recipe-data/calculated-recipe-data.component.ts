@@ -1874,6 +1874,7 @@ export class CalculatedRecipeDataComponent implements OnInit {
     const userDetails = this.masterForm.controls['userDetails'];
     const contactDetails = this.masterForm.controls['contactDetails'];
     const personalDetails = this.masterForm.controls['personalDetails'];
+
     const mapping = {
       recipe_name: inputData.recipe_name,
       liquid_addition: inputData.liquid_addition,
@@ -2084,6 +2085,7 @@ export class CalculatedRecipeDataComponent implements OnInit {
 
     if (status) {
       this.masterForm.patchValue(mapping);
+
       if (this.inputType) {
         this.masterForm.disable();
       } else {
@@ -2112,6 +2114,33 @@ export class CalculatedRecipeDataComponent implements OnInit {
         personalDetails.get("cs_32_set_weight").disable()
         personalDetails.get("cs_33_set_weight").disable()
       }
+ 
+      this.compOne =
+        parseFloat(userDetails.get("silo_11_set_weight").value) +
+        parseFloat(userDetails.get("silo_12_set_weight").value) +
+        parseFloat(userDetails.get("cs_11_set_weight").value) +
+        parseFloat(userDetails.get("cs_12_set_weight").value) +
+        parseFloat(userDetails.get("cs_13_set_weight").value) +
+        parseFloat(userDetails.get("cs_14_set_weight").value);
+
+      this.compTwo =
+        parseFloat(contactDetails.get("silo_21_set_weight").value) +
+        parseFloat(contactDetails.get("silo_22_set_weight").value) +
+        parseFloat(contactDetails.get("silo_23_set_weight").value) +
+        parseFloat(contactDetails.get("cs_21_set_weight").value) +
+        parseFloat(contactDetails.get("cs_22_set_weight").value) +
+        parseFloat(contactDetails.get("cs_23_set_weight").value);
+
+      this.compThree =
+        parseFloat(personalDetails.get("silo_31_set_weight").value) +
+        parseFloat(personalDetails.get("silo_32_set_weight").value) +
+        parseFloat(personalDetails.get("silo_33_set_weight").value) +
+        parseFloat(personalDetails.get("cs_31_set_weight").value) +
+        parseFloat(personalDetails.get("cs_32_set_weight").value) +
+        parseFloat(personalDetails.get("cs_33_set_weight").value);
+
+      this.compBatchSize = this.compOne + this.compTwo + this.compThree;
+
     }
 
     return mapping;
