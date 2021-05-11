@@ -5,6 +5,8 @@
   <app-filters pageType="alsafeClosingReport" (select)="onSelect($event)"></app-filters>
 </div>
 
+
+
 <div *ngIf="showForm">
   <app-calculated-recipe-data [inputData]="data" [inputType]="autoBatch"></app-calculated-recipe-data>
 </div>

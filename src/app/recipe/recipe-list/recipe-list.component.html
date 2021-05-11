@@ -3,11 +3,14 @@
         <h2 class="mat-h2">Recipe Configuration</h2>
     </div>
     <div fxLayout fxLayoutAlign="center center">
+
+        
         <mat-form-field fxFlex="40%" floatLabel="never">
             <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
             <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="clearSearch()">
                 <mat-icon>close</mat-icon>
             </button>
+
         </mat-form-field>
     </div>
     <div class="action">

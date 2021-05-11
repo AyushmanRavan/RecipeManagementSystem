@@ -27,7 +27,7 @@ export class FiltersComponent implements OnInit {
   dialogRef;
   recipeOptions = [];
   status: boolean = false;
-  machineOptions = ["R10", "R30"]
+  machineOptions = [];
 
   constructor(private configurationService: ConfigurationService,
     private globalErrorHandler: GlobalErrorHandler, private dialog: MatDialog,
@@ -84,6 +84,7 @@ export class FiltersComponent implements OnInit {
 
       this.dialogRef.afterClosed().subscribe(resp => {
         this.status = data['status'];
+        this.machineOptions = data['machines'];
       })
 
     },
@@ -91,8 +92,8 @@ export class FiltersComponent implements OnInit {
         // alert(" message " + err.error['message'] + " status " + err.error['status']);
         this.dialogOpen(ADD_UPDATE_DIALOG_OPTIONS(200, 350), { status: err.error['status'], message: err.error['message'] });
         this.dialogRef.afterClosed().subscribe(resp => {
-          // this.status = err.error['status'];
-          this.status = true;
+          this.status = err.error['status'];
+          this.machineOptions = err.error['machines'];
         })
       });
   }

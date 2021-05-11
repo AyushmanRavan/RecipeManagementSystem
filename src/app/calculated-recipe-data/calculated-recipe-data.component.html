@@ -1,3 +1,11 @@
+<!-- <div *ngIf="loader" class="loadedStyle">
+  <app-spinner></app-spinner>
+</div> -->
+
+<div fxLayout fxLayoutAlign="center" *ngIf="loader">
+  <app-spinner message="Downloading recipe.....Please wait"></app-spinner>
+</div>
+
 <div>
   <h2 *ngIf="inputType">Add Recipe</h2>
   <h2 *ngIf="!inputType">Edit Recipe</h2>
@@ -36,7 +44,11 @@
 
     </div>
     <div fxLayout="row" fxLayoutAlign="space-around center">
-      <h3>Batch Size (kg) = {{compBatchSize}}</h3>
+      <!-- <h3>Batch Size (kg) = {{compBatchSize}}</h3> -->
+      <mat-form-field>
+        <mat-label>>Batch Size (kg)</mat-label>
+        <input matInput formControlName="batch_size">
+      </mat-form-field>
       <h3></h3>
       <h3></h3>
     </div>
@@ -53,7 +65,11 @@
     <div *ngIf="activeStepIndex == 1">
       <h2>Comp-1</h2>
       <div fxLayout="row" fxLayoutAlign="space-around center">
-        <h3>Comp1 Size (kg) = {{compOne}}</h3>
+        <!-- <h3>Comp1 Size (kg) = {{compOne}}</h3> -->
+        <mat-form-field>
+          <mat-label>>Comp1 Size (kg)</mat-label>
+          <input matInput formControlName="comp_1_size">
+        </mat-form-field>
         <h3></h3>
         <h3></h3>
       </div>
@@ -954,7 +970,11 @@
     <div *ngIf="activeStepIndex == 2">
       <h2>Comp-2</h2>
       <div fxLayout="row" fxLayoutAlign="space-around center">
-        <h3>Comp2 Size (kg) = {{compTwo}}</h3>
+        <!-- <h3>Comp2 Size (kg) = {{compTwo}}</h3> -->
+        <mat-form-field>
+          <mat-label>>Comp2 Size (kg)</mat-label>
+          <input matInput formControlName="comp_2_size">
+        </mat-form-field>
         <h3></h3>
         <h3></h3>
       </div>
@@ -2229,11 +2249,15 @@
     <div *ngIf="activeStepIndex == 3">
       <h2>Comp-3</h2>
       <div fxLayout="row" fxLayoutAlign="space-around center">
-        <h3>Comp3 Size (kg) = {{compThree}}</h3>
+        <!-- <h3>Comp3 Size (kg) = {{compThree}}</h3> -->
+        <mat-form-field>
+          <mat-label>>Comp3 Size (kg)</mat-label>
+          <input matInput formControlName="comp_3_size">
+        </mat-form-field>
         <h3></h3>
         <h3></h3>
       </div>
-      
+
       <div formGroupName="personalDetails">
         <!-- SILO-31  -->
         <div fxLayout="row" fxLayoutAlign="space-around center">

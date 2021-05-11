@@ -19,14 +19,12 @@ export class CalculatedRecipeDataComponent implements OnInit {
   activeStepIndex: any = 1;
   submitted: boolean = false;
   loading: boolean = false;
+  loader: boolean = false;
   masterForm: FormGroup;
   username: string;
   id!: string;
   match: string;
-  compOne = 0;
-  compTwo = 0;
-  compThree = 0;
-  compBatchSize = 0;
+
 
   constructor(
     private route: ActivatedRoute, private router: Router,
@@ -94,10 +92,11 @@ export class CalculatedRecipeDataComponent implements OnInit {
 
     if (!isNaN(parseFloat(personalDetails.get("cs_33_set_weight").value)))
       c3 = c3 + parseFloat(personalDetails.get("cs_33_set_weight").value);
-    this.compOne = c1;
-    this.compTwo = c2;
-    this.compThree = c3;
-    this.compBatchSize = (c1 + c2 + c3);
+
+    this.masterForm.get("comp_1_size").setValue(c1);
+    this.masterForm.get("comp_2_size").setValue(c2);
+    this.masterForm.get("comp_3_size").setValue(c3);
+    this.masterForm.get("batch_size").setValue((c1 + c2 + c3));
 
   }
 
@@ -342,6 +341,10 @@ export class CalculatedRecipeDataComponent implements OnInit {
       liquid_addition: new FormControl(false),
       recipe_enable: new FormControl(false),
       // relative_recipe: new FormControl(true),
+      comp_1_size: new FormControl(0),
+      comp_2_size: new FormControl(0),
+      comp_3_size: new FormControl(0),
+      batch_size: new FormControl(0),
       userDetails: new FormGroup({
         silo_11_set_weight: this.formControl(),//new FormControl('', [Validators.required, Validators.pattern(/^[.\d]+$/), this.silo_11_set_weight]),  // 
         silo_11_course_weight: this.formControl(),
@@ -1879,6 +1882,12 @@ export class CalculatedRecipeDataComponent implements OnInit {
       recipe_name: inputData.recipe_name,
       liquid_addition: inputData.liquid_addition,
       recipe_enable: inputData.recipe_enable,
+
+      comp_1_size: inputData.comp_1_size,
+      comp_2_size: inputData.comp_2_size,
+      comp_3_size: inputData.comp_3_size,
+      batch_size: inputData.batch_size,
+
       userDetails: {
         silo_11_set_weight: inputData['recipeData'].silo_11_set_weight,
         silo_11_course_weight: inputData['recipeData'].silo_11_course_weight,
@@ -2084,6 +2093,7 @@ export class CalculatedRecipeDataComponent implements OnInit {
 
 
     if (status) {
+
       this.masterForm.patchValue(mapping);
 
       if (this.inputType) {
@@ -2092,6 +2102,11 @@ export class CalculatedRecipeDataComponent implements OnInit {
         this.masterForm.get("recipe_name").disable()
         this.masterForm.get("liquid_addition").disable()
         this.masterForm.get("recipe_enable").disable()
+
+        this.masterForm.get("comp_1_size").disable()
+        this.masterForm.get("comp_2_size").disable()
+        this.masterForm.get("comp_3_size").disable()
+        this.masterForm.get("batch_size").disable()
 
         userDetails.get("silo_11_set_weight").disable()
         userDetails.get("silo_12_set_weight").disable()
@@ -2114,32 +2129,6 @@ export class CalculatedRecipeDataComponent implements OnInit {
         personalDetails.get("cs_32_set_weight").disable()
         personalDetails.get("cs_33_set_weight").disable()
       }
- 
-      this.compOne =
-        parseFloat(userDetails.get("silo_11_set_weight").value) +
-        parseFloat(userDetails.get("silo_12_set_weight").value) +
-        parseFloat(userDetails.get("cs_11_set_weight").value) +
-        parseFloat(userDetails.get("cs_12_set_weight").value) +
-        parseFloat(userDetails.get("cs_13_set_weight").value) +
-        parseFloat(userDetails.get("cs_14_set_weight").value);
-
-      this.compTwo =
-        parseFloat(contactDetails.get("silo_21_set_weight").value) +
-        parseFloat(contactDetails.get("silo_22_set_weight").value) +
-        parseFloat(contactDetails.get("silo_23_set_weight").value) +
-        parseFloat(contactDetails.get("cs_21_set_weight").value) +
-        parseFloat(contactDetails.get("cs_22_set_weight").value) +
-        parseFloat(contactDetails.get("cs_23_set_weight").value);
-
-      this.compThree =
-        parseFloat(personalDetails.get("silo_31_set_weight").value) +
-        parseFloat(personalDetails.get("silo_32_set_weight").value) +
-        parseFloat(personalDetails.get("silo_33_set_weight").value) +
-        parseFloat(personalDetails.get("cs_31_set_weight").value) +
-        parseFloat(personalDetails.get("cs_32_set_weight").value) +
-        parseFloat(personalDetails.get("cs_33_set_weight").value);
-
-      this.compBatchSize = this.compOne + this.compTwo + this.compThree;
 
     }
 
@@ -2195,36 +2184,13 @@ export class CalculatedRecipeDataComponent implements OnInit {
   get name() { return this.masterForm.get('recipe_name'); }
 
   private downloadRecipe() {
+    console.log(this.loader, " before ", new Date());
+    this.loader = true;
+    console.log(this.loader, " after ", new Date());
     const customUpdate = {};
     const userDetails = this.masterForm.controls['userDetails'];
     const contactDetails = this.masterForm.controls['contactDetails'];
     const personalDetails = this.masterForm.controls['personalDetails'];
-
-    let comp_11_size =
-      parseFloat(userDetails.get("silo_11_set_weight").value) +
-      parseFloat(userDetails.get("silo_12_set_weight").value) +
-      parseFloat(userDetails.get("cs_11_set_weight").value) +
-      parseFloat(userDetails.get("cs_12_set_weight").value) +
-      parseFloat(userDetails.get("cs_13_set_weight").value) +
-      parseFloat(userDetails.get("cs_14_set_weight").value);
-
-    let comp_12_size =
-      parseFloat(contactDetails.get("silo_21_set_weight").value) +
-      parseFloat(contactDetails.get("silo_22_set_weight").value) +
-      parseFloat(contactDetails.get("silo_23_set_weight").value) +
-      parseFloat(contactDetails.get("cs_21_set_weight").value) +
-      parseFloat(contactDetails.get("cs_22_set_weight").value) +
-      parseFloat(contactDetails.get("cs_23_set_weight").value);
-
-    let comp_13_size =
-      parseFloat(personalDetails.get("silo_31_set_weight").value) +
-      parseFloat(personalDetails.get("silo_32_set_weight").value) +
-      parseFloat(personalDetails.get("silo_33_set_weight").value) +
-      parseFloat(personalDetails.get("cs_31_set_weight").value) +
-      parseFloat(personalDetails.get("cs_32_set_weight").value) +
-      parseFloat(personalDetails.get("cs_33_set_weight").value);
-
-    let batchSize = comp_11_size + comp_12_size + comp_13_size;
 
     customUpdate['recipeId'] = this.inputData.recipeId;
     customUpdate['number_of_batches'] = this.inputData.number_of_batches;
@@ -2234,10 +2200,10 @@ export class CalculatedRecipeDataComponent implements OnInit {
     customUpdate['relative_recipe'] = this.inputData.relative_recipe;
 
     // customUpdate['user_name'] = this.username
-    customUpdate['comp_1_size'] = comp_11_size
-    customUpdate['comp_2_size'] = comp_12_size
-    customUpdate['comp_3_size'] = comp_13_size
-    customUpdate['batch_size'] = batchSize
+    customUpdate['comp_1_size'] = this.masterForm.get("comp_1_size").value
+    customUpdate['comp_2_size'] = this.masterForm.get("comp_2_size").value
+    customUpdate['comp_3_size'] = this.masterForm.get("comp_3_size").value
+    customUpdate['batch_size'] = this.masterForm.get("batch_size").value
 
     customUpdate['recipe_name'] = this.masterForm.get("recipe_name").value;
     customUpdate['liquid_addition'] = this.masterForm.get("liquid_addition").value;
@@ -2279,7 +2245,13 @@ export class CalculatedRecipeDataComponent implements OnInit {
 
     this.configurationService.downloadRecipe(customUpdate)
       .subscribe((resp) => {
-        window.location.reload();
+
+        setTimeout(() => {
+          // this.loader = false;
+          console.log(this.loader, " interval ", new Date())
+          window.location.reload();
+        }, 5000);
+
       },
         (err) => {
           this.handleError(err);
@@ -2289,6 +2261,7 @@ export class CalculatedRecipeDataComponent implements OnInit {
 
   private handleError(err) {
     this.loading = false;
+    this.loader = false;
     if (err.error.message) {
       this.errMessage = err.error.message;
     } else {
