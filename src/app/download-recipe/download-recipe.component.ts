@@ -27,12 +27,8 @@ export class DownloadRecipeComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
-
-  }
-
   onSelect(event: any) {
-    console.log("event======>>>", event)
+    // console.log("event======>>>", event)
     this.recipeId = event['reportValue']['recipeName'].recipeId
     this.downloadingMachine = event['reportValue']['downloadingMachine']
     this.batchSize = event['reportValue']['batchSize']
@@ -47,13 +43,10 @@ export class DownloadRecipeComponent implements OnInit {
       numberOfBatches: this.numberOfBatches
     }
     console.log("Payload===>", payload)
-    
     this.configurationService.generateRecipe(payload).subscribe(resp => {
-
       this.data = resp;
-
-     
-      console.log("API data",this.data)
+      this.data['payload'] = payload;
+      console.log("API data", this.data);
       this.showForm = true;
     },
       err => {

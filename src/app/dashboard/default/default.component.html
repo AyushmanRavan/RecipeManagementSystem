@@ -1,5 +1,45 @@
-<div fxLayout fxLayout.xs="column" fxLayoutAlign="center">
-    <h2 class="mat-h2">Dashboard</h2>
-</div>
+<!-- <h1 fxHide fxShow.xs>XS</h1>
+ <h1 fxHide fxShow.sm>SM</h1>
+ <h1 fxHide fxShow.md>MD</h1>
+ <h1 fxHide fxShow.lg>LG</h1>
+ <h1 fxHide fxShow.xl>XL</h1> -->
 
+<!-- <div color="primary">
+     <span>Card view demo</span>
+     <button mat-button (click)="toggleGridColumns()" fxHide.lt-md>
+         <span *ngIf="gridColumns === 4">Three Columns</span>
+         <span *ngIf="gridColumns === 3">Four Columns</span>
+     </button>
+ </div> -->
 
+<section *ngIf="!loaded; else loader">
+
+    <error *ngIf="errMessage; else showdata" [message]="errMessage"></error>
+
+    <ng-template #showdata>
+        <div fxLayout="row wrap" >
+            <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let item of summary">
+                <mat-card >
+
+                    <mat-card-content>
+                        <mat-grid-list cols="2" rowHeight="100px">
+                            <mat-grid-tile>
+                                <div>
+                                    <h1>{{item.pcName}}</h1>
+                                    <h1>Status:{{item.status}}</h1>
+                                </div>
+                            </mat-grid-tile>
+                        </mat-grid-list>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </ng-template>
+
+</section>
+
+<ng-template #loader>
+    <div fxLayout fxLayoutAlign="center">
+        <app-spinner></app-spinner>
+    </div>
+</ng-template>

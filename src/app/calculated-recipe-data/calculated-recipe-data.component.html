@@ -1,9 +1,6 @@
-<!-- <div *ngIf="loader" class="loadedStyle">
-  <app-spinner></app-spinner>
-</div> -->
 
-<div fxLayout fxLayoutAlign="center" *ngIf="loader">
-  <app-spinner message="Downloading recipe.....Please wait"></app-spinner>
+<div *ngIf="loader">
+  <app-spinner message="Downloading recipe.....Please wait" isLoading="true"></app-spinner>
 </div>
 
 <div>
@@ -46,28 +43,37 @@
     <div fxLayout="row" fxLayoutAlign="space-around center">
       <!-- <h3>Batch Size (kg) = {{compBatchSize}}</h3> -->
       <mat-form-field>
-        <mat-label>>Batch Size (kg)</mat-label>
+        <mat-label>Batch Size (kg)</mat-label>
         <input matInput formControlName="batch_size">
       </mat-form-field>
-      <h3></h3>
+      <mat-form-field>
+        <mat-label>Number of batches</mat-label>
+        <input matInput formControlName="number_of_batches">
+      </mat-form-field>
       <h3></h3>
     </div>
-    <div class="controls">
-      <button *ngIf="activeStepIndex != 1" (click)="goToPrevious()">Previous</button>
-      <button *ngIf="activeStepIndex != 3" (click)="goToNext()">Next</button>
-      <button type="submit" *ngIf="activeStepIndex == 3" mat-raised-button color="accent" (click)="submit()">Download
+    
+    <div class="controls" >
+      <button mat-raised-button color="primary" [disabled]="activeStepIndex == 1" (click)="goToPrevious()">Previous</button>
+      <button mat-raised-button color="primary" [disabled]="activeStepIndex == 3" (click)="goToNext()">Next</button>
+      <button class = 'alignmentClass' type="submit" [disabled]="activeStepIndex != 3" mat-raised-button color="accent" (click)="submit()">Download
         Recipe</button>
-
-
-
     </div>
+
+    <!-- <div>
+      <button mat-raised-button color="primary" [disabled]="activeStepIndex == 3" (click)="goToNext()">Next</button>
+      <button mat-raised-button color="primary" [disabled]="activeStepIndex == 1" (click)="goToPrevious()">Previous</button>
+     
+        <button class ='controls' type="submit" [disabled]="activeStepIndex != 3" mat-raised-button color="accent" (click)="submit()">Download
+        Recipe</button>
+    </div> -->
 
     <div *ngIf="activeStepIndex == 1">
       <h2>Comp-1</h2>
       <div fxLayout="row" fxLayoutAlign="space-around center">
         <!-- <h3>Comp1 Size (kg) = {{compOne}}</h3> -->
         <mat-form-field>
-          <mat-label>>Comp1 Size (kg)</mat-label>
+          <mat-label>Comp1 Size (kg)</mat-label>
           <input matInput formControlName="comp_1_size">
         </mat-form-field>
         <h3></h3>
@@ -972,7 +978,7 @@
       <div fxLayout="row" fxLayoutAlign="space-around center">
         <!-- <h3>Comp2 Size (kg) = {{compTwo}}</h3> -->
         <mat-form-field>
-          <mat-label>>Comp2 Size (kg)</mat-label>
+          <mat-label>Comp2 Size (kg)</mat-label>
           <input matInput formControlName="comp_2_size">
         </mat-form-field>
         <h3></h3>
@@ -2251,7 +2257,7 @@
       <div fxLayout="row" fxLayoutAlign="space-around center">
         <!-- <h3>Comp3 Size (kg) = {{compThree}}</h3> -->
         <mat-form-field>
-          <mat-label>>Comp3 Size (kg)</mat-label>
+          <mat-label>Comp3 Size (kg)</mat-label>
           <input matInput formControlName="comp_3_size">
         </mat-form-field>
         <h3></h3>

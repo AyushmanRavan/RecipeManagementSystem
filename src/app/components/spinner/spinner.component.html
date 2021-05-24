@@ -1,6 +1,9 @@
-<!-- <mat-spinner [strokeWidth]="stroke" [diameter]="diameter"></mat-spinner> -->
-<div class="overlay">
-    <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value"> 
-        {{            message        }}
-    </mat-progress-spinner>
-</div> 
+<ng-template #loader>
+    <mat-spinner [strokeWidth]="stroke" [diameter]="diameter"></mat-spinner>
+</ng-template>
+<div *ngIf="isLoading; else loader" class="overlay">
+    <div>
+        <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value"> </mat-progress-spinner>
+        <div class="loader-text">{{message}}</div>
+    </div>
+</div>

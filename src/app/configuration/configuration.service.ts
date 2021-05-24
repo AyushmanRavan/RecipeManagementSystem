@@ -19,7 +19,7 @@ export class ConfigurationService {
     private rest: RestService
   ) { }
 
-
+  getIPAddress = () => this.rest.get("getIPAddress");
 
   generateRecipe = (payload) => this.rest.post('generate/Recipe', payload)
   downloadRecipe = (payload) => this.rest.post("downloadRecipe", payload)

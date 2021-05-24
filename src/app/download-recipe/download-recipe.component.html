@@ -1,11 +1,10 @@
 <div fxLayout fxLayoutAlign="center">
   <h2 class="mat-h2">Download Recipe</h2>
 </div>
+
 <div class="production main-column">
   <app-filters pageType="alsafeClosingReport" (select)="onSelect($event)"></app-filters>
 </div>
-
-
 
 <div *ngIf="showForm">
   <app-calculated-recipe-data [inputData]="data" [inputType]="autoBatch"></app-calculated-recipe-data>

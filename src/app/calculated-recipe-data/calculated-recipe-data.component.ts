@@ -18,7 +18,6 @@ export class CalculatedRecipeDataComponent implements OnInit {
   errMessage: string;
   activeStepIndex: any = 1;
   submitted: boolean = false;
-  loading: boolean = false;
   loader: boolean = false;
   masterForm: FormGroup;
   username: string;
@@ -340,7 +339,7 @@ export class CalculatedRecipeDataComponent implements OnInit {
       recipe_name: new FormControl('', [Validators.required, this.ValidateRecipeName]),
       liquid_addition: new FormControl(false),
       recipe_enable: new FormControl(false),
-      // relative_recipe: new FormControl(true),
+      number_of_batches: new FormControl(0),
       comp_1_size: new FormControl(0),
       comp_2_size: new FormControl(0),
       comp_3_size: new FormControl(0),
@@ -1877,7 +1876,7 @@ export class CalculatedRecipeDataComponent implements OnInit {
     const userDetails = this.masterForm.controls['userDetails'];
     const contactDetails = this.masterForm.controls['contactDetails'];
     const personalDetails = this.masterForm.controls['personalDetails'];
-
+    console.log(inputData['payload']['numberOfBatches'], " mapping data ", inputData)
     const mapping = {
       recipe_name: inputData.recipe_name,
       liquid_addition: inputData.liquid_addition,
@@ -1887,6 +1886,7 @@ export class CalculatedRecipeDataComponent implements OnInit {
       comp_2_size: inputData.comp_2_size,
       comp_3_size: inputData.comp_3_size,
       batch_size: inputData.batch_size,
+      number_of_batches: inputData['payload']['numberOfBatches'],
 
       userDetails: {
         silo_11_set_weight: inputData['recipeData'].silo_11_set_weight,
@@ -2098,10 +2098,12 @@ export class CalculatedRecipeDataComponent implements OnInit {
 
       if (this.inputType) {
         this.masterForm.disable();
+        this.masterForm.get("liquid_addition").enable()
+        this.masterForm.get("recipe_enable").enable()
       } else {
         this.masterForm.get("recipe_name").disable()
-        this.masterForm.get("liquid_addition").disable()
-        this.masterForm.get("recipe_enable").disable()
+        this.masterForm.get("number_of_batches").disable()
+        // this.masterForm.get("recipe_enable").disable()
 
         this.masterForm.get("comp_1_size").disable()
         this.masterForm.get("comp_2_size").disable()
@@ -2156,7 +2158,7 @@ export class CalculatedRecipeDataComponent implements OnInit {
     if (this.masterForm.invalid) {
       return;
     }
-    this.loading = true;
+    this.loader = true;
     this.downloadRecipe();
   }
 
@@ -2184,16 +2186,14 @@ export class CalculatedRecipeDataComponent implements OnInit {
   get name() { return this.masterForm.get('recipe_name'); }
 
   private downloadRecipe() {
-    console.log(this.loader, " before ", new Date());
-    this.loader = true;
-    console.log(this.loader, " after ", new Date());
     const customUpdate = {};
     const userDetails = this.masterForm.controls['userDetails'];
     const contactDetails = this.masterForm.controls['contactDetails'];
     const personalDetails = this.masterForm.controls['personalDetails'];
 
     customUpdate['recipeId'] = this.inputData.recipeId;
-    customUpdate['number_of_batches'] = this.inputData.number_of_batches;
+    customUpdate['number_of_batches'] = this.masterForm.get("number_of_batches").value
+    //this.masterForm.controls['number_of_batches'];
     customUpdate['recipe_machine'] = this.inputData.recipe_machine;
     customUpdate['loggingTime'] = this.inputData.loggingTime;
     customUpdate['user_name'] = this.inputData.user_name;
@@ -2239,17 +2239,14 @@ export class CalculatedRecipeDataComponent implements OnInit {
 
     }
 
-    console.log("Input payload from filter data", this.inputData)
-    console.log("Form processing data", this.masterForm.value)
-    console.log("Request payload for downloadRecipe", customUpdate)
+    // console.log("Input payload from filter data", this.inputData)
+    // console.log("Form processing data", this.masterForm.value)
+    // console.log("Request payload for downloadRecipe", customUpdate)
 
     this.configurationService.downloadRecipe(customUpdate)
       .subscribe((resp) => {
-
         setTimeout(() => {
-          // this.loader = false;
-          console.log(this.loader, " interval ", new Date())
-          window.location.reload();
+          this.handleResponse(resp);
         }, 5000);
 
       },
@@ -2259,8 +2256,12 @@ export class CalculatedRecipeDataComponent implements OnInit {
 
   }
 
-  private handleError(err) {
-    this.loading = false;
+  handleResponse(resp) {
+    this.loader = false;
+    this.router.navigate(["/dashboard"])
+  }
+
+  handleError(err) {
     this.loader = false;
     if (err.error.message) {
       this.errMessage = err.error.message;

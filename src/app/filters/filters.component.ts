@@ -77,7 +77,6 @@ export class FiltersComponent implements OnInit {
   }
 
   downloadEnable() {
-    console.log("downloadEnable=========>>>>")
     this.configurationService.downloadEnable().subscribe(data => {
       // alert(" message " + data['message'] + " status " + data['status']);
       this.dialogOpen(ADD_UPDATE_DIALOG_OPTIONS(200, 350), { status: data['status'], message: data['message'] });
@@ -117,8 +116,10 @@ export class FiltersComponent implements OnInit {
     if (this.report.valid) {
       if (this.report.get('autoBatch').value) {
         this.passFormValues(this.report.value);
+        this.report.disable()
       } else {
         this.passFormValues({ ...this.report.value, batchSize: 0 });
+        this.report.disable()
       }
       this.status = !this.status
     }
