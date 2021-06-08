@@ -26,6 +26,10 @@ export class DownloadRecipeComponent implements OnInit {
   ) {
 
   }
+  
+  ngOnInit(): void {
+
+  }
 
   onSelect(event: any) {
     // console.log("event======>>>", event)

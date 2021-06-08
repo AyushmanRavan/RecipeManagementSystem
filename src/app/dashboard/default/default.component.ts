@@ -34,22 +34,22 @@ export class DefaultComponent {
         this.loaded = false;
         console.log(data);
         this.summary = data;
-        this.summary.push({
-          alarmName: "tally pc disconnected",
-          interval: 3,
-          ipAddress: "172.17.1.243",
-          lastUpdated: "2021-05-21 14:02:47.0",
-          pcName: "tally pc",
-          status: true
-        })
-        this.summary.push({
-          alarmName: "tally pc disconnected",
-          interval: 3,
-          ipAddress: "172.17.1.243",
-          lastUpdated: "2021-05-21 14:02:47.0",
-          pcName: "tally pc",
-          status: true
-        })
+        // this.summary.push({
+        //   alarmName: "tally pc disconnected",
+        //   interval: 3,
+        //   ipAddress: "172.17.1.243",
+        //   lastUpdated: "2021-05-21 14:02:47.0",
+        //   pcName: "tally pc",
+        //   status: true
+        // })
+        // this.summary.push({
+        //   alarmName: "tally pc disconnected",
+        //   interval: 3,
+        //   ipAddress: "172.17.1.243",
+        //   lastUpdated: "2021-05-21 14:02:47.0",
+        //   pcName: "tally pc",
+        //   status: true
+        // })
         if (!this.summary.length) {
           this.errMessage = this.error.getErrorMessage(1);
         }

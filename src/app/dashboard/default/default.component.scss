@@ -1,1 +1,19 @@
-// 
+mat-card{
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+}
+
+mat-grid-tile {
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+}
+ 
+
+h1{
+    // text-align: center;
+    color: white;
+    font-size: 20px;
+}
